@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080e0b">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="RufusTheDwarf">
+  <meta name="description" content="Découvrez Rufus Terminal : projets open source, développement de jeux vidéo, tutoriels informatiques et expériences de RufusTheDwarf.">
+  <title>Rufus Terminal — Développement, jeux et projets open source</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Rufus Terminal">
+  <meta property="og:title" content="Rufus Terminal — Développement, jeux et projets open source">
+  <meta property="og:description" content="Projets open source, création de jeux, tutoriels et expérimentations techniques. Entrez dans l'univers de RufusTheDwarf.">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Après choix du domaine définitif, ajouter ici une URL canonique absolue :
+       <link rel="canonical" href="https://votre-domaine.example/">
+       et les balises og:url / og:image avec des URLs HTTPS publiques. -->
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080e0b;
+      --bg-soft: #0d1711;
+      --panel: rgba(11, 23, 17, .89);
+      --line: #24422e;
+      --green: #7af6a0;
+      --green-strong: #37d87b;
+      --text: #e5f3e8;
+      --muted: #a4b9a9;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.65;
+      background: var(--bg);
+      min-width: 280px;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 40% at 55% 1%, rgba(27, 116, 58, .2), transparent 70%),
+        linear-gradient(rgba(100, 255, 150, .025) 1px, transparent 1px);
+      background-size: auto, 100% 5px;
+    }
+    a { color: inherit; text-underline-offset: .25em; }
+    a:hover { color: var(--green); }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+    .skip { position: absolute; top: -8rem; left: 1rem; z-index: 20; background: var(--green); color: var(--bg); padding: .6rem 1rem; }
+    .skip:focus { top: 1rem; }
+    .matrix {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: .16;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+    .matrix span {
+      position: absolute;
+      top: -26rem;
+      left: var(--x);
+      font: 13px/1.7 var(--mono);
+      writing-mode: vertical-rl;
+      letter-spacing: .28rem;
+      color: var(--green);
+      text-shadow: 0 0 10px var(--green-strong);
+      animation: rain var(--speed) linear infinite;
+      animation-delay: var(--delay);
+    }
+    @keyframes rain { to { transform: translateY(140vh); } }
+    .wrap { width: min(1120px, calc(100% - 2.5rem)); margin-inline: auto; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(8, 14, 11, .91); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+    .topbar-inner { min-height: 72px; display: flex; gap: 1.5rem; align-items: center; justify-content: space-between; }
+    .brand { font-family: var(--mono); font-size: .98rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .brand .prompt { color: var(--green); }
+    .nav { display: flex; gap: 1.3rem; flex-wrap: wrap; align-items: center; }
+    .nav a { color: var(--muted); text-decoration: none; font: 500 .84rem var(--mono); }
+    .nav a:hover { color: var(--green); }
+    .nav .nav-github { border: 1px solid var(--line); border-radius: 8px; padding: .48rem .7rem; color: var(--text); }
+    main { position: relative; }
+    .hero { padding-block: clamp(4rem, 10vw, 8rem) 5.3rem; display: grid; grid-template-columns: 1.03fr .97fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    .eyebrow, .section-kicker, .tag { font: 500 .79rem var(--mono); letter-spacing: .09em; color: var(--green); }
+    .eyebrow::before { content: "●"; padding-right: .7rem; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font: 750 clamp(3rem, 7vw, 5.8rem)/1.03 var(--mono); letter-spacing: -.085em; margin-block: 1.6rem; }
+    h1 span { color: var(--green); text-shadow: 0 0 28px rgba(90, 242, 140, .18); }
+    .hero-lead { max-width: 55ch; color: var(--muted); font-size: clamp(1.02rem, 1.4vw, 1.15rem); }
+    .buttons { margin-top: 1.9rem; display: flex; gap: .85rem; flex-wrap: wrap; }
+    .btn { border: 1px solid var(--green-strong); padding: .73rem 1rem; border-radius: 9px; font: 650 .88rem var(--mono); text-decoration: none; transition: background .2s, transform .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-main { background: var(--green); border-color: var(--green); color: #061109; }
+    .btn-main:hover { background: #a5ffbc; color: #061109; }
+    .btn-alt { color: var(--green); background: rgba(22, 47, 29, .2); }
+    .btn-alt:hover { background: rgba(39, 95, 53, .3); }
+    .status { display: flex; gap: 1.3rem; flex-wrap: wrap; margin-top: 2rem; font: .75rem var(--mono); color: var(--muted); }
+    .status strong { color: var(--text); font-weight: 600; }
+    .terminal { background: var(--panel); border: 1px solid #356345; border-radius: 14px; box-shadow: 0 20px 70px rgba(0, 0, 0, .4), 0 0 55px rgba(21, 111, 48, .06); overflow: hidden; min-width: 0; }
+    .term-head { display: flex; align-items: center; gap: .55rem; padding: .85rem 1rem; background: #132319; border-bottom: 1px solid #29422f; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #fe716b; }
+    .dot:nth-child(2) { background: #efca65; }
+    .dot:nth-child(3) { background: #65cd89; }
+    .term-title { color: #b0c3b3; font: .72rem var(--mono); margin-inline: auto; transform: translateX(-10px); }
+    .term-body { min-height: 315px; padding: 1.25rem 1.3rem; font: .84rem/1.85 var(--mono); }
+    .term-line { margin: 0 0 .4rem; overflow-wrap: anywhere; }
+    .term-strong { color: var(--green); }
+    .term-muted { color: var(--muted); }
+    .term-output { min-height: 90px; max-height: 180px; overflow: auto; scrollbar-color: #396d46 transparent; }
+    .term-output p { margin: .22rem 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .command { display: flex; align-items: center; gap: .65rem; margin-top: 1rem; }
+    .command label { color: var(--green); white-space: nowrap; }
+    .command input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; padding: .25rem; }
+    .command input:focus-visible { outline: 1px solid var(--green); outline-offset: 2px; }
+    .command button { border: 1px solid var(--line); border-radius: 6px; background: #193121; color: var(--green); font: .74rem var(--mono); padding: .45rem .6rem; cursor: pointer; }
+    .command button:hover { background: #244a2f; }
+    .section { padding-block: 3.8rem; border-top: 1px solid #1c3524; }
+    .section-title { font: 700 clamp(1.65rem, 3vw, 2.4rem)/1.2 var(--mono); letter-spacing: -.05em; margin: .7rem 0 1rem; }
+    .section-title::before { content: "~/"; color: var(--green); }
+    .section-intro { color: var(--muted); max-width: 70ch; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.8rem; }
+    .card { background: rgba(14, 27, 19, .9); border: 1px solid #294730; border-radius: 12px; padding: 1.5rem; min-width: 0; transition: border-color .2s, transform .2s; }
+    .card:hover { border-color: #4c9460; transform: translateY(-3px); }
+    .card-top { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .card h3 { font: 650 1.15rem/1.4 var(--mono); letter-spacing: -.04em; }
+    .card p { color: var(--muted); font-size: .96rem; }
+    .card a { font: 650 .85rem var(--mono); color: var(--green); }
+    .tag { color: #a1f4b7; font-size: .69rem; background: #183622; border: 1px solid #2c5e3c; border-radius: 999px; padding: .25rem .65rem; letter-spacing: 0; }
+    .info-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.8rem; }
+    .info-grid .card { min-height: 175px; }
+    .info-grid .card h3 { margin-bottom: .65rem; }
+    .callout { margin-top: 1.6rem; color: var(--muted); border-left: 2px solid var(--green-strong); padding-left: 1rem; font-size: .95rem; }
+    .footer { margin-top: 4rem; border-top: 1px solid var(--line); }
+    .footer-inner { padding-block: 1.5rem 2.5rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; font: .78rem var(--mono); color: var(--muted); }
+    .footer a { color: var(--green); }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 4.5rem; }
+      .hero-lead { max-width: 65ch; }
+      .info-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 1.4rem, 1120px); }
+      .topbar-inner { display: block; padding-block: .9rem; }
+      .nav { margin-top: .6rem; gap: .55rem .9rem; }
+      .nav a { font-size: .78rem; }
+      .hero { padding-block: 3.4rem 3rem; }
+      .grid, .info-grid { grid-template-columns: 1fr; }
+      .section { padding-block: 2.8rem; }
+      .terminal .term-body { padding: 1rem; }
+      .status { gap: .5rem 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .matrix { display: none; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "RufusTheDwarf",
+      "alternateName": "Rufus",
+      "sameAs": ["https://github.com/RufusTheDwarf"],
+      "knowsAbout": ["Développement web", "Docker", "Développement de jeux vidéo", "Open source"]
+    }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="matrix" aria-hidden="true">
+    <span style="--x:7%;--speed:21s;--delay:-8s">101001010110101011001010101</span>
+    <span style="--x:19%;--speed:25s;--delay:-16s">011011001010101001011010011</span>
+    <span style="--x:32%;--speed:20s;--delay:-12s">010101110010110101101001010</span>
+    <span style="--x:46%;--speed:23s;--delay:-3s">100101100111001010011010110</span>
+    <span style="--x:58%;--speed:28s;--delay:-18s">101101001010011101001101010</span>
+    <span style="--x:72%;--speed:22s;--delay:-9s">001010011011010101010011001</span>
+    <span style="--x:85%;--speed:26s;--delay:-20s">110100101101011001001101010</span>
+    <span style="--x:96%;--speed:19s;--delay:-6s">001011010010101001100110101</span>
+  </div>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#accueil" aria-label="Rufus Terminal, retour à l'accueil"><span class="prompt">&gt;</span> rufus<span class="prompt">_</span>terminal</a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#apropos">À propos</a>
+        <a href="#projets">Projets</a>
+        <a href="#jeux">Jeux</a>
+        <a href="#guides">Guides</a>
+        <a href="#streams">Streams</a>
+        <a class="nav-github" href="https://github.com/RufusTheDwarf" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div class="wrap">
+      <section class="hero" id="accueil" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">SYSTEM ONLINE // PORTFOLIO EN CONSTRUCTION</p>
+          <h1 id="hero-title">Rufus<br><span>Terminal_</span></h1>
+          <p class="hero-lead">Je développe des projets open source, j'explore la création de jeux vidéo et je partage mes découvertes techniques. Bienvenue dans mon espace numérique.</p>
+          <div class="buttons">
+            <a class="btn btn-main" href="#projets">Explorer mes projets ↗</a>
+            <a class="btn btn-alt" href="https://github.com/RufusTheDwarf" target="_blank" rel="noopener noreferrer">Voir mon GitHub</a>
+          </div>
+          <div class="status" aria-label="Informations du site">
+            <span>MODE <strong>STATIC</strong></span>
+            <span>STACK <strong>HTML · CSS · JS</strong></span>
+            <span>VERSION <strong>0.1.0</strong></span>
+          </div>
+        </div>
+
+        <div class="terminal" aria-label="Terminal interactif">
+          <div class="term-head" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="term-title">rufus@terminal — bash</span></div>
+          <div class="term-body">
+            <p class="term-line term-strong">RUFUS TERMINAL v0.1.0</p>
+            <p class="term-line term-muted">Bienvenue dans mon portfolio.</p>
+            <p class="term-line term-muted">Tape <span class="term-strong">help</span> pour afficher les commandes.</p>
+            <div id="terminal-output" class="term-output" role="log" aria-live="polite" aria-relevant="additions"></div>
+            <form id="terminal-form" class="command" autocomplete="off">
+              <label for="terminal-input">guest@rufus:~$</label>
+              <input id="terminal-input" name="command" type="text" maxlength="80" placeholder="help" spellcheck="false" autocapitalize="off" aria-label="Commande du terminal">
+              <button type="submit" aria-label="Exécuter la commande">↵</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="apropos" class="section" aria-labelledby="about-title">
+        <span class="section-kicker">01 // WHOAMI</span>
+        <h2 class="section-title" id="about-title">À propos</h2>
+        <p class="section-intro">Salut, moi c'est <strong>RufusTheDwarf</strong>. J'aime comprendre comment les systèmes fonctionnent, construire des outils utiles, expérimenter avec le développement web et imaginer des jeux. Ici, je documente mes projets, y compris les essais, les erreurs et ce que j'apprends.</p>
+      </section>
+
+      <section id="projets" class="section" aria-labelledby="projects-title">
+        <span class="section-kicker">02 // LS PROJECTS</span>
+        <h2 class="section-title" id="projects-title">Projets open source</h2>
+        <p class="section-intro">Quelques projets à retrouver dans mes dépôts GitHub. Cette sélection évoluera au fil de mes créations.</p>
+        <div class="grid">
+          <article class="card">
+            <div class="card-top"><span class="tag">DOCKER · NETWORKING</span><span aria-hidden="true">▣</span></div>
+            <h3>Docker Network Toolkit</h3>
+            <p>Laboratoire Docker avec plusieurs services, des outils de diagnostic réseau et des tests automatisés.</p>
+            <a href="https://github.com/RufusTheDwarf/Docker-Network-Toolkit" target="_blank" rel="noopener noreferrer">Consulter le dépôt ↗</a>
+          </article>
+          <article class="card">
+            <div class="card-top"><span class="tag">NETWORK · LAB</span><span aria-hidden="true">⌁</span></div>
+            <h3>NetRecon Lab</h3>
+            <p>Un dépôt consacré à l'expérimentation et à l'apprentissage des outils de reconnaissance et de diagnostic réseau.</p>
+            <a href="https://github.com/RufusTheDwarf/NetRecon-Lab" target="_blank" rel="noopener noreferrer">Consulter le dépôt ↗</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="jeux" class="section" aria-labelledby="games-title">
+        <span class="section-kicker">03 // GAME DEV</span>
+        <h2 class="section-title" id="games-title">Création de jeux</h2>
+        <p class="section-intro">Prototypes, mécaniques de gameplay, univers et journaux de développement : cette section accueillera progressivement mes expériences de game dev.</p>
+        <p class="callout">Aucun jeu n'est annoncé pour le moment. Les premiers prototypes seront présentés lorsqu'ils seront prêts.</p>
+      </section>
+
+      <section id="guides" class="section" aria-labelledby="guides-title">
+        <span class="section-kicker">04 // CAT KNOWLEDGE</span>
+        <h2 class="section-title" id="guides-title">Guides & ressources</h2>
+        <p class="section-intro">Je souhaite partager des tutoriels pratiques sur Linux, Docker, le développement, les outils open source et les technologies qui m'intéressent.</p>
+        <div class="info-grid">
+          <article class="card"><h3>Linux & réseau</h3><p>Commandes, configuration, diagnostic et fonctionnement des systèmes.</p><span class="tag">EN PRÉPARATION</span></article>
+          <article class="card"><h3>Développement</h3><p>Notes de code, expérimentations et solutions aux problèmes rencontrés.</p><span class="tag">EN PRÉPARATION</span></article>
+          <article class="card"><h3>Gaming & outils</h3><p>Ressources, modding, projets communautaires et découvertes techniques.</p><span class="tag">EN PRÉPARATION</span></article>
+        </div>
+      </section>
+
+      <section id="streams" class="section" aria-labelledby="streams-title">
+        <span class="section-kicker">05 // LIVE</span>
+        <h2 class="section-title" id="streams-title">Streams & communauté</h2>
+        <p class="section-intro">Je streame à l'occasion, principalement pour partager mes passions et mes découvertes. Pas de planning fixe pour le moment : cette page accueillera mes liens et mes contenus quand ils seront disponibles.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 RufusTheDwarf · Made with curiosity.</span>
+      <span>BUILD 0.1.0 // <a href="https://github.com/RufusTheDwarf/Rufus-Terminal" target="_blank" rel="noopener noreferrer">SOURCE CODE ↗</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+      const form = document.querySelector("#terminal-form");
+      const input = document.querySelector("#terminal-input");
+      const output = document.querySelector("#terminal-output");
+      const sections = {
+        projects: "projets", projets: "projets",
+        games: "jeux", jeux: "jeux",
+        guides: "guides", tutorials: "guides",
+        stream: "streams", streams: "streams",
+        about: "apropos"
+      };
+      const messages = {
+        help: "Commandes : help, whoami, ls, projects, games, guides, stream, contact, github, clear",
+        whoami: "RufusTheDwarf — développeur curieux, amateur de jeux et de projets open source.",
+        ls: "apropos/  projets/  jeux/  guides/  streams/",
+        contact: "Tu peux me retrouver sur github.com/RufusTheDwarf."
+      };
+      function append(text, kind = "response") {
+        const line = document.createElement("p");
+        line.textContent = text;
+        if (kind === "command") line.classList.add("term-strong");
+        output.append(line);
+        output.scrollTop = output.scrollHeight;
+      }
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const command = input.value.trim().toLowerCase();
+        input.value = "";
+        if (!command) return;
+        if (command === "clear") { output.replaceChildren(); return; }
+        append(`guest@rufus:~$ ${command}`, "command");
+        if (command === "github") {
+          append("GitHub : https://github.com/RufusTheDwarf");
+          window.open("https://github.com/RufusTheDwarf", "_blank", "noopener,noreferrer");
+        } else if (Object.hasOwn(sections, command)) {
+          const target = document.getElementById(sections[command]);
+          target?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+          append(`Navigation : ${sections[command]}`);
+        } else {
+          append(messages[command] ?? `Commande inconnue : ${command}. Tape help.`);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
