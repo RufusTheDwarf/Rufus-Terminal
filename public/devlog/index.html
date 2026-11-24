@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080e0b">
+  <meta name="color-scheme" content="dark">
+  <meta name="author" content="RufusTheDwarf">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Journal de développement | Rufus Terminal</title>
+  <meta name="description" content="Suivre les versions de Rufus Terminal, son architecture web et les évolutions de mes projets informatiques.">
+  <link rel="canonical" href="https://rufus-terminal-preview.rutsumello.workers.dev/devlog/">
+  <meta property="og:url" content="https://rufus-terminal-preview.rutsumello.workers.dev/devlog/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:site_name" content="Rufus Terminal">
+  <meta property="og:title" content="Journal de développement | Rufus Terminal">
+  <meta property="og:description" content="Suivre les versions de Rufus Terminal, son architecture web et les évolutions de mes projets informatiques.">
+  <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Journal de développement | Rufus Terminal">
+  <meta name="twitter:description" content="Suivre les versions de Rufus Terminal, son architecture web et les évolutions de mes projets informatiques.">
+  <meta name="twitter:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
+  <meta name="twitter:image:alt" content="Identité visuelle Rufus Terminal">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/site.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://rufus-terminal-preview.rutsumello.workers.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "DevLog",
+          "item": "https://rufus-terminal-preview.rutsumello.workers.dev/devlog/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="matrix" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <nav aria-label="Navigation principale">
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/a-propos/">À propos</a></li>
+          <li><a href="/projets/">Projets</a></li>
+          <li><a href="/jeux/">Jeux</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/devlog/" aria-current="page">DevLog</a></li>
+          <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenu" class="wrap">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">DevLog</span></nav>
+    <header class="page-heading">
+      <p class="kicker">git log --oneline</p>
+      <h1>Journal de développement</h1>
+      <p class="lead">Les décisions techniques et évolutions du portfolio Rufus Terminal, ainsi que les historiques de mes projets.</p>
+    </header>
+    <div class="prose">
+      <h2>v0.3.0 — Architecture statique multipage</h2>
+      <p>Cette version sépare les fiches de projets, le catalogue, le profil et les ressources en pages HTML individuelles. Le contenu est généré à partir d’un catalogue JSON et d’un modèle partagé, pour éviter la duplication de maintenance.</p>
+      <ul>
+        <li>Ajout de métadonnées spécifiques, liens canoniques, sitemap XML et fil d’Ariane.</li>
+        <li>CSS et JavaScript communs, terminal et filtres sans bibliothèque front-end.</li>
+        <li>Page 404, favicon, carte de partage et configuration des en-têtes HTTP.</li>
+        <li>Validation locale des liens et des métadonnées, puis contrôles en intégration continue.</li>
+      </ul>
+      <p>Le déploiement public et les mesures de performance réelles sont à confirmer après publication.</p>
+      <h2>v0.2.0 — Catalogue de projets</h2>
+      <p>La version précédente a regroupé les seize projets et ressources dans une page unique, avec recherche, filtres, terminal interactif et présentation des domaines techniques.</p>
+      <h2>v0.1.0 — Première interface</h2>
+      <p>Le prototype initial a introduit l’identité visuelle sombre et verte, les premières cartes de projets et une navigation inspirée d’un terminal.</p>
+      <h2>Historique des dépôts</h2>
+      <p>Les commits et issues sur <a href="https://github.com/RufusTheDwarf">GitHub</a> restent la référence pour suivre les changements réels dans chaque dépôt. Les pages du site sont des synthèses éditoriales, pas un flux temps réel.</p>
+      <p><a href="https://github.com/RufusTheDwarf/Rufus-Terminal/commits/main/">Historique du portfolio ↗</a> · <a href="/projets/">Catalogue des projets</a></p>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
+      <p>v0.3.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+    </div>
+  </footer>
+</body>
+</html>
