@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.rulers": [100],
+  "[python]": { "editor.tabSize": 4 },
+  "[html]": { "editor.defaultFormatter": "vscode.html-language-features" }
+}
