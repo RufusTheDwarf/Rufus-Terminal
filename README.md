@@ -1,97 +1,136 @@
+# Rufus Terminal
 
-<div align="center">
+**v0.3.0 — Build. Learn. Share. Improve.**
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=230&color=0:050A07,30:103021,65:008F4C,100:00FF88&text=RUFUS%20TERMINAL&fontSize=45&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=DEVELOPER%20%2F%20GAMEDEV%20%2F%20OPEN%20SOURCE&descSize=15&descAlignY=60" width="100%" alt="Rufus Terminal"/>
+Personal developer portfolio by [RufusTheDwarf](https://github.com/RufusTheDwarf).
+A static, multi-page website presenting infrastructure, networking, security,
+software development, databases, games and technical documentation.
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&duration=3000&pause=1000&color=00FF88&center=true&vCenter=true&width=800&lines=Welcome+to+my+digital+space.;Building+games%2C+tools+and+experiments.;Explore+the+code.+Follow+the+journey." alt="Animated terminal introduction"/>
+## Quick start (Windows)
 
-<br>
+The `public/` directory is already generated and can be deployed as-is. No Node.js,
+Python or dependencies are required in production. Do not deploy `public/index.html`
+alone: the other pages and shared assets are required.
 
-![Status](https://img.shields.io/badge/STATUS-IN_DEVELOPMENT-16A34A?style=flat)
-![Astro](https://img.shields.io/badge/FRAMEWORK-Astro-BC52EE?style=flat&logo=astro&logoColor=white)
-![Cloudflare](https://img.shields.io/badge/HOSTING-Cloudflare_Pages-F38020?style=flat&logo=cloudflare&logoColor=white)
-![License](https://img.shields.io/badge/CODE_LICENSE-MIT-2563EB?style=flat)
+To preview locally with Python 3.10 or later:
 
-**Personal website · Developer portfolio · Game development · Technical guides**
+```powershell
+py -m http.server 8000 --directory public
+```
 
-</div>
+Open <http://localhost:8000/>. Use Ctrl+C to stop the server.
+The simple Python server does not reproduce Cloudflare-specific headers or 404 behavior.
 
----
+## Structure
 
-## About
+```text
+public/                    # Ready-to-deploy static output
+  index.html
+  a-propos/index.html
+  projets/index.html
+  projets/<slug>/index.html
+  jeux/index.html
+  guides/index.html
+  devlog/index.html
+  assets/style.css
+  assets/site.js
+  assets/social-card.png
+  favicon.svg
+  favicon.ico
+  apple-touch-icon.png
+  404.html
+  robots.txt
+  sitemap.xml
+  _headers
+src/                       # Editable source files
+  projects.json
+  style.css
+  site.js
+tools/                     # Build and checks
+  build.py
+  check.py
+  browser_check.py
+site.json                  # Canonical origin and project identity
+wrangler.jsonc             # Cloudflare Workers static assets
+lighthouserc.json          # Lighthouse CI targets
+.github/workflows/quality.yml
+```
 
-Rufus Terminal is my personal space on the web.
+## Editing and regenerating
 
-A place where I share my projects, experiments, games, technical guides and development journey.
+- Project descriptions and relationships: `src/projects.json`.
+- Shared layout, homepage, sections and metadata: `tools/build.py`.
+- Styles and interactions: `src/style.css`, `src/site.js`.
+- Canonical URL and version: `site.json`.
+- Social card and favicon are original static assets in `public/`.
 
-The website is inspired by classic terminals, cyberpunk interfaces and the Matrix aesthetic.
+After editing, regenerate and check:
 
-The goal is to build something personal, interactive and easy to explore.
+```powershell
+py tools/build.py
+py tools/check.py
+node --check public/assets/site.js
+```
 
-## Features
+The site is generated with the Python standard library. The generated HTML is formatted
+and committed for direct Cloudflare deployment. Avoid editing generated output directly;
+the next build will overwrite those changes. If a project is removed, explicitly remove
+its old generated folder from `public/projets/`, then rerun the checker.
+The catalogue is editorial, not a live GitHub API feed: add new entries deliberately,
+including accurate status, links and content. Do not expose private repositories.
 
-- Developer portfolio
-- Open-source projects
-- Indie game development
-- Technical guides and resources
-- Development logs
-- Streaming and community links
-- Interactive terminal interface
+## Cloudflare Workers
 
-## Technology
+Keep the existing Worker name and static assets directory. The supplied `wrangler.jsonc`
+uses folder-index routing and custom 404 handling. If your deployment uses a different
+name, domain or compatibility date, merge the configuration rather than overwriting it.
+For Git integration, keep the existing deployment command. For manual deployment with
+Wrangler installed and authenticated, use `npx wrangler deploy` from the repository root.
 
-The website will be built using:
+The existing URL is assumed to be the canonical origin:
+`https://rufus-terminal-preview.rutsumello.workers.dev`.
+If it is only a temporary preview, set `siteUrl` in `site.json` to the real public origin
+before publishing or submitting a sitemap, then rerun `py tools/build.py`.
+Avoid indexing equivalent preview and production sites.
 
-- Astro
-- HTML, CSS and TypeScript
-- Git and GitHub
-- GitHub Actions
-- Cloudflare Pages
-- VS Code and Codex
+## SEO and accessibility
 
-## Project Status
+- Unique titles, descriptions and canonical URLs for all 22 indexable pages.
+- XML sitemap and robots.txt, real project URLs, breadcrumbs and internal links.
+- ProfilePage, Person, WebSite, WebPage and BreadcrumbList structured data.
+- Open Graph and Twitter/X image metadata, local favicon assets.
+- Semantic HTML, keyboard focus, skip link, no-JS content, fluid layout.
+- Shared local CSS and JavaScript; no third-party runtime requests.
+- Security headers for Cloudflare static assets, including CSP.
 
-The project is currently in its initial setup phase.
+After deployment, verify actual HTTP statuses (including a nonexistent route), response
+headers, canonical URLs and sitemap. Register the canonical site in Google Search
+Console and Bing Webmaster Tools, submit the sitemap and check indexing. Verify live
+performance with PageSpeed Insights. Lighthouse CI targets are goals, not measured
+scores; the workflow has not run in GitHub Actions yet. Static technical SEO does not
+guarantee indexing or ranking. Publish useful original technical content and maintain links.
 
-Development has not started yet.
+References:
+- https://developers.google.com/search/docs/fundamentals/seo-starter-guide
+- https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls
+- https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/
+- https://developers.cloudflare.com/workers/static-assets/headers/
+- https://github.com/GoogleChrome/lighthouse-ci
 
-## Roadmap
+## Local validation
 
-- [x] Create the GitHub repository
-- [ ] Initialize Astro
-- [ ] Create the visual identity
-- [ ] Build the interactive homepage
-- [ ] Add portfolio and project pages
-- [ ] Add game development section
-- [ ] Create guides and devlogs
-- [ ] Set up GitHub Actions
-- [ ] Configure Cloudflare Pages
-- [ ] Publish the first website version
+`tools/check.py` checks generated pages, unique metadata, sitemap, heading hierarchy,
+IDs, JSON-LD syntax and internal links. `tools/browser_check.py` optionally tests
+Chromium rendering and client-side interactions using isolated documents. Install
+Playwright only for this development check:
 
-## Development
+```powershell
+py -m pip install playwright
+py -m playwright install chromium
+py tools/browser_check.py
+```
 
-Progress will be documented through GitHub Issues, Pull Requests, commits and development logs.
-
-The repository will also include technical documentation and a project Wiki.
-
-## License
-
-The source code is available under the MIT License.
-
-Unless explicitly stated otherwise, personal artwork, branding, screenshots and written content are not covered by that software license.
-
----
-
-<div align="center">
-
-**RUFUS TERMINAL**
-
-*Build. Break. Learn. Repeat.*
-
-[GitHub Profile](https://github.com/RufusTheDwarf)
-
-<sub>Created by RufusTheDwarf · 2026</sub>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&height=120&color=0:050A07,30:103021,65:008F4C,100:00FF88&section=footer" width="100%" alt="Footer"/>
-
-</div>
+The browser test inlines local assets for the test only; it does not prove HTTP routing,
+CSP enforcement or live crawler behavior. GitHub Actions is configured for validation
+and Lighthouse measurement. Before deployment, review the changes and keep your existing
+LICENSE, SECURITY.md and Git history. Use the existing trusted commit signing identity.

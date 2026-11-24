@@ -1,0 +1,146 @@
+[
+  {
+    "slug": "cloud-project-k3s", "name": "Cloud Project K3s", "repo": "Cloud-Project-K3s", "category": "infra", "status": "En cours", "featured": true,
+    "stack": ["K3s", "Ubuntu Server", "PostgreSQL", "Kubernetes"],
+    "summary": "Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des demandes d’assistance.",
+    "context": "Ce laboratoire pédagogique explore le cycle de vie d’un service dans un cluster Kubernetes léger. Deux machines virtuelles Ubuntu Server jouent les rôles de serveur et d’agent K3s. Le projet associe une application Helpdesk et une base PostgreSQL pour étudier le déploiement et l’exploitation de services internes.",
+    "details": ["Préparation des machines virtuelles et installation des deux rôles K3s.", "Définition des workloads, Services, volumes persistants et droits RBAC.", "Procédures de mise à jour, retour arrière, sauvegarde et restauration de PostgreSQL."],
+    "learning": "Comprendre la différence entre orchestration, réseau, stockage et exploitation : un Pod peut être remplacé sans que les données persistantes soient nécessairement perdues.",
+    "limits": "Le projet est en cours de réalisation. Les procédures et manifestes ne constituent pas une garantie de déploiement complet ni une infrastructure prête pour la production.", "related": ["docker-network-toolkit", "sql-server-project", "openssh-security-lab"]
+  },
+  {
+    "slug": "docker-network-toolkit", "name": "Docker Network Toolkit", "repo": "Docker-Network-Toolkit", "category": "infra", "status": "Laboratoire opérationnel", "featured": true,
+    "stack": ["Docker", "Compose", "Linux", "Nmap", "iperf3", "Nginx", "Bash"],
+    "summary": "Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les services et mesurer les performances.",
+    "context": "Une machine virtuelle Ubuntu héberge un environnement Docker Compose. Un conteneur toolbox rassemble les commandes de diagnostic, un serveur Nginx fournit un service HTTP et un serveur iperf3 sert à mesurer le débit. Les services communiquent par un réseau bridge.",
+    "details": ["Création d’images Docker personnalisées et déploiement des trois services.", "Tests de résolution DNS, de connectivité ICMP et d’accès HTTP entre conteneurs.", "Observation des ports TCP avec Nmap et mesures de débit avec iperf3.", "Documentation des commandes et automatisation des vérifications avec Bash."],
+    "learning": "Distinguer les ports internes des ports publiés, comprendre la résolution par nom de service et observer l’isolation d’un réseau Docker.",
+    "limits": "Les vérifications principales sont rapportées dans le dépôt. Elles concernent le laboratoire décrit, pas toutes les configurations Docker ni un audit indépendant.", "related": ["cloud-project-k3s", "netrecon-lab", "openssh-security-lab"]
+  },
+  {
+    "slug": "openssh-security-lab", "name": "OpenSSH Security Lab", "repo": "OpenSSH-Security-Lab", "category": "security", "status": "Laboratoire documenté",
+    "stack": ["OpenSSH", "Ubuntu", "pfSense", "SSH"],
+    "summary": "Administration distante de machines Linux avec authentification par clé et principe du moindre privilège.",
+    "context": "Le laboratoire met en relation deux machines Ubuntu et un routeur pfSense. Le poste scanner se connecte au serveur firewall pour consulter des journaux système. L’exercice introduit un utilisateur dédié et des permissions adaptées aux tâches d’administration.",
+    "details": ["Installation et vérification du service SSH.", "Consultation distante des journaux et diagnostic de leur disponibilité.", "Authentification par clé publique avec un compte non administrateur.", "Documentation des vérifications de configuration et des tests négatifs à effectuer."],
+    "learning": "Séparer authentification, autorisation et transport chiffré. Une connexion réussie ne prouve pas que toutes les méthodes d’authentification non souhaitées sont désactivées.",
+    "limits": "Le durcissement effectif de l’authentification côté serveur reste à confirmer selon le README. Le VPN routé n’est pas implémenté.", "related": ["git-signed-commits-windows", "verified-by-default", "netrecon-lab"]
+  },
+  {
+    "slug": "netrecon-lab", "name": "NetRecon Lab", "repo": "NetRecon-Lab", "category": "security", "status": "En préparation",
+    "stack": ["Nmap", "Proxmox VE", "OPNsense", "Linux"],
+    "summary": "Préparation d’un projet d’intégration, d’audit et de sécurisation de réseaux fictifs dans un cadre autorisé.",
+    "context": "Ce dépôt rassemble des notes et scripts de reconnaissance réseau ainsi que la préparation d’un exercice d’infrastructure. Les phases prévues sont la reproduction d’une succursale fictive, l’audit autorisé d’une autre succursale puis la sécurisation de cette infrastructure.",
+    "details": ["Inventaire des hôtes, services et interfaces dans un environnement de laboratoire.", "Préparation de la topologie virtualisée et de la documentation réseau.", "Organisation des phases d’intégration, d’audit non destructif et de remédiation."],
+    "learning": "Un inventaire technique doit distinguer observations, hypothèses et conclusions confirmées. Les résultats doivent être reproductibles et replacés dans le périmètre autorisé.",
+    "limits": "Le dépôt est un support de préparation et non un rapport d’audit terminé. Les scans sont réservés aux réseaux dont le propriétaire a autorisé l’analyse.", "related": ["docker-network-toolkit", "openssh-security-lab"]
+  },
+  {
+    "slug": "sql-server-project", "name": "Mission SQL Cinéma", "repo": "SQL_Server_project", "category": "dev", "status": "Projet pédagogique", "featured": true,
+    "stack": ["SQL Server", "Python", "Flask", "pyodbc", "PowerShell"],
+    "summary": "Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures, agrégations et analyses de données.",
+    "context": "Mission SQL Cinéma propose des défis autour des films, cinémas, séances, clients et réservations. Une interface Flask locale se connecte à Microsoft SQL Server via pyodbc. Le projet prévoit un générateur visant dix millions de réservations synthétiques.",
+    "details": ["Schéma relationnel destiné aux exercices de jointures et de regroupements.", "Défis guidés portant sur les agrégations et l’analyse temporelle.", "Scripts de préparation Windows, génération de données et contrôle des résultats.", "Préparation d’un rôle SQL en lecture seule et tests applicatifs et d’intégration."],
+    "learning": "Travailler sur des données réalistes tout en distinguant logique relationnelle, performance des requêtes, permissions et interface applicative.",
+    "limits": "Dix millions de réservations est l’objectif du générateur, pas un volume de données que je prétends avoir vérifié sur une instance active.", "related": ["cloud-project-k3s", "couteau-suisse", "chococoa-web"]
+  },
+  {
+    "slug": "couteau-suisse", "name": "Couteau Suisse", "repo": "CouteauSuisse", "category": "dev", "status": "Utilitaire console",
+    "stack": ["C#", ".NET 9", "Windows"],
+    "summary": "Une boîte à outils console regroupant conversion Morse, conversions numériques et stéganographie textuelle Unicode.",
+    "context": "Couteau Suisse réunit trois petits utilitaires dans un programme Windows en français. Un menu permet de choisir une opération, de saisir les données et de revenir au menu principal.",
+    "details": ["Conversion de texte en Morse international avec restitution sonore.", "Conversions entre les bases binaire, décimale et octale.", "Expérimentation de la dissimulation de texte à l’aide de caractères Unicode invisibles."],
+    "learning": "Concevoir des modules simples avec validation de saisie, représentation des données et interactions en ligne de commande.",
+    "limits": "La dissimulation de caractères n’est pas un chiffrement et peut être détruite par les normalisations ou filtres de texte. Le Morse ne prend pas en charge tous les caractères accentués.", "related": ["code-quest", "sql-server-project"]
+  },
+  {
+    "slug": "chococoa-web", "name": "Chococoa Web", "repo": "chococoa-web", "category": "dev", "status": "Site multipage",
+    "stack": ["HTML", "CSS", "JavaScript"],
+    "summary": "Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et interactions.",
+    "context": "Chococoa Web est une expérimentation de développement front-end sans framework. L’identité visuelle s’appuie sur des couleurs chaudes, des tons crème et des accents dorés pour former une expérience cohérente autour du cacao.",
+    "details": ["Navigation entre plusieurs pages organisées par sujet.", "Mise en page et identité graphique en CSS personnalisé.", "Interactions et quiz en JavaScript natif."],
+    "learning": "Concevoir une interface cohérente entre plusieurs pages et séparer les responsabilités du HTML, du CSS et du JavaScript.",
+    "limits": "Il s’agit d’un projet web de présentation et d’apprentissage, pas d’une boutique commerciale dont le paiement et la gestion des commandes seraient attestés.", "related": ["rufus-terminal", "parfum-empire"]
+  },
+  {
+    "slug": "rufus-terminal", "name": "Rufus Terminal", "repo": "Rufus-Terminal", "category": "dev", "status": "En évolution",
+    "stack": ["HTML", "CSS", "JavaScript", "Python", "Cloudflare Workers"],
+    "summary": "Mon portfolio technique : catalogue de projets, ressources, journal de développement et terminal interactif.",
+    "context": "Rufus Terminal est un espace personnel inspiré des interfaces en ligne de commande. Il rassemble les projets et les connaissances que je partage sur GitHub. La structure multipage de cette version sépare le contenu des projets, les modèles de pages et les ressources visuelles.",
+    "details": ["Pages HTML statiques accessibles sans JavaScript.", "Terminal de navigation et filtres de catalogue côté navigateur.", "Métadonnées spécifiques à chaque page, sitemap et liens internes.", "Publication statique avec Cloudflare Workers et génération reproductible des pages."],
+    "learning": "Concilier une identité visuelle originale avec la maintenabilité, l’accessibilité, les performances et la découvrabilité du contenu.",
+    "limits": "Le catalogue est un instantané éditorial. Les nouveaux dépôts doivent être ajoutés aux données du site et les pages régénérées.", "related": ["chococoa-web", "verified-by-default"]
+  },
+  {
+    "slug": "parfum-empire", "name": "Parfum Empire", "repo": "parfum-empire", "category": "games", "status": "Jeu web en évolution", "featured": true,
+    "stack": ["TypeScript", "Vite", "Vitest"],
+    "summary": "Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes et progression.",
+    "context": "Le joueur développe une maison de parfumerie depuis un atelier artisanal. Il explore différents espaces, collecte des ingrédients, fabrique des fragrances et investit dans des équipements. Le projet sépare les règles d’économie de l’interface et de la scène d’atelier.",
+    "details": ["Collecte de matières premières, recettes, production et ventes.", "Commandes de clients, recherches, améliorations et prestige.", "Progression entre plusieurs étages et collections.", "Sauvegarde locale avec import et export JSON et tests unitaires des systèmes."],
+    "learning": "Équilibrer une boucle de gameplay économique, représenter les états de progression et rendre la logique de simulation testable indépendamment de l’affichage.",
+    "limits": "Le projet utilise le stockage local du navigateur. Il ne propose pas de comptes serveur, de sauvegardes cloud ou de multijoueur attestés dans la documentation.", "related": ["roblox-tycoon-blueprint", "code-quest", "chococoa-web"]
+  },
+  {
+    "slug": "code-quest", "name": "Code Quest", "repo": "Code_Quest", "category": "games", "status": "RPG éducatif",
+    "stack": ["Terminal", "ASCII", "Game design"],
+    "summary": "RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et de progression.",
+    "context": "Code Quest associe questions techniques et affrontements contre des ennemis inspirés des erreurs de programmation et des concepts de cybersécurité. Les bonnes réponses permettent d’avancer, de gagner de l’expérience et d’accéder aux défis suivants.",
+    "details": ["Combat basé sur des questions à choix multiples.", "Expérience, niveaux, santé et quatre niveaux de difficulté.", "Sprites ASCII, défis bonus et progression de difficulté persistante."],
+    "learning": "Explorer la pédagogie par le jeu : associer les objectifs d’apprentissage à des choix, des retours immédiats et une progression lisible.",
+    "limits": "Le jeu ne remplace pas une formation complète en informatique. Les téléchargements et versions disponibles sont à vérifier sur le dépôt.", "related": ["parfum-empire", "couteau-suisse", "roblox-tycoon-blueprint"]
+  },
+  {
+    "slug": "flash-archive", "name": "Flash Archive", "repo": "Play-old-Flash-games", "category": "games", "status": "Préservation numérique",
+    "stack": ["SWF", "Ruffle", "Archives"],
+    "summary": "Préservation de jeux Flash historiques et découverte de l’émulation avec Ruffle.",
+    "context": "Les jeux Flash ont marqué une époque du web. Ce dépôt explore leur conservation après l’abandon du lecteur Adobe Flash, notamment à travers des fichiers SWF archivés et l’émulateur libre Ruffle. La collection documentée est centrée sur la série Road of Fury et des fichiers associés.",
+    "details": ["Organisation de fichiers de jeux et de métadonnées d’archives.", "Présentation d’une solution d’émulation moderne pour Windows.", "Documentation des copies, références, auteurs et licences applicables."],
+    "learning": "Comprendre les enjeux de compatibilité, de provenance, d’émulation et de préservation de logiciels historiques.",
+    "limits": "Les jeux d’origine restent la propriété de leurs ayants droit. Leur présence dans un dépôt public ne signifie pas qu’ils peuvent être redistribués librement.", "related": ["code-quest", "parfum-empire"]
+  },
+  {
+    "slug": "roblox-tycoon-blueprint", "name": "Roblox Tycoon Blueprint", "repo": "Roblox-Tycoon-Blueprint", "category": "guides", "status": "Documentation",
+    "stack": ["Roblox", "Game design", "UX", "Économie"],
+    "summary": "Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents et maintenables.",
+    "context": "Ce projet documentaire traite le tycoon comme un ensemble de systèmes liés : objectifs, progression, économie, interface, sauvegarde et performance. Il vise à aider les créateurs à passer d’une idée à un jeu testable.",
+    "details": ["Modèles d’économie et rythme de progression.", "Conception de l’expérience joueur et lisibilité des objectifs.", "Considérations sur les données, les tests et la fiabilité des mécaniques.", "Questions de production pour évaluer les compromis de design."],
+    "learning": "Observer l’effet d’une modification de production ou de coût sur toute la boucle de gameplay plutôt que d’équilibrer chaque système isolément.",
+    "limits": "Il s’agit d’une documentation et non d’un jeu Roblox publié. Aucun modèle de design ne garantit la popularité ou les revenus.", "related": ["parfum-empire", "code-quest"]
+  },
+  {
+    "slug": "minecraft-server-template", "name": "Minecraft Server Template", "repo": "mc-server-template", "category": "infra", "status": "Modèle de dépôt",
+    "stack": ["PaperMC", "Java", "Codespaces", "Crafty Controller", "Bash"],
+    "summary": "Modèle réutilisable pour installer un serveur Minecraft Java dans un environnement cloud de développement.",
+    "context": "Le template associe PaperMC, Java, Crafty Controller et Playit.gg dans un GitHub Codespace. Le script d’installation automatise une partie de la préparation du serveur, de l’administration et des sauvegardes.",
+    "details": ["Provisionnement de l’environnement de développement et du serveur PaperMC.", "Administration via Crafty Controller et connexion des joueurs via un tunnel.", "Scripts de sauvegarde du monde et documentation de démarrage."],
+    "learning": "Explorer l’automatisation d’un service Linux, le cycle de vie des processus, la publication réseau et la gestion des données persistantes.",
+    "limits": "Codespaces est un environnement de développement soumis à des quotas, à des conditions d’utilisation et à des arrêts de session. Ce modèle ne garantit pas un hébergement gratuit permanent.", "related": ["minecraft-server", "docker-network-toolkit"]
+  },
+  {
+    "slug": "minecraft-server", "name": "Minecraft Server", "repo": "Minecraft-Server", "category": "guides", "status": "Guide multilingue",
+    "stack": ["Linux", "Java", "PaperMC", "GitHub Codespaces"],
+    "summary": "Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans Codespaces.",
+    "context": "Ce guide explique le rôle de chaque composant d’un serveur privé : environnement Linux, runtime Java, serveur de jeu, interface d’administration et tunnel réseau. Il privilégie une démarche progressive compréhensible par les débutants.",
+    "details": ["Préparer l’environnement Linux et Java.", "Installer PaperMC et comprendre la configuration du serveur.", "Configurer l’administration, la connexion des joueurs et les sauvegardes.", "Suivre la consommation et les limites de l’environnement cloud."],
+    "learning": "Comprendre les dépendances d’un service auto-hébergé avant de les automatiser dans un template.",
+    "limits": "Vérifier les versions, quotas, conditions des services et mesures de sécurité avant d’exposer un serveur à Internet.", "related": ["minecraft-server-template", "docker-network-toolkit"]
+  },
+  {
+    "slug": "git-signed-commits-windows", "name": "Git Signed Commits Windows", "repo": "git-signed-commits-windows", "category": "guides", "status": "Guide technique",
+    "stack": ["Git", "SSH", "Ed25519", "Windows"],
+    "summary": "Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures Git et GitHub.",
+    "context": "Ce guide distingue une clé d’authentification SSH d’une clé de signature. Il documente la création d’une clé dédiée, la configuration de Git, l’enregistrement de la clé publique sur GitHub et la vérification locale des commits.",
+    "details": ["Génération d’une paire de clés Ed25519 dédiée à la signature.", "Configuration de Git pour signer automatiquement les nouveaux commits.", "Gestion du fichier allowed_signers pour vérifier les signatures localement.", "Contrôle du statut GitHub et protection de la clé privée."],
+    "learning": "La signature cryptographique associe le contenu d’un commit à une identité de signature. Elle ne prouve pas à elle seule la qualité ou l’innocuité du code signé.",
+    "limits": "La validation locale et le statut Verified affiché par GitHub sont deux vérifications distinctes. La clé privée ne doit jamais être publiée.", "related": ["verified-by-default", "openssh-security-lab"]
+  },
+  {
+    "slug": "verified-by-default", "name": "Verified by Default", "repo": "verified-by-default", "category": "security", "status": "Workflow documenté", "featured": true,
+    "stack": ["Git", "SSH", "GPG", "GitHub", "IA"],
+    "summary": "Politique de signature et de vérification des commits dans les workflows de développement assistés par IA.",
+    "context": "Verified by Default clarifie la frontière de confiance entre les outils qui préparent des modifications et l’identité qui les signe. Le principe consiste à ne jamais présenter un commit comme vérifié avant la confirmation effective de GitHub.",
+    "details": ["Séparation de la préparation du code, de la signature et de la vérification.", "Comparaison des identités de signature et des frontières de confiance.", "Règle interdisant le repli silencieux vers des commits non signés.", "Documentation des contrôles locaux et du statut distant."],
+    "learning": "Mettre l’accent sur la provenance et l’intégrité des changements. La confiance dans le signataire doit rester distincte des tests, de la revue de code et de l’autorisation de fusion.",
+    "limits": "Le dépôt décrit un processus et une politique ; il ne fournit pas de service autonome de signature ni d’agent capable de signer au nom d’un tiers.", "related": ["git-signed-commits-windows", "openssh-security-lab", "rufus-terminal"]
+  }
+]

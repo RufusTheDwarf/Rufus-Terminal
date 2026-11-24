@@ -1,0 +1,22 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./public",
+      "url": [
+        "http://localhost/",
+        "http://localhost/projets/",
+        "http://localhost/projets/docker-network-toolkit/",
+        "http://localhost/a-propos/"
+      ],
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", {"minScore": 0.9}],
+        "categories:accessibility": ["warn", {"minScore": 0.95}],
+        "categories:best-practices": ["warn", {"minScore": 0.95}],
+        "categories:seo": ["warn", {"minScore": 0.95}]
+      }
+    }
+  }
+}
