@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080e0b">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Rufus Terminal | Informatique, réseau et développement</title>
@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Rufus Terminal | Informatique, réseau et développement">
   <meta name="twitter:description" content="Portfolio de RufusTheDwarf : Linux, Docker, K3s, cybersécurité, développement, jeux vidéo et guides techniques.">
@@ -28,6 +28,7 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
   <script type="application/ld+json">
@@ -70,10 +71,10 @@
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="matrix" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
       <nav aria-label="Navigation principale">
         <ul>
           <li><a href="/" aria-current="page">Accueil</a></li>
@@ -85,31 +86,48 @@
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
     </div>
   </header>
   <main id="contenu" class="wrap">
-    <section class="hero" id="accueil" aria-labelledby="hero-title">
+    <section class="hero home-hero" id="accueil" aria-labelledby="hero-title">
       <div>
         <p class="kicker">System online // portfolio personnel</p>
-        <h1 id="hero-title">Rufus<br><span class="accent">Terminal_</span></h1>
-        <p class="lead">Étudiant en informatique et développeur indépendant. J’explore les systèmes, les réseaux et la sécurité, je construis des applications et des jeux, et je partage ce que j’apprends.</p>
+        <h1 id="hero-title">Rufus <span class="accent">Terminal<span class="cursor" aria-hidden="true">_</span></span></h1>
+        <p class="hero-subtitle">Build. Learn. Share. Improve.</p>
+        <p class="lead">
+          Étudiant en informatique et développeur indépendant. J’explore les systèmes, les réseaux
+          et la sécurité, je construis des applications et des jeux, et je partage ce que
+          j’apprends.
+        </p>
         <div class="actions">
           <a class="btn primary" href="/projets/">Explorer mes projets ↗</a>
           <a class="btn" href="https://github.com/RufusTheDwarf">Mon GitHub ↗</a>
         </div>
         <div class="facts">
-          <span><strong>16</strong> projets et ressources</span>
+          <span><strong>18</strong> projets et ressources</span>
           <span><strong>6</strong> domaines techniques</span>
-          <span><strong>0.3.0</strong> build</span>
+          <span><strong>0.4.1</strong> build</span>
         </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <img class="art-dark" src="/assets/forest-terminal.svg" alt="" width="560" height="330" fetchpriority="low">
+        <img class="art-light" src="/assets/day-terminal.svg" alt="" width="560" height="330" fetchpriority="low">
       </div>
       <div class="terminal" aria-label="Terminal interactif">
         <div class="term-head" aria-hidden="true">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="term-label">guest@rufus — portfolio</span>
+          <span class="term-label">guest@rufus / portfolio</span>
         </div>
         <div class="term-body">
-          <p class="accent">RUFUS TERMINAL / v0.3.0</p>
+          <p class="accent">RUFUS TERMINAL / v0.4.1</p>
           <p class="muted">Build. Learn. Share. Improve.</p>
           <p class="muted">Tape <strong class="accent">help</strong> pour voir les commandes.</p>
           <div id="terminal-output" class="term-output" role="log" aria-label="Résultats du terminal" aria-live="polite"></div>
@@ -122,39 +140,13 @@
         </div>
       </div>
     </section>
-    <section class="section" id="apropos">
-      <p class="kicker">01 // whoami</p>
-      <h2>À propos</h2>
-      <div class="about-grid">
-        <div class="intro">
-          <p>Je suis RufusTheDwarf. Je m’intéresse à ce qui se passe derrière une interface : comment les machines communiquent, comment les services sont déployés, comment les données sont structurées et comment les systèmes sont protégés.</p>
-          <p>Mes dépôts regroupent des laboratoires, des outils, des jeux et des ressources documentaires. Mon objectif est de comprendre la technologie, puis d’expliquer ce que j’ai appris et les limites de mes expériences.</p>
-          <a href="/a-propos/">Découvrir mon profil et ma démarche ↗</a>
-        </div>
-        <div class="principles">
-          <p class="kicker">Ma philosophie</p>
-          <h3>Understand. Build. Learn. Share.</h3>
-          <p class="muted">Lire le code, expérimenter, documenter, améliorer. Respecter les licences et les auteurs.</p>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="competences">
-      <p class="kicker">02 // ls skills</p>
-      <h2>Domaines techniques</h2>
-      <p class="intro">Technologies que je pratique ou explore, sans prétendre toutes les maîtriser au même niveau.</p>
-      <div class="skills">
-        <article class="skill"><h3>01 / Infrastructure &amp; DevOps</h3><p>Linux, Docker, Compose, K3s, Kubernetes, virtualisation et sauvegardes.</p></article>
-        <article class="skill"><h3>02 / Réseau &amp; sécurité</h3><p>TCP/IP, DNS, Nmap, iperf3, OpenSSH, pfSense, OPNsense et audit autorisé.</p></article>
-        <article class="skill"><h3>03 / Software development</h3><p>Python, C#, .NET, TypeScript, JavaScript, Bash, PowerShell, HTML et CSS.</p></article>
-        <article class="skill"><h3>04 / Bases de données</h3><p>SQL Server, PostgreSQL, SQL relationnel, données synthétiques et tests.</p></article>
-        <article class="skill"><h3>05 / Game development</h3><p>RPG éducatifs, tycoons, économie de jeu, progression, UX et préservation Flash.</p></article>
-        <article class="skill"><h3>06 / Open source &amp; qualité</h3><p>Git, GitHub, documentation, automatisation, licences et signature des commits.</p></article>
-      </div>
-    </section>
     <section class="section" id="projets">
-      <p class="kicker">03 // ls projects</p>
+      <p class="kicker">01 // ls projects</p>
       <h2>Projets sélectionnés</h2>
-      <p class="intro">Une sélection de mes travaux techniques. Chaque fiche précise le contexte, les technologies, les apprentissages et les limites connues.</p>
+      <p class="intro">
+        Une sélection de mes travaux techniques. Chaque fiche précise le contexte, les technologies,
+        les apprentissages et les limites connues.
+      </p>
     <div class="project-grid">
       <article class="project featured" data-category="infra">
         <div class="project-meta">
@@ -162,7 +154,10 @@
           <span>En cours</span>
         </div>
         <h3><a href="/projets/cloud-project-k3s/">Cloud Project K3s</a></h3>
-        <p>Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des demandes d’assistance.</p>
+        <p>
+          Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des
+          demandes d’assistance.
+        </p>
         <div class="stack">K3s · Ubuntu Server · PostgreSQL · Kubernetes</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Cloud-Project-K3s" aria-label="Dépôt GitHub : Cloud Project K3s">Code et documentation ↗</a>
       </article>
@@ -172,9 +167,29 @@
           <span>Laboratoire opérationnel</span>
         </div>
         <h3><a href="/projets/docker-network-toolkit/">Docker Network Toolkit</a></h3>
-        <p>Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les services et mesurer les performances.</p>
+        <p>
+          Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les
+          services et mesurer les performances.
+        </p>
         <div class="stack">Docker · Compose · Linux · Nmap · iperf3 · Nginx · Bash</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Docker-Network-Toolkit" aria-label="Dépôt GitHub : Docker Network Toolkit">Code et documentation ↗</a>
+      </article>
+      <article class="project featured" data-category="security">
+        <div class="project-meta">
+          <span>Sécurité &amp; réseau</span>
+          <span>Application Windows publiée</span>
+        </div>
+        <h3><a href="/projets/rux-netmap/">RUX NetMap</a></h3>
+        <p>
+          Inventaire et cartographie des appareils IPv4 sur un réseau local, avec historique et
+          exports CSV et JSON.
+        </p>
+        <div class="stack">Python · Qt · SQLite · Windows · IPv4 · ARP · ICMP</div>
+        <a class="card-link" href="https://github.com/RufusTheDwarf/Rux-NetMap" aria-label="Dépôt GitHub : RUX NetMap">Code et documentation ↗</a>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/RufusTheDwarf/Rux-NetMap/releases/latest/download/RUX.exe">Télécharger RUX.exe (Windows x64)</a>
+          <a class="btn" href="https://github.com/RufusTheDwarf/Rux-NetMap/releases/latest/download/RUX.exe.sha256">SHA-256 du téléchargement</a>
+        </div>
       </article>
       <article class="project featured" data-category="dev">
         <div class="project-meta">
@@ -182,7 +197,10 @@
           <span>Projet pédagogique</span>
         </div>
         <h3><a href="/projets/sql-server-project/">Mission SQL Cinéma</a></h3>
-        <p>Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures, agrégations et analyses de données.</p>
+        <p>
+          Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures,
+          agrégations et analyses de données.
+        </p>
         <div class="stack">SQL Server · Python · Flask · pyodbc · PowerShell</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/SQL_Server_project" aria-label="Dépôt GitHub : Mission SQL Cinéma">Code et documentation ↗</a>
       </article>
@@ -192,7 +210,10 @@
           <span>Jeu web en évolution</span>
         </div>
         <h3><a href="/projets/parfum-empire/">Parfum Empire</a></h3>
-        <p>Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes et progression.</p>
+        <p>
+          Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes
+          et progression.
+        </p>
         <div class="stack">TypeScript · Vite · Vitest</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/parfum-empire" aria-label="Dépôt GitHub : Parfum Empire">Code et documentation ↗</a>
       </article>
@@ -202,42 +223,99 @@
           <span>Workflow documenté</span>
         </div>
         <h3><a href="/projets/verified-by-default/">Verified by Default</a></h3>
-        <p>Politique de signature et de vérification des commits dans les workflows de développement assistés par IA.</p>
+        <p>
+          Politique de signature et de vérification des commits dans les workflows de développement
+          assistés par IA.
+        </p>
         <div class="stack">Git · SSH · GPG · GitHub · IA</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/verified-by-default" aria-label="Dépôt GitHub : Verified by Default">Code et documentation ↗</a>
       </article>
     </div>
-      <a class="btn primary" href="/projets/">Voir les 16 projets et ressources ↗</a>
+      <a class="btn primary" href="/projets/">Voir les 18 projets et ressources ↗</a>
+    </section>
+    <section class="section" id="apropos">
+      <p class="kicker">02 // whoami</p>
+      <h2>À propos</h2>
+      <div class="about-grid">
+        <div class="intro">
+          <p>
+            Je suis RufusTheDwarf. Je m’intéresse à ce qui se passe derrière une interface : comment
+            les machines communiquent, comment les services sont déployés, comment les données sont
+            structurées et comment les systèmes sont protégés.
+          </p>
+          <p>
+            Mes dépôts regroupent des laboratoires, des outils, des jeux et des ressources
+            documentaires. Mon objectif est de comprendre la technologie, puis d’expliquer ce que
+            j’ai appris et les limites de mes expériences.
+          </p>
+          <a href="/a-propos/">Découvrir mon profil et ma démarche ↗</a>
+        </div>
+        <div class="principles">
+          <p class="kicker">Ma philosophie</p>
+          <h3>Understand. Build. Learn. Share.</h3>
+          <p class="muted">
+            Lire le code, expérimenter, documenter, améliorer. Respecter les licences et les
+            auteurs.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="competences">
+      <p class="kicker">03 // ls skills</p>
+      <h2>Domaines techniques</h2>
+      <p class="intro">
+        Technologies que je pratique ou explore, sans prétendre toutes les maîtriser au même niveau.
+      </p>
+      <div class="skills">
+        <article class="skill"><h3>01 / Infrastructure &amp; DevOps</h3><p>Linux, Docker, Compose, K3s, Kubernetes, virtualisation et sauvegardes.</p></article>
+        <article class="skill"><h3>02 / Réseau &amp; sécurité</h3><p>TCP/IP, DNS, Nmap, iperf3, OpenSSH, pfSense, OPNsense et audit autorisé.</p></article>
+        <article class="skill"><h3>03 / Software development</h3><p>Python, C#, .NET, TypeScript, JavaScript, Bash, PowerShell, HTML et CSS.</p></article>
+        <article class="skill"><h3>04 / Bases de données</h3><p>SQL Server, MySQL, PostgreSQL, SQL relationnel, données synthétiques et tests.</p></article>
+        <article class="skill"><h3>05 / Game development</h3><p>RPG éducatifs, tycoons, économie de jeu, progression, UX et préservation Flash.</p></article>
+        <article class="skill"><h3>06 / Open source &amp; qualité</h3><p>Git, GitHub, documentation, automatisation, licences et signature des commits.</p></article>
+      </div>
     </section>
     <section class="section" id="jeux">
       <p class="kicker">04 // game development</p>
       <h2>Création de jeux</h2>
-      <p class="intro">J’explore les mécaniques de progression, les boucles économiques, les interfaces de jeu et la préservation du patrimoine numérique.</p>
+      <p class="intro">
+        J’explore les mécaniques de progression, les boucles économiques, les interfaces de jeu et
+        la préservation du patrimoine numérique.
+      </p>
       <a class="btn" href="/jeux/">Découvrir les jeux et archives ↗</a>
     </section>
     <section class="section" id="guides">
       <p class="kicker">05 // cat knowledge</p>
       <h2>Guides &amp; ressources</h2>
-      <p class="intro">Des guides pratiques pour comprendre les technologies : signature SSH des commits, hébergement Minecraft et conception de tycoons Roblox.</p>
+      <p class="intro">
+        Des guides pratiques pour comprendre les technologies : signature SSH des commits,
+        hébergement Minecraft et conception de tycoons Roblox.
+      </p>
       <a class="btn" href="/guides/">Explorer les ressources ↗</a>
     </section>
     <section class="section" id="devlog">
       <p class="kicker">06 // git log</p>
       <h2>Journal de développement</h2>
-      <p class="intro">Retrouver les évolutions du portfolio, les décisions d’architecture et les liens vers les historiques des projets.</p>
+      <p class="intro">
+        Retrouver les évolutions du portfolio, les décisions d’architecture et les liens vers les
+        historiques des projets.
+      </p>
       <a class="btn" href="/devlog/">Lire le DevLog ↗</a>
     </section>
     <section class="section" id="streams">
       <p class="kicker">07 // connect</p>
       <h2>Communauté</h2>
-      <p class="intro">Retrouve mes dépôts, ouvre une issue pour signaler un problème ou propose une amélioration. Les liens de streaming seront ajoutés lorsqu’ils seront disponibles.</p>
+      <p class="intro">
+        Retrouve mes dépôts, ouvre une issue pour signaler un problème ou propose une amélioration.
+        Les liens de streaming seront ajoutés lorsqu’ils seront disponibles.
+      </p>
       <a class="btn" href="https://github.com/RufusTheDwarf">Profil GitHub ↗</a>
     </section>
   </main>
   <footer class="footer">
     <div class="wrap">
       <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.3.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>v0.4.1 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
     </div>
   </footer>
 </body>

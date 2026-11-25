@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080e0b">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Minecraft Server | Rufus Terminal</title>
@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Minecraft Server | Rufus Terminal">
   <meta name="twitter:description" content="Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans Codespaces.">
@@ -28,6 +28,7 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
   <script type="application/ld+json">
@@ -73,10 +74,10 @@
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="matrix" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
       <nav aria-label="Navigation principale">
         <ul>
           <li><a href="/">Accueil</a></li>
@@ -88,6 +89,14 @@
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
     </div>
   </header>
   <main id="contenu" class="wrap">
@@ -95,12 +104,19 @@
     <header class="page-heading">
       <p class="kicker">Guides // Guide multilingue</p>
       <h1>Minecraft Server</h1>
-      <p class="lead">Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans Codespaces.</p>
+      <p class="lead">
+        Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans
+        Codespaces.
+      </p>
     </header>
     <article class="detail-layout">
       <div class="prose">
         <h2>Contexte et objectif</h2>
-        <p>Ce guide explique le rôle de chaque composant d’un serveur privé : environnement Linux, runtime Java, serveur de jeu, interface d’administration et tunnel réseau. Il privilégie une démarche progressive compréhensible par les débutants.</p>
+        <p>
+          Ce guide explique le rôle de chaque composant d’un serveur privé : environnement Linux,
+          runtime Java, serveur de jeu, interface d’administration et tunnel réseau. Il privilégie
+          une démarche progressive compréhensible par les débutants.
+        </p>
         <h2>Contenu du projet</h2>
         <ul>
           <li>Préparer l’environnement Linux et Java.</li>
@@ -111,9 +127,15 @@
         <h2>Ce que j’explore</h2>
         <p>Comprendre les dépendances d’un service auto-hébergé avant de les automatiser dans un template.</p>
         <h2>État et limites</h2>
-        <p class="note">Vérifier les versions, quotas, conditions des services et mesures de sécurité avant d’exposer un serveur à Internet.</p>
+        <p class="note">
+          Vérifier les versions, quotas, conditions des services et mesures de sécurité avant
+          d’exposer un serveur à Internet.
+        </p>
         <h2>Code et documentation</h2>
-        <p>Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les instructions, les versions et les conditions de licence propres à ce projet.</p>
+        <p>
+          Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les
+          instructions, les versions et les conditions de licence propres à ce projet.
+        </p>
         <p><a href="https://github.com/RufusTheDwarf/Minecraft-Server">Consulter Minecraft Server sur GitHub ↗</a></p>
       </div>
       <aside class="sidebar" aria-label="Fiche technique">
@@ -142,7 +164,10 @@
           <span>Modèle de dépôt</span>
         </div>
         <h3><a href="/projets/minecraft-server-template/">Minecraft Server Template</a></h3>
-        <p>Modèle réutilisable pour installer un serveur Minecraft Java dans un environnement cloud de développement.</p>
+        <p>
+          Modèle réutilisable pour installer un serveur Minecraft Java dans un environnement cloud
+          de développement.
+        </p>
         <div class="stack">PaperMC · Java · Codespaces · Crafty Controller · Bash</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/mc-server-template" aria-label="Dépôt GitHub : Minecraft Server Template">Code et documentation ↗</a>
       </article>
@@ -152,7 +177,10 @@
           <span>Laboratoire opérationnel</span>
         </div>
         <h3><a href="/projets/docker-network-toolkit/">Docker Network Toolkit</a></h3>
-        <p>Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les services et mesurer les performances.</p>
+        <p>
+          Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les
+          services et mesurer les performances.
+        </p>
         <div class="stack">Docker · Compose · Linux · Nmap · iperf3 · Nginx · Bash</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Docker-Network-Toolkit" aria-label="Dépôt GitHub : Docker Network Toolkit">Code et documentation ↗</a>
       </article>
@@ -162,7 +190,7 @@
   <footer class="footer">
     <div class="wrap">
       <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.3.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>v0.4.1 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
     </div>
   </footer>
 </body>

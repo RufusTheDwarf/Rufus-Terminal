@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080e0b">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Couteau Suisse | Rufus Terminal</title>
@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Couteau Suisse | Rufus Terminal">
   <meta name="twitter:description" content="Une boîte à outils console regroupant conversion Morse, conversions numériques et stéganographie textuelle Unicode.">
@@ -28,6 +28,7 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
   <script type="application/ld+json">
@@ -73,10 +74,10 @@
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="matrix" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
       <nav aria-label="Navigation principale">
         <ul>
           <li><a href="/">Accueil</a></li>
@@ -88,6 +89,14 @@
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
     </div>
   </header>
   <main id="contenu" class="wrap">
@@ -95,12 +104,19 @@
     <header class="page-heading">
       <p class="kicker">Développement // Utilitaire console</p>
       <h1>Couteau Suisse</h1>
-      <p class="lead">Une boîte à outils console regroupant conversion Morse, conversions numériques et stéganographie textuelle Unicode.</p>
+      <p class="lead">
+        Une boîte à outils console regroupant conversion Morse, conversions numériques et
+        stéganographie textuelle Unicode.
+      </p>
     </header>
     <article class="detail-layout">
       <div class="prose">
         <h2>Contexte et objectif</h2>
-        <p>Couteau Suisse réunit trois petits utilitaires dans un programme Windows en français. Un menu permet de choisir une opération, de saisir les données et de revenir au menu principal.</p>
+        <p>
+          Couteau Suisse réunit trois petits utilitaires dans un programme Windows en français. Un
+          menu permet de choisir une opération, de saisir les données et de revenir au menu
+          principal.
+        </p>
         <h2>Contenu du projet</h2>
         <ul>
           <li>Conversion de texte en Morse international avec restitution sonore.</li>
@@ -108,11 +124,21 @@
           <li>Expérimentation de la dissimulation de texte à l’aide de caractères Unicode invisibles.</li>
         </ul>
         <h2>Ce que j’explore</h2>
-        <p>Concevoir des modules simples avec validation de saisie, représentation des données et interactions en ligne de commande.</p>
+        <p>
+          Concevoir des modules simples avec validation de saisie, représentation des données et
+          interactions en ligne de commande.
+        </p>
         <h2>État et limites</h2>
-        <p class="note">La dissimulation de caractères n’est pas un chiffrement et peut être détruite par les normalisations ou filtres de texte. Le Morse ne prend pas en charge tous les caractères accentués.</p>
+        <p class="note">
+          La dissimulation de caractères n’est pas un chiffrement et peut être détruite par les
+          normalisations ou filtres de texte. Le Morse ne prend pas en charge tous les caractères
+          accentués.
+        </p>
         <h2>Code et documentation</h2>
-        <p>Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les instructions, les versions et les conditions de licence propres à ce projet.</p>
+        <p>
+          Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les
+          instructions, les versions et les conditions de licence propres à ce projet.
+        </p>
         <p><a href="https://github.com/RufusTheDwarf/CouteauSuisse">Consulter Couteau Suisse sur GitHub ↗</a></p>
       </div>
       <aside class="sidebar" aria-label="Fiche technique">
@@ -140,7 +166,10 @@
           <span>RPG éducatif</span>
         </div>
         <h3><a href="/projets/code-quest/">Code Quest</a></h3>
-        <p>RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et de progression.</p>
+        <p>
+          RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
+          de progression.
+        </p>
         <div class="stack">Terminal · ASCII · Game design</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Code et documentation ↗</a>
       </article>
@@ -150,7 +179,10 @@
           <span>Projet pédagogique</span>
         </div>
         <h3><a href="/projets/sql-server-project/">Mission SQL Cinéma</a></h3>
-        <p>Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures, agrégations et analyses de données.</p>
+        <p>
+          Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures,
+          agrégations et analyses de données.
+        </p>
         <div class="stack">SQL Server · Python · Flask · pyodbc · PowerShell</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/SQL_Server_project" aria-label="Dépôt GitHub : Mission SQL Cinéma">Code et documentation ↗</a>
       </article>
@@ -160,7 +192,7 @@
   <footer class="footer">
     <div class="wrap">
       <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.3.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>v0.4.1 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
     </div>
   </footer>
 </body>

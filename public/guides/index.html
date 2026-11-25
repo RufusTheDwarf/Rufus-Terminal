@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080e0b">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Guides et ressources techniques | Rufus Terminal</title>
@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Guides et ressources techniques | Rufus Terminal">
   <meta name="twitter:description" content="Documentation pratique sur Git, SSH, l’hébergement de serveurs Minecraft et la conception de tycoons Roblox.">
@@ -28,6 +28,7 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
   <script type="application/ld+json">
@@ -57,10 +58,10 @@
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="matrix" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
       <nav aria-label="Navigation principale">
         <ul>
           <li><a href="/">Accueil</a></li>
@@ -72,6 +73,14 @@
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
     </div>
   </header>
   <main id="contenu" class="wrap">
@@ -79,7 +88,10 @@
     <header class="page-heading">
       <p class="kicker">ls guides</p>
       <h1>Guides et ressources techniques</h1>
-      <p class="lead">Documentation pratique sur Git, SSH, l’hébergement de serveurs Minecraft et la conception de tycoons Roblox.</p>
+      <p class="lead">
+        Documentation pratique sur Git, SSH, l’hébergement de serveurs Minecraft et la conception de
+        tycoons Roblox.
+      </p>
     </header>
 
     <div class="project-grid">
@@ -89,7 +101,10 @@
           <span>Documentation</span>
         </div>
         <h2><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h2>
-        <p>Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents et maintenables.</p>
+        <p>
+          Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents
+          et maintenables.
+        </p>
         <div class="stack">Roblox · Game design · UX · Économie</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Code et documentation ↗</a>
       </article>
@@ -99,7 +114,10 @@
           <span>Guide multilingue</span>
         </div>
         <h2><a href="/projets/minecraft-server/">Minecraft Server</a></h2>
-        <p>Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans Codespaces.</p>
+        <p>
+          Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans
+          Codespaces.
+        </p>
         <div class="stack">Linux · Java · PaperMC · GitHub Codespaces</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Minecraft-Server" aria-label="Dépôt GitHub : Minecraft Server">Code et documentation ↗</a>
       </article>
@@ -109,7 +127,10 @@
           <span>Guide technique</span>
         </div>
         <h2><a href="/projets/git-signed-commits-windows/">Git Signed Commits Windows</a></h2>
-        <p>Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures Git et GitHub.</p>
+        <p>
+          Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures
+          Git et GitHub.
+        </p>
         <div class="stack">Git · SSH · Ed25519 · Windows</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/git-signed-commits-windows" aria-label="Dépôt GitHub : Git Signed Commits Windows">Code et documentation ↗</a>
       </article>
@@ -119,7 +140,10 @@
           <span>Workflow documenté</span>
         </div>
         <h2><a href="/projets/verified-by-default/">Verified by Default</a></h2>
-        <p>Politique de signature et de vérification des commits dans les workflows de développement assistés par IA.</p>
+        <p>
+          Politique de signature et de vérification des commits dans les workflows de développement
+          assistés par IA.
+        </p>
         <div class="stack">Git · SSH · GPG · GitHub · IA</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/verified-by-default" aria-label="Dépôt GitHub : Verified by Default">Code et documentation ↗</a>
       </article>
@@ -128,7 +152,7 @@
   <footer class="footer">
     <div class="wrap">
       <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.3.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>v0.4.1 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
     </div>
   </footer>
 </body>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080e0b">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Verified by Default | Rufus Terminal</title>
@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Verified by Default | Rufus Terminal">
   <meta name="twitter:description" content="Politique de signature et de vérification des commits dans les workflows de développement assistés par IA.">
@@ -28,6 +28,7 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
   <script type="application/ld+json">
@@ -73,10 +74,10 @@
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="matrix" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
       <nav aria-label="Navigation principale">
         <ul>
           <li><a href="/">Accueil</a></li>
@@ -88,6 +89,14 @@
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
     </div>
   </header>
   <main id="contenu" class="wrap">
@@ -95,12 +104,19 @@
     <header class="page-heading">
       <p class="kicker">Sécurité &amp; réseau // Workflow documenté</p>
       <h1>Verified by Default</h1>
-      <p class="lead">Politique de signature et de vérification des commits dans les workflows de développement assistés par IA.</p>
+      <p class="lead">
+        Politique de signature et de vérification des commits dans les workflows de développement
+        assistés par IA.
+      </p>
     </header>
     <article class="detail-layout">
       <div class="prose">
         <h2>Contexte et objectif</h2>
-        <p>Verified by Default clarifie la frontière de confiance entre les outils qui préparent des modifications et l’identité qui les signe. Le principe consiste à ne jamais présenter un commit comme vérifié avant la confirmation effective de GitHub.</p>
+        <p>
+          Verified by Default clarifie la frontière de confiance entre les outils qui préparent des
+          modifications et l’identité qui les signe. Le principe consiste à ne jamais présenter un
+          commit comme vérifié avant la confirmation effective de GitHub.
+        </p>
         <h2>Contenu du projet</h2>
         <ul>
           <li>Séparation de la préparation du code, de la signature et de la vérification.</li>
@@ -109,11 +125,21 @@
           <li>Documentation des contrôles locaux et du statut distant.</li>
         </ul>
         <h2>Ce que j’explore</h2>
-        <p>Mettre l’accent sur la provenance et l’intégrité des changements. La confiance dans le signataire doit rester distincte des tests, de la revue de code et de l’autorisation de fusion.</p>
+        <p>
+          Mettre l’accent sur la provenance et l’intégrité des changements. La confiance dans le
+          signataire doit rester distincte des tests, de la revue de code et de l’autorisation de
+          fusion.
+        </p>
         <h2>État et limites</h2>
-        <p class="note">Le dépôt décrit un processus et une politique ; il ne fournit pas de service autonome de signature ni d’agent capable de signer au nom d’un tiers.</p>
+        <p class="note">
+          Le dépôt décrit un processus et une politique ; il ne fournit pas de service autonome de
+          signature ni d’agent capable de signer au nom d’un tiers.
+        </p>
         <h2>Code et documentation</h2>
-        <p>Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les instructions, les versions et les conditions de licence propres à ce projet.</p>
+        <p>
+          Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les
+          instructions, les versions et les conditions de licence propres à ce projet.
+        </p>
         <p><a href="https://github.com/RufusTheDwarf/verified-by-default">Consulter Verified by Default sur GitHub ↗</a></p>
       </div>
       <aside class="sidebar" aria-label="Fiche technique">
@@ -143,7 +169,10 @@
           <span>Guide technique</span>
         </div>
         <h3><a href="/projets/git-signed-commits-windows/">Git Signed Commits Windows</a></h3>
-        <p>Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures Git et GitHub.</p>
+        <p>
+          Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures
+          Git et GitHub.
+        </p>
         <div class="stack">Git · SSH · Ed25519 · Windows</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/git-signed-commits-windows" aria-label="Dépôt GitHub : Git Signed Commits Windows">Code et documentation ↗</a>
       </article>
@@ -153,7 +182,10 @@
           <span>Laboratoire documenté</span>
         </div>
         <h3><a href="/projets/openssh-security-lab/">OpenSSH Security Lab</a></h3>
-        <p>Administration distante de machines Linux avec authentification par clé et principe du moindre privilège.</p>
+        <p>
+          Administration distante de machines Linux avec authentification par clé et principe du
+          moindre privilège.
+        </p>
         <div class="stack">OpenSSH · Ubuntu · pfSense · SSH</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/OpenSSH-Security-Lab" aria-label="Dépôt GitHub : OpenSSH Security Lab">Code et documentation ↗</a>
       </article>
@@ -163,7 +195,10 @@
           <span>En évolution</span>
         </div>
         <h3><a href="/projets/rufus-terminal/">Rufus Terminal</a></h3>
-        <p>Mon portfolio technique : catalogue de projets, ressources, journal de développement et terminal interactif.</p>
+        <p>
+          Mon portfolio technique : catalogue de projets, ressources, journal de développement et
+          terminal interactif.
+        </p>
         <div class="stack">HTML · CSS · JavaScript · Python · Cloudflare Workers</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Rufus-Terminal" aria-label="Dépôt GitHub : Rufus Terminal">Code et documentation ↗</a>
       </article>
@@ -173,7 +208,7 @@
   <footer class="footer">
     <div class="wrap">
       <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.3.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>v0.4.1 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
     </div>
   </footer>
 </body>

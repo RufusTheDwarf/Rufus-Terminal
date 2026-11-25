@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080e0b">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Parfum Empire | Rufus Terminal</title>
@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Parfum Empire | Rufus Terminal">
   <meta name="twitter:description" content="Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes et progression.">
@@ -28,6 +28,7 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
   <script type="application/ld+json">
@@ -73,10 +74,10 @@
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="matrix" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
       <nav aria-label="Navigation principale">
         <ul>
           <li><a href="/">Accueil</a></li>
@@ -88,6 +89,14 @@
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
     </div>
   </header>
   <main id="contenu" class="wrap">
@@ -95,12 +104,20 @@
     <header class="page-heading">
       <p class="kicker">Jeux &amp; préservation // Jeu web en évolution</p>
       <h1>Parfum Empire</h1>
-      <p class="lead">Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes et progression.</p>
+      <p class="lead">
+        Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes et
+        progression.
+      </p>
     </header>
     <article class="detail-layout">
       <div class="prose">
         <h2>Contexte et objectif</h2>
-        <p>Le joueur développe une maison de parfumerie depuis un atelier artisanal. Il explore différents espaces, collecte des ingrédients, fabrique des fragrances et investit dans des équipements. Le projet sépare les règles d’économie de l’interface et de la scène d’atelier.</p>
+        <p>
+          Le joueur développe une maison de parfumerie depuis un atelier artisanal. Il explore
+          différents espaces, collecte des ingrédients, fabrique des fragrances et investit dans des
+          équipements. Le projet sépare les règles d’économie de l’interface et de la scène
+          d’atelier.
+        </p>
         <h2>Contenu du projet</h2>
         <ul>
           <li>Collecte de matières premières, recettes, production et ventes.</li>
@@ -109,11 +126,20 @@
           <li>Sauvegarde locale avec import et export JSON et tests unitaires des systèmes.</li>
         </ul>
         <h2>Ce que j’explore</h2>
-        <p>Équilibrer une boucle de gameplay économique, représenter les états de progression et rendre la logique de simulation testable indépendamment de l’affichage.</p>
+        <p>
+          Équilibrer une boucle de gameplay économique, représenter les états de progression et
+          rendre la logique de simulation testable indépendamment de l’affichage.
+        </p>
         <h2>État et limites</h2>
-        <p class="note">Le projet utilise le stockage local du navigateur. Il ne propose pas de comptes serveur, de sauvegardes cloud ou de multijoueur attestés dans la documentation.</p>
+        <p class="note">
+          Le projet utilise le stockage local du navigateur. Il ne propose pas de comptes serveur,
+          de sauvegardes cloud ou de multijoueur attestés dans la documentation.
+        </p>
         <h2>Code et documentation</h2>
-        <p>Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les instructions, les versions et les conditions de licence propres à ce projet.</p>
+        <p>
+          Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les
+          instructions, les versions et les conditions de licence propres à ce projet.
+        </p>
         <p><a href="https://github.com/RufusTheDwarf/parfum-empire">Consulter Parfum Empire sur GitHub ↗</a></p>
       </div>
       <aside class="sidebar" aria-label="Fiche technique">
@@ -141,7 +167,10 @@
           <span>Documentation</span>
         </div>
         <h3><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h3>
-        <p>Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents et maintenables.</p>
+        <p>
+          Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents
+          et maintenables.
+        </p>
         <div class="stack">Roblox · Game design · UX · Économie</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Code et documentation ↗</a>
       </article>
@@ -151,7 +180,10 @@
           <span>RPG éducatif</span>
         </div>
         <h3><a href="/projets/code-quest/">Code Quest</a></h3>
-        <p>RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et de progression.</p>
+        <p>
+          RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
+          de progression.
+        </p>
         <div class="stack">Terminal · ASCII · Game design</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Code et documentation ↗</a>
       </article>
@@ -161,7 +193,10 @@
           <span>Site multipage</span>
         </div>
         <h3><a href="/projets/chococoa-web/">Chococoa Web</a></h3>
-        <p>Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et interactions.</p>
+        <p>
+          Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
+          interactions.
+        </p>
         <div class="stack">HTML · CSS · JavaScript</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Code et documentation ↗</a>
       </article>
@@ -171,7 +206,7 @@
   <footer class="footer">
     <div class="wrap">
       <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.3.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>v0.4.1 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
     </div>
   </footer>
 </body>

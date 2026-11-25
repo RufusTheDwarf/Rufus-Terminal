@@ -1,0 +1,12 @@
+/* Apply a saved preference before CSS is loaded. No network or tracking. */
+(() => {
+  "use strict";
+  try {
+    const theme = localStorage.getItem("rufus-theme");
+    if (theme === "dark" || theme === "light") {
+      document.documentElement.dataset.theme = theme;
+    }
+  } catch (_) {
+    // Private browsing / blocked storage: keep the system preference.
+  }
+})();

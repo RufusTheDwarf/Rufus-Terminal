@@ -3,6 +3,8 @@ from html import escape
 import json
 from pathlib import Path
 import shutil
+import re
+import textwrap
 from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
 
@@ -37,7 +39,32 @@ def repo(p):
     return f'{GITHUB}/{p["repo"]}'
 
 
+def format_html(content):
+    """Wrap long prose and attributes without reformatting inline text or scripts."""
+    lines = []
+    in_script = False
+    for line in content.splitlines():
+        if "<script" in line and "</script>" not in line:
+            in_script = True
+        # Wrap simple paragraph and list-item text at spaces. HTML collapses this whitespace.
+        match = re.fullmatch(r"(\s*)(<(?:p|li)(?: [^>]*)?>)([^<>]+)(</(?:p|li)>)", line)
+        if not in_script and len(line) > 110 and match:
+            indent, start, text, end = match.groups()
+            lines.append(indent + start)
+            lines.extend(textwrap.wrap(text, width=100, initial_indent=indent + "  ",
+                                       subsequent_indent=indent + "  ", break_long_words=False,
+                                       break_on_hyphens=False))
+            lines.append(indent + end)
+        else:
+            lines.append(line)
+        if "</script>" in line:
+            in_script = False
+    return "\n".join(lines)
+
+
 def write(path, content):
+    if path.suffix == ".html":
+        content = format_html(content)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content.rstrip() + "\n", encoding="utf-8", newline="\n")
 
@@ -73,8 +100,8 @@ def layout(path, title, description, content, *, schema=None, index=True, nav_pa
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080e0b">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
   <meta name="author" content="{e(SITE['author'])}">
   <meta name="robots" content="{'index, follow, max-image-preview:large' if index else 'noindex, follow'}">
   <title>{e(title)}</title>
@@ -87,7 +114,7 @@ def layout(path, title, description, content, *, schema=None, index=True, nav_pa
   <meta property="og:image" content="{e(BASE)}/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{e(title)}">
   <meta name="twitter:description" content="{e(description)}">
@@ -96,21 +123,30 @@ def layout(path, title, description, content, *, schema=None, index=True, nav_pa
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
 {structured}</head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="matrix" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
       <nav aria-label="Navigation principale">
         <ul>
 {nav}
           <li><a href="{e(GITHUB)}">GitHub ↗</a></li>
         </ul>
       </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
     </div>
   </header>
   <main id="contenu" class="wrap">
@@ -133,6 +169,21 @@ def emit(path, title, description, body, **kwargs):
         URLS.append(BASE + path)
 
 
+def download_links(project):
+    """Link only to explicitly curated assets in GitHub Releases."""
+    links = []
+    for asset in project.get("downloads", []):
+        filename = asset["asset"]
+        if not re.fullmatch(r"[A-Za-z0-9_.-]+", filename) or filename in (".", ".."):
+            raise ValueError(f"Invalid release asset: {filename}")
+        url = f"{repo(project)}/releases/latest/download/{filename}"
+        classes = "btn primary" if asset.get("primary") else "btn"
+        links.append(f'          <a class="{classes}" href="{e(url)}">{e(asset["label"])}</a>')
+    if not links:
+        return ""
+    return '        <div class="actions">\n' + "\n".join(links) + "\n        </div>\n"
+
+
 def card(p, level=3):
     return f'''      <article class="project{' featured' if p.get('featured') else ''}" data-category="{e(p['category'])}">
         <div class="project-meta">
@@ -143,7 +194,7 @@ def card(p, level=3):
         <p>{e(p['summary'])}</p>
         <div class="stack">{e(' · '.join(p['stack']))}</div>
         <a class="card-link" href="{e(repo(p))}" aria-label="Dépôt GitHub : {e(p['name'])}">Code et documentation ↗</a>
-      </article>'''
+{download_links(p)}      </article>'''
 
 
 def grid(projects, level=3):
@@ -168,10 +219,11 @@ PERSON = {
 
 
 def home():
-    body = f'''    <section class="hero" id="accueil" aria-labelledby="hero-title">
+    body = f'''    <section class="hero home-hero" id="accueil" aria-labelledby="hero-title">
       <div>
         <p class="kicker">System online // portfolio personnel</p>
-        <h1 id="hero-title">Rufus<br><span class="accent">Terminal_</span></h1>
+        <h1 id="hero-title">Rufus <span class="accent">Terminal<span class="cursor" aria-hidden="true">_</span></span></h1>
+        <p class="hero-subtitle">Build. Learn. Share. Improve.</p>
         <p class="lead">Étudiant en informatique et développeur indépendant. J’explore les systèmes, les réseaux et la sécurité, je construis des applications et des jeux, et je partage ce que j’apprends.</p>
         <div class="actions">
           <a class="btn primary" href="/projets/">Explorer mes projets ↗</a>
@@ -183,10 +235,14 @@ def home():
           <span><strong>{VERSION}</strong> build</span>
         </div>
       </div>
+      <div class="hero-art" aria-hidden="true">
+        <img class="art-dark" src="/assets/forest-terminal.svg" alt="" width="560" height="330" fetchpriority="low">
+        <img class="art-light" src="/assets/day-terminal.svg" alt="" width="560" height="330" fetchpriority="low">
+      </div>
       <div class="terminal" aria-label="Terminal interactif">
         <div class="term-head" aria-hidden="true">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="term-label">guest@rufus — portfolio</span>
+          <span class="term-label">guest@rufus / portfolio</span>
         </div>
         <div class="term-body">
           <p class="accent">RUFUS TERMINAL / v{VERSION}</p>
@@ -202,8 +258,15 @@ def home():
         </div>
       </div>
     </section>
+    <section class="section" id="projets">
+      <p class="kicker">01 // ls projects</p>
+      <h2>Projets sélectionnés</h2>
+      <p class="intro">Une sélection de mes travaux techniques. Chaque fiche précise le contexte, les technologies, les apprentissages et les limites connues.</p>
+{grid([p for p in PROJECTS if p.get('featured')])}
+      <a class="btn primary" href="/projets/">Voir les {len(PROJECTS)} projets et ressources ↗</a>
+    </section>
     <section class="section" id="apropos">
-      <p class="kicker">01 // whoami</p>
+      <p class="kicker">02 // whoami</p>
       <h2>À propos</h2>
       <div class="about-grid">
         <div class="intro">
@@ -219,24 +282,17 @@ def home():
       </div>
     </section>
     <section class="section" id="competences">
-      <p class="kicker">02 // ls skills</p>
+      <p class="kicker">03 // ls skills</p>
       <h2>Domaines techniques</h2>
       <p class="intro">Technologies que je pratique ou explore, sans prétendre toutes les maîtriser au même niveau.</p>
       <div class="skills">
         <article class="skill"><h3>01 / Infrastructure &amp; DevOps</h3><p>Linux, Docker, Compose, K3s, Kubernetes, virtualisation et sauvegardes.</p></article>
         <article class="skill"><h3>02 / Réseau &amp; sécurité</h3><p>TCP/IP, DNS, Nmap, iperf3, OpenSSH, pfSense, OPNsense et audit autorisé.</p></article>
         <article class="skill"><h3>03 / Software development</h3><p>Python, C#, .NET, TypeScript, JavaScript, Bash, PowerShell, HTML et CSS.</p></article>
-        <article class="skill"><h3>04 / Bases de données</h3><p>SQL Server, PostgreSQL, SQL relationnel, données synthétiques et tests.</p></article>
+        <article class="skill"><h3>04 / Bases de données</h3><p>SQL Server, MySQL, PostgreSQL, SQL relationnel, données synthétiques et tests.</p></article>
         <article class="skill"><h3>05 / Game development</h3><p>RPG éducatifs, tycoons, économie de jeu, progression, UX et préservation Flash.</p></article>
         <article class="skill"><h3>06 / Open source &amp; qualité</h3><p>Git, GitHub, documentation, automatisation, licences et signature des commits.</p></article>
       </div>
-    </section>
-    <section class="section" id="projets">
-      <p class="kicker">03 // ls projects</p>
-      <h2>Projets sélectionnés</h2>
-      <p class="intro">Une sélection de mes travaux techniques. Chaque fiche précise le contexte, les technologies, les apprentissages et les limites connues.</p>
-{grid([p for p in PROJECTS if p.get('featured')])}
-      <a class="btn primary" href="/projets/">Voir les {len(PROJECTS)} projets et ressources ↗</a>
     </section>
     <section class="section" id="jeux">
       <p class="kicker">04 // game development</p>
@@ -292,6 +348,7 @@ def project_pages():
         body = page_heading(items, CATEGORIES[p['category']] + ' // ' + p['status'], p['name'], p['summary'])
         bullets = '\n'.join(f'          <li>{e(text)}</li>' for text in p['details'])
         chips = '\n'.join(f'          <span class="chip">{e(t)}</span>' for t in p['stack'])
+        downloads = download_links(p)
         body += f'''
     <article class="detail-layout">
       <div class="prose">
@@ -308,7 +365,7 @@ def project_pages():
         <h2>Code et documentation</h2>
         <p>Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les instructions, les versions et les conditions de licence propres à ce projet.</p>
         <p><a href="{e(repo(p))}">Consulter {e(p['name'])} sur GitHub ↗</a></p>
-      </div>
+{downloads}      </div>
       <aside class="sidebar" aria-label="Fiche technique">
         <h2>Fiche technique</h2>
         <dl>
@@ -365,7 +422,12 @@ def devlog():
     items = [('/', 'Accueil'), (path, 'DevLog')]
     body = page_heading(items, 'git log --oneline', 'Journal de développement', 'Les décisions techniques et évolutions du portfolio Rufus Terminal, ainsi que les historiques de mes projets.') + f'''
     <div class="prose">
-      <h2>v0.3.0 — Architecture statique multipage</h2>
+      <h2>v0.4.1 : Catalogue et qualité</h2>
+      <p>Ajout de RUX NetMap et SkyConnect-DB, téléchargement de RUX depuis GitHub Releases,
+        contrôle des dépôts publics et restauration des outils de qualité et de formatage.</p>
+      <h2>v0.4.0 : Retro Glass / Sage Day</h2>
+      <p>Deux thèmes inspirés des terminaux rétro : forêt et verre fumé en mode sombre, crème et vert sauge en mode clair. Le thème suit les préférences système ou un choix manuel mémorisé localement.</p>
+      <h2>v0.3.0 : Architecture statique multipage</h2>
       <p>Cette version sépare les fiches de projets, le catalogue, le profil et les ressources en pages HTML individuelles. Le contenu est généré à partir d’un catalogue JSON et d’un modèle partagé, pour éviter la duplication de maintenance.</p>
       <ul>
         <li>Ajout de métadonnées spécifiques, liens canoniques, sitemap XML et fil d’Ariane.</li>
@@ -374,12 +436,12 @@ def devlog():
         <li>Validation locale des liens et des métadonnées, puis contrôles en intégration continue.</li>
       </ul>
       <p>Le déploiement public et les mesures de performance réelles sont à confirmer après publication.</p>
-      <h2>v0.2.0 — Catalogue de projets</h2>
+      <h2>v0.2.0 : Catalogue de projets</h2>
       <p>La version précédente a regroupé les seize projets et ressources dans une page unique, avec recherche, filtres, terminal interactif et présentation des domaines techniques.</p>
-      <h2>v0.1.0 — Première interface</h2>
+      <h2>v0.1.0 : Première interface</h2>
       <p>Le prototype initial a introduit l’identité visuelle sombre et verte, les premières cartes de projets et une navigation inspirée d’un terminal.</p>
       <h2>Historique des dépôts</h2>
-      <p>Les commits et issues sur <a href="{GITHUB}">GitHub</a> restent la référence pour suivre les changements réels dans chaque dépôt. Les pages du site sont des synthèses éditoriales, pas un flux temps réel.</p>
+      <p>Les commits et issues sur <a href="{GITHUB}">GitHub</a> restent la référence pour suivre les changements réels dans chaque dépôt. Les pages du site sont des synthèses éditoriales. Un contrôle périodique signale les écarts avec les dépôts publics, sans publier automatiquement de contenu non relu.</p>
       <p><a href="{GITHUB}/Rufus-Terminal/commits/main/">Historique du portfolio ↗</a> · <a href="/projets/">Catalogue des projets</a></p>
     </div>'''
     emit(path, 'Journal de développement | Rufus Terminal', 'Suivre les versions de Rufus Terminal, son architecture web et les évolutions de mes projets informatiques.', body, schema=[breadcrumb_schema(items)])
@@ -393,7 +455,7 @@ def main():
     (PUBLIC / 'assets').mkdir(exist_ok=True)
     # Update generated pages in place. The checker detects obsolete project pages;
     # remove them explicitly when deleting an entry from the catalogue.
-    for name in ('style.css', 'site.js'):
+    for name in ('style.css', 'site.js', 'theme.js', 'forest-terminal.svg', 'day-terminal.svg'):
         shutil.copyfile(ROOT / 'src' / name, PUBLIC / 'assets' / name)
     home()
     catalogue()

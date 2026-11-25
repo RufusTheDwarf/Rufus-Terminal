@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080e0b">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Cloud Project K3s | Rufus Terminal</title>
@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal — portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Cloud Project K3s | Rufus Terminal">
   <meta name="twitter:description" content="Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des demandes d’assistance.">
@@ -28,6 +28,7 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
   <script type="application/ld+json">
@@ -73,10 +74,10 @@
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="matrix" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><b>&gt;_</b> rufus_terminal</a>
+      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
       <nav aria-label="Navigation principale">
         <ul>
           <li><a href="/">Accueil</a></li>
@@ -88,6 +89,14 @@
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
     </div>
   </header>
   <main id="contenu" class="wrap">
@@ -95,12 +104,20 @@
     <header class="page-heading">
       <p class="kicker">Infrastructure // En cours</p>
       <h1>Cloud Project K3s</h1>
-      <p class="lead">Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des demandes d’assistance.</p>
+      <p class="lead">
+        Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des
+        demandes d’assistance.
+      </p>
     </header>
     <article class="detail-layout">
       <div class="prose">
         <h2>Contexte et objectif</h2>
-        <p>Ce laboratoire pédagogique explore le cycle de vie d’un service dans un cluster Kubernetes léger. Deux machines virtuelles Ubuntu Server jouent les rôles de serveur et d’agent K3s. Le projet associe une application Helpdesk et une base PostgreSQL pour étudier le déploiement et l’exploitation de services internes.</p>
+        <p>
+          Ce laboratoire pédagogique explore le cycle de vie d’un service dans un cluster Kubernetes
+          léger. Deux machines virtuelles Ubuntu Server jouent les rôles de serveur et d’agent K3s.
+          Le projet associe une application Helpdesk et une base PostgreSQL pour étudier le
+          déploiement et l’exploitation de services internes.
+        </p>
         <h2>Contenu du projet</h2>
         <ul>
           <li>Préparation des machines virtuelles et installation des deux rôles K3s.</li>
@@ -108,11 +125,20 @@
           <li>Procédures de mise à jour, retour arrière, sauvegarde et restauration de PostgreSQL.</li>
         </ul>
         <h2>Ce que j’explore</h2>
-        <p>Comprendre la différence entre orchestration, réseau, stockage et exploitation : un Pod peut être remplacé sans que les données persistantes soient nécessairement perdues.</p>
+        <p>
+          Comprendre la différence entre orchestration, réseau, stockage et exploitation : un Pod
+          peut être remplacé sans que les données persistantes soient nécessairement perdues.
+        </p>
         <h2>État et limites</h2>
-        <p class="note">Le projet est en cours de réalisation. Les procédures et manifestes ne constituent pas une garantie de déploiement complet ni une infrastructure prête pour la production.</p>
+        <p class="note">
+          Le projet est en cours de réalisation. Les procédures et manifestes ne constituent pas une
+          garantie de déploiement complet ni une infrastructure prête pour la production.
+        </p>
         <h2>Code et documentation</h2>
-        <p>Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les instructions, les versions et les conditions de licence propres à ce projet.</p>
+        <p>
+          Le dépôt GitHub rassemble la documentation et les fichiers disponibles. Consulte les
+          instructions, les versions et les conditions de licence propres à ce projet.
+        </p>
         <p><a href="https://github.com/RufusTheDwarf/Cloud-Project-K3s">Consulter Cloud Project K3s sur GitHub ↗</a></p>
       </div>
       <aside class="sidebar" aria-label="Fiche technique">
@@ -141,7 +167,10 @@
           <span>Laboratoire opérationnel</span>
         </div>
         <h3><a href="/projets/docker-network-toolkit/">Docker Network Toolkit</a></h3>
-        <p>Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les services et mesurer les performances.</p>
+        <p>
+          Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les
+          services et mesurer les performances.
+        </p>
         <div class="stack">Docker · Compose · Linux · Nmap · iperf3 · Nginx · Bash</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/Docker-Network-Toolkit" aria-label="Dépôt GitHub : Docker Network Toolkit">Code et documentation ↗</a>
       </article>
@@ -151,7 +180,10 @@
           <span>Projet pédagogique</span>
         </div>
         <h3><a href="/projets/sql-server-project/">Mission SQL Cinéma</a></h3>
-        <p>Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures, agrégations et analyses de données.</p>
+        <p>
+          Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures,
+          agrégations et analyses de données.
+        </p>
         <div class="stack">SQL Server · Python · Flask · pyodbc · PowerShell</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/SQL_Server_project" aria-label="Dépôt GitHub : Mission SQL Cinéma">Code et documentation ↗</a>
       </article>
@@ -161,7 +193,10 @@
           <span>Laboratoire documenté</span>
         </div>
         <h3><a href="/projets/openssh-security-lab/">OpenSSH Security Lab</a></h3>
-        <p>Administration distante de machines Linux avec authentification par clé et principe du moindre privilège.</p>
+        <p>
+          Administration distante de machines Linux avec authentification par clé et principe du
+          moindre privilège.
+        </p>
         <div class="stack">OpenSSH · Ubuntu · pfSense · SSH</div>
         <a class="card-link" href="https://github.com/RufusTheDwarf/OpenSSH-Security-Lab" aria-label="Dépôt GitHub : OpenSSH Security Lab">Code et documentation ↗</a>
       </article>
@@ -171,7 +206,7 @@
   <footer class="footer">
     <div class="wrap">
       <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.3.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>v0.4.1 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
     </div>
   </footer>
 </body>
