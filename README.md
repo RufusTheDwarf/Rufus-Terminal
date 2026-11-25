@@ -1,16 +1,16 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=230&color=0:050A07,30:103021,65:008F4C,100:00FF88&text=RUFUS%20TERMINAL&fontSize=45&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=DEVELOPER%20%2F%20GAMEDEV%20%2F%20OPEN%20SOURCE&descSize=15&descAlignY=60" width="100%" alt="Rufus Terminal"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&height=230&color=0:050A07,30:103021,65:008F4C,100:00FF88&text=TERMINAL&fontSize=45&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=DEVELOPER%20%2F%20GAMEDEV%20%2F%20OPEN%20SOURCE&descSize=15&descAlignY=60" width="100%" alt="Rufus Terminal"/>
 
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&duration=3000&pause=1000&color=00FF88&center=true&vCenter=true&width=800&lines=Welcome+to+my+digital+space.;Building+games%2C+tools+and+experiments.;Explore+the+code.+Follow+the+journey." alt="Animated terminal introduction"/>
 
-# RUFUS TERMINAL
+# />Terminal
 
 **A personal developer portfolio. A technical knowledge base. A space to build, learn and share.**
 
-[**Explore the website**](https://rufus-terminal-preview.rutsumello.workers.dev/) · [**Project catalogue**](https://rufus-terminal-preview.rutsumello.workers.dev/projets/) · [**Developer profile**](https://github.com/RufusTheDwarf)
+[**Explore the website**](https://terminal.rutsumello.workers.dev/) · [**Project catalogue**](https://terminal.rutsumello.workers.dev/projets/) · [**Developer profile**](https://github.com/RufusTheDwarf)
 
-<img src="https://img.shields.io/badge/Version-0.4.1-238636?style=flat&logoColor=white" alt="Version: 0.4.1"/>
+<img src="https://img.shields.io/badge/Version-0.5.0-238636?style=flat&logoColor=white" alt="Version: 0.5.0"/>
 <img src="https://img.shields.io/badge/Status-Active%20development-238636?style=flat&logoColor=white" alt="Status: Active development"/>
 <img src="https://img.shields.io/badge/License-MIT-2563eb?style=flat&logoColor=white" alt="License: MIT"/>
 <img src="https://img.shields.io/badge/Hosting-Cloudflare%20Workers-f38020?style=flat&logoColor=white&logo=cloudflare" alt="Hosting: Cloudflare Workers"/>
@@ -18,7 +18,7 @@
 <img src="https://img.shields.io/badge/CSS-Responsive-1572b6?style=flat&logoColor=white&logo=css" alt="CSS: Responsive"/>
 <img src="https://img.shields.io/badge/JavaScript-Vanilla-f7df1e?style=flat&logoColor=white&logo=javascript" alt="JavaScript: Vanilla"/>
 <img src="https://img.shields.io/badge/Python-SSG-3776ab?style=flat&logoColor=white&logo=python" alt="Python: SSG"/>
-<img src="https://img.shields.io/badge/Pages-24%20indexable-238636?style=flat&logoColor=white" alt="Pages: 24 indexable"/>
+<img src="https://img.shields.io/badge/Pages-25%20indexable-238636?style=flat&logoColor=white" alt="Pages: 25 indexable"/>
 <img src="https://img.shields.io/badge/Projects-18-238636?style=flat&logoColor=white" alt="Projects: 18"/>
 <img src="https://img.shields.io/badge/Runtime%20deps-0-238636?style=flat&logoColor=white" alt="Runtime deps: 0"/>
 <img src="https://img.shields.io/badge/Language-fr-CH-555555?style=flat&logoColor=white" alt="Language: fr-CH"/>
@@ -34,7 +34,7 @@
 
 <img src="docs/readme/section-01.svg" width="100%" alt=""/>
 
-Rufus Terminal is my personal corner of the web. I am a computer science student and independent developer interested in infrastructure, systems, networks, cybersecurity, databases, software engineering and game development.
+Terminal is my personal corner of the web. I am a computer science student and independent developer interested in infrastructure, systems, networks, cybersecurity, databases, software engineering and game development.
 
 The goal is not simply to display finished products. This portfolio documents practical experiments, technical decisions, limitations and the learning process behind them. It brings together public projects, guides, games and development notes in a terminal-inspired interface.
 
@@ -53,7 +53,7 @@ The website is written in French (`fr-CH`); the repository documentation is in E
 | Catalogue | Search, category filters and dedicated project pages |
 | Terminal | Simulated commands, navigation, session history and clear command |
 | Knowledge | Guides, game-development resources and development logs |
-| Design | Forest CRT Glass and Sage Day themes, responsive layouts, reduced-motion support |
+| Design | Forest CRT Glass and Sage Day themes, wide layouts, layered glass, animated topographic backdrop and pause control |
 | Delivery | Pre-generated HTML, shared local CSS/JS and Cloudflare static assets |
 | Discoverability | Per-page metadata, sitemap, canonical URLs and internal navigation |
 
@@ -78,24 +78,24 @@ The 18 entries below are a curated snapshot, not a live GitHub API feed. Status 
 
 | Project | Description | Status | GitHub |
 |---|---|---|---|
-| [Cloud Project K3s](https://rufus-terminal-preview.rutsumello.workers.dev/projets/cloud-project-k3s/) | Two-node private-cloud laboratory with Helpdesk and PostgreSQL | In progress | [Source](https://github.com/RufusTheDwarf/Cloud-Project-K3s) |
-| [Docker Network Toolkit](https://rufus-terminal-preview.rutsumello.workers.dev/projets/docker-network-toolkit/) | Containerized network laboratory with Nginx, Nmap and iperf3 | Lab operational (reported) | [Source](https://github.com/RufusTheDwarf/Docker-Network-Toolkit) |
-| [OpenSSH Security Lab](https://rufus-terminal-preview.rutsumello.workers.dev/projets/openssh-security-lab/) | Remote administration, public-key authentication and least privilege | Documented lab | [Source](https://github.com/RufusTheDwarf/OpenSSH-Security-Lab) |
-| [RUX NetMap](https://rufus-terminal-preview.rutsumello.workers.dev/projets/rux-netmap/) | Windows IPv4 inventory, map and exports | Published Windows application | [Source](https://github.com/RufusTheDwarf/Rux-NetMap) |
-| [SkyConnect-DB](https://rufus-terminal-preview.rutsumello.workers.dev/projets/skyconnect-db/) | Airport relational database engineering with MySQL and MERISE | In development | [Source](https://github.com/RufusTheDwarf/SkyConnect-DB) |
-| [NetRecon Lab](https://rufus-terminal-preview.rutsumello.workers.dev/projets/netrecon-lab/) | Authorized network audit and infrastructure preparation | In preparation | [Source](https://github.com/RufusTheDwarf/NetRecon-Lab) |
-| [Mission SQL Cinéma](https://rufus-terminal-preview.rutsumello.workers.dev/projets/sql-server-project/) | Cinema-themed relational database exercises and Flask interface | Educational project | [Source](https://github.com/RufusTheDwarf/SQL_Server_project) |
-| [Couteau Suisse](https://rufus-terminal-preview.rutsumello.workers.dev/projets/couteau-suisse/) | Windows console toolkit for Morse, base conversion and Unicode steganography | Console utility | [Source](https://github.com/RufusTheDwarf/CouteauSuisse) |
-| [Chococoa Web](https://rufus-terminal-preview.rutsumello.workers.dev/projets/chococoa-web/) | French multi-page chocolate-themed website | Web project | [Source](https://github.com/RufusTheDwarf/chococoa-web) |
-| [Rufus Terminal](https://rufus-terminal-preview.rutsumello.workers.dev/projets/rufus-terminal/) | Static developer portfolio and technical project catalogue | v0.4.1 | [Source](https://github.com/RufusTheDwarf/Rufus-Terminal) |
-| [Parfum Empire](https://rufus-terminal-preview.rutsumello.workers.dev/projets/parfum-empire/) | 2D perfume tycoon with crafting, automation and progression | Evolving game | [Source](https://github.com/RufusTheDwarf/parfum-empire) |
-| [Code Quest](https://rufus-terminal-preview.rutsumello.workers.dev/projets/code-quest/) | Educational terminal RPG with technical questions and progression | Game project | [Source](https://github.com/RufusTheDwarf/Code_Quest) |
-| [Flash Archive](https://rufus-terminal-preview.rutsumello.workers.dev/projets/flash-archive/) | Flash preservation project using archived SWF files and Ruffle | Archive | [Source](https://github.com/RufusTheDwarf/Play-old-Flash-games) |
-| [Roblox Tycoon Blueprint](https://rufus-terminal-preview.rutsumello.workers.dev/projets/roblox-tycoon-blueprint/) | Documentation of tycoon systems, economy and development practices | Knowledge base | [Source](https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint) |
-| [Minecraft Server Template](https://rufus-terminal-preview.rutsumello.workers.dev/projets/minecraft-server-template/) | Reusable Codespaces template for Minecraft server setup | Template | [Source](https://github.com/RufusTheDwarf/mc-server-template) |
-| [Minecraft Server](https://rufus-terminal-preview.rutsumello.workers.dev/projets/minecraft-server/) | Guide to Minecraft Java hosting and management | Guide | [Source](https://github.com/RufusTheDwarf/Minecraft-Server) |
-| [Git Signed Commits Windows](https://rufus-terminal-preview.rutsumello.workers.dev/projets/git-signed-commits-windows/) | SSH commit-signing guide for Windows | Guide | [Source](https://github.com/RufusTheDwarf/git-signed-commits-windows) |
-| [Verified by Default](https://rufus-terminal-preview.rutsumello.workers.dev/projets/verified-by-default/) | Trust and signature verification workflow for AI-assisted development | Policy guide | [Source](https://github.com/RufusTheDwarf/verified-by-default) |
+| [Cloud Project K3s](https://terminal.rutsumello.workers.dev/projets/cloud-project-k3s/) | Two-node private-cloud laboratory with Helpdesk and PostgreSQL | In progress | [Source](https://github.com/RufusTheDwarf/Cloud-Project-K3s) |
+| [Docker Network Toolkit](https://terminal.rutsumello.workers.dev/projets/docker-network-toolkit/) | Containerized network laboratory with Nginx, Nmap and iperf3 | Lab operational (reported) | [Source](https://github.com/RufusTheDwarf/Docker-Network-Toolkit) |
+| [OpenSSH Security Lab](https://terminal.rutsumello.workers.dev/projets/openssh-security-lab/) | Remote administration, public-key authentication and least privilege | Documented lab | [Source](https://github.com/RufusTheDwarf/OpenSSH-Security-Lab) |
+| [RUX NetMap](https://terminal.rutsumello.workers.dev/apps/rux-netmap/) | Windows IPv4 inventory, map and exports | Published Windows application | [Source](https://github.com/RufusTheDwarf/Rux-NetMap) |
+| [SkyConnect-DB](https://terminal.rutsumello.workers.dev/projets/skyconnect-db/) | Airport relational database engineering with MySQL and MERISE | In development | [Source](https://github.com/RufusTheDwarf/SkyConnect-DB) |
+| [NetRecon Lab](https://terminal.rutsumello.workers.dev/projets/netrecon-lab/) | Authorized network audit and infrastructure preparation | In preparation | [Source](https://github.com/RufusTheDwarf/NetRecon-Lab) |
+| [Mission SQL Cinéma](https://terminal.rutsumello.workers.dev/projets/sql-server-project/) | Cinema-themed relational database exercises and Flask interface | Educational project | [Source](https://github.com/RufusTheDwarf/SQL_Server_project) |
+| [Couteau Suisse](https://terminal.rutsumello.workers.dev/projets/couteau-suisse/) | Windows console toolkit for Morse, base conversion and Unicode steganography | Console utility | [Source](https://github.com/RufusTheDwarf/CouteauSuisse) |
+| [Chococoa Web](https://terminal.rutsumello.workers.dev/projets/chococoa-web/) | French multi-page chocolate-themed website | Web project | [Source](https://github.com/RufusTheDwarf/chococoa-web) |
+| [Rufus Terminal](https://terminal.rutsumello.workers.dev/projets/rufus-terminal/) | Static developer portfolio and technical project catalogue | v0.5.0 | [Source](https://github.com/RufusTheDwarf/Rufus-Terminal) |
+| [Parfum Empire](https://terminal.rutsumello.workers.dev/projets/parfum-empire/) | 2D perfume tycoon with crafting, automation and progression | Evolving game | [Source](https://github.com/RufusTheDwarf/parfum-empire) |
+| [Code Quest](https://terminal.rutsumello.workers.dev/projets/code-quest/) | Educational terminal RPG with technical questions and progression | Game project | [Source](https://github.com/RufusTheDwarf/Code_Quest) |
+| [Flash Archive](https://terminal.rutsumello.workers.dev/projets/flash-archive/) | Flash preservation project using archived SWF files and Ruffle | Archive | [Source](https://github.com/RufusTheDwarf/Play-old-Flash-games) |
+| [Roblox Tycoon Blueprint](https://terminal.rutsumello.workers.dev/projets/roblox-tycoon-blueprint/) | Documentation of tycoon systems, economy and development practices | Knowledge base | [Source](https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint) |
+| [Minecraft Server Template](https://terminal.rutsumello.workers.dev/projets/minecraft-server-template/) | Reusable Codespaces template for Minecraft server setup | Template | [Source](https://github.com/RufusTheDwarf/mc-server-template) |
+| [Minecraft Server](https://terminal.rutsumello.workers.dev/projets/minecraft-server/) | Guide to Minecraft Java hosting and management | Guide | [Source](https://github.com/RufusTheDwarf/Minecraft-Server) |
+| [Git Signed Commits Windows](https://terminal.rutsumello.workers.dev/projets/git-signed-commits-windows/) | SSH commit-signing guide for Windows | Guide | [Source](https://github.com/RufusTheDwarf/git-signed-commits-windows) |
+| [Verified by Default](https://terminal.rutsumello.workers.dev/projets/verified-by-default/) | Trust and signature verification workflow for AI-assisted development | Policy guide | [Source](https://github.com/RufusTheDwarf/verified-by-default) |
 
 <a id="04--site-map"></a>
 <h2 align="center">Site map // Navigation and routes</h2>
@@ -104,16 +104,18 @@ The 18 entries below are a curated snapshot, not a live GitHub API feed. Status 
 
 | Route | Purpose |
 |---|---|
-| [`/`](https://rufus-terminal-preview.rutsumello.workers.dev/) | Home, featured projects, terminal, skills and community |
-| [`/a-propos/`](https://rufus-terminal-preview.rutsumello.workers.dev/a-propos/) | Developer profile and philosophy |
-| [`/projets/`](https://rufus-terminal-preview.rutsumello.workers.dev/projets/) | Full searchable project catalogue |
-| `/projets/<slug>/` | 18 individual project pages |
-| [`/jeux/`](https://rufus-terminal-preview.rutsumello.workers.dev/jeux/) | Game-development projects |
-| [`/guides/`](https://rufus-terminal-preview.rutsumello.workers.dev/guides/) | Technical guides and documentation |
-| [`/devlog/`](https://rufus-terminal-preview.rutsumello.workers.dev/devlog/) | Development notes |
+| [`/`](https://terminal.rutsumello.workers.dev/) | Home, featured projects, terminal, skills and community |
+| [`/a-propos/`](https://terminal.rutsumello.workers.dev/a-propos/) | Developer profile and philosophy |
+| [`/projets/`](https://terminal.rutsumello.workers.dev/projets/) | Full searchable project catalogue |
+| `/projets/<slug>/` | 17 individual project pages |
+| [`/apps/`](https://terminal.rutsumello.workers.dev/apps/) | Dedicated application catalogue |
+| `/apps/rux-netmap/` | RUX downloads and documentation |
+| [`/jeux/`](https://terminal.rutsumello.workers.dev/jeux/) | Game-development projects |
+| [`/guides/`](https://terminal.rutsumello.workers.dev/guides/) | Technical guides and documentation |
+| [`/devlog/`](https://terminal.rutsumello.workers.dev/devlog/) | Development notes |
 | `404.html` | Custom error page (excluded from sitemap) |
 
-Six main pages plus eighteen project pages form the **24 indexable URLs**. The custom error document brings the total to **25 HTML files**.
+Seven main pages plus eighteen detail pages form the **25 indexable URLs**. The custom error document brings the total to **26 HTML files**.
 
 <a id="05--architecture"></a>
 <h2 align="center">Architecture // How the site is built</h2>
@@ -163,14 +165,17 @@ Rufus-Terminal/
 │   ├── assets/
 │   │   ├── style.css
 │   │   ├── site.js
+│   │   ├── ambient-map.svg
+│   │   ├── rux-diagram.svg
 │   │   ├── theme.js
 │   │   ├── forest-terminal.svg
 │   │   ├── day-terminal.svg
 │   │   └── social-card.png
 │   ├── a-propos/index.html
+│   ├── apps/                      # Application catalogue and RUX
 │   ├── projets/
 │   │   ├── index.html
-│   │   └── <slug>/index.html       # 18 individual pages
+│   │   └── <slug>/index.html       # 17 individual pages
 │   ├── jeux/index.html
 │   ├── guides/index.html
 │   ├── devlog/index.html
@@ -208,7 +213,7 @@ Rufus-Terminal/
 └── README.md
 ```
 
-This tree shows the main files in v0.4.1. The source and published copies of CSS/JS must remain synchronized through the generator.
+This tree shows the main files in v0.5.0. The source and published copies of CSS/JS must remain synchronized through the generator.
 
 <a id="08--getting-started"></a>
 <h2 align="center">Getting started // Run the site locally</h2>
@@ -293,11 +298,11 @@ The deployment target is Cloudflare **Workers static assets**, not Cloudflare Pa
 
 | Setting | Value |
 |---|---|
-| Worker | `rufus-terminal-preview` |
+| Worker | `terminal` |
 | Static directory | `./public` |
 | HTML handling | `auto-trailing-slash` |
 | Not found handling | `404-page` |
-| Current configured origin | [https://rufus-terminal-preview.rutsumello.workers.dev](https://rufus-terminal-preview.rutsumello.workers.dev/) |
+| Current configured origin | [https://terminal.rutsumello.workers.dev](https://terminal.rutsumello.workers.dev/) |
 
 For the existing Git integration, keep the established deployment command and review the Cloudflare deployment logs. For a manual deployment, with Node.js installed and the correct Cloudflare account authenticated:
 
@@ -324,7 +329,7 @@ See [Cloudflare static assets](https://developers.cloudflare.com/workers/static-
 | Responsive grid, fluid sizing and reduced motion | Device and assistive-technology testing |
 | Shared local assets | Real-world Core Web Vitals |
 
-[Sitemap](https://rufus-terminal-preview.rutsumello.workers.dev/sitemap.xml) · [robots.txt](https://rufus-terminal-preview.rutsumello.workers.dev/robots.txt)
+[Sitemap](https://terminal.rutsumello.workers.dev/sitemap.xml) · [robots.txt](https://terminal.rutsumello.workers.dev/robots.txt)
 
 After deployment, check the real canonical domain, submit the sitemap in [Google Search Console](https://search.google.com/search-console/) and [Bing Webmaster Tools](https://www.bing.com/webmasters/), and measure performance with [PageSpeed Insights](https://pagespeed.web.dev/). Use the [Google SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) as a reference.
 
@@ -335,7 +340,7 @@ Technical SEO improves discoverability; it does not guarantee crawling, indexing
 
 <img src="docs/readme/section-12.svg" width="100%" alt=""/>
 
-### Recorded validation for v0.4.1
+### Previous validation for v0.4.1 (historical)
 
 | Check | Recorded result |
 |---|---|
@@ -420,7 +425,7 @@ Thanks to the open-source communities behind Python, Git, Playwright, Chromium a
 
 *Build. Learn. Share. Improve.*
 
-[Website](https://rufus-terminal-preview.rutsumello.workers.dev/) · [GitHub Profile](https://github.com/RufusTheDwarf) · [Repository](https://github.com/RufusTheDwarf/Rufus-Terminal) · [Issues](https://github.com/RufusTheDwarf/Rufus-Terminal/issues)
+[Website](https://terminal.rutsumello.workers.dev/) · [GitHub Profile](https://github.com/RufusTheDwarf) · [Repository](https://github.com/RufusTheDwarf/Rufus-Terminal) · [Issues](https://github.com/RufusTheDwarf/Rufus-Terminal/issues)
 
 <sub>Created by RufusTheDwarf · 2026 · Thank you for exploring the project.</sub>
 

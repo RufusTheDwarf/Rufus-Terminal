@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="RufusTheDwarf">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Applications | /&gt;Terminal</title>
+  <meta name="description" content="Applications de RufusTheDwarf : téléchargement de RUX NetMap, inventaire réseau IPv4 et documentation.">
+  <link rel="canonical" href="https://terminal.rutsumello.workers.dev/apps/">
+  <meta property="og:url" content="https://terminal.rutsumello.workers.dev/apps/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:site_name" content="Terminal">
+  <meta property="og:title" content="Applications | Terminal">
+  <meta property="og:description" content="Applications de RufusTheDwarf : téléchargement de RUX NetMap, inventaire réseau IPv4 et documentation.">
+  <meta property="og:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Terminal : portfolio informatique de RufusTheDwarf">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Applications | Terminal">
+  <meta name="twitter:description" content="Applications de RufusTheDwarf : téléchargement de RUX NetMap, inventaire réseau IPv4 et documentation.">
+  <meta name="twitter:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
+  <meta name="twitter:image:alt" content="Identité visuelle Terminal">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/site.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://terminal.rutsumello.workers.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Applications",
+          "item": "https://terminal.rutsumello.workers.dev/apps/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-map"></div>
+    <div class="ambient-light"></div>
+    <div class="ambient-grain"></div>
+  </div>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Terminal, accueil"><b>/&gt;</b>Terminal<span class="brand-cursor" aria-hidden="true">_</span></a>
+      <nav aria-label="Navigation principale">
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/a-propos/">À propos</a></li>
+          <li><a href="/projets/">Projets</a></li>
+          <li><a href="/apps/" aria-current="page">Apps</a></li>
+          <li><a href="/jeux/">Jeux</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
+        </ul>
+      </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+        <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false" hidden>Pause décor</button>
+      </div>
+    </div>
+  </header>
+  <main id="contenu" class="wrap">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Applications</span></nav>
+    <header class="page-heading">
+      <p class="kicker">ls ./apps</p>
+      <h1>Applications</h1>
+      <p class="lead">
+        Les outils que je développe et distribue, avec téléchargement, documentation et limites
+        connues.
+      </p>
+    </header>
+      <article class="app-showcase">
+        <div class="app-visual">
+          <div class="art-caption"><span>RUX / NETWORK INVENTORY</span><span>IPv4</span></div>
+          <img src="/assets/rux-diagram.svg" width="600" height="290" alt="Illustration schématique d’un inventaire IPv4, pas une capture de RUX" loading="lazy">
+          <p class="visual-note">Illustration / données fictives</p>
+        </div>
+        <div class="app-copy">
+          <p class="kicker">WINDOWS x64 / APPLICATION</p>
+          <h2><a href="/apps/rux-netmap/">RUX NetMap</a></h2>
+          <p class="lead">
+            Inventaire et cartographie des appareils IPv4 sur un réseau local, avec historique et
+            exports CSV et JSON.
+          </p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Qt</span><span class="chip">SQLite</span><span class="chip">v1.1.0</span></div>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/RufusTheDwarf/Rux-NetMap/releases/latest/download/RUX.exe">Télécharger RUX.exe (Windows x64)</a>
+          <a class="btn" href="https://github.com/RufusTheDwarf/Rux-NetMap/releases/latest/download/RUX.exe.sha256">SHA-256 du téléchargement</a>
+        </div>
+          <a class="card-link" href="/apps/rux-netmap/">Documentation et fiche technique ↗</a>
+        </div>
+      </article>
+  </main>
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
+      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+    </div>
+  </footer>
+</body>
+</html>

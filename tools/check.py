@@ -121,7 +121,9 @@ def main():
     assert set(sitemap) == urls and len(sitemap) == len(urls), 'Sitemap mismatch'
     assert f'Sitemap: {BASE}/sitemap.xml' in (PUBLIC / 'robots.txt').read_text()
     project_count = len(json.loads((ROOT / 'src/projects.json').read_text(encoding='utf-8')))
-    assert len([path for path in pages if path.startswith('/projets/') and path != '/projets/']) == project_count
+    assert len([path for path in pages if (path.startswith('/projets/') and path != '/projets/') or (path.startswith('/apps/') and path != '/apps/')]) == project_count
+    assert '/apps/rux-netmap/' in pages and '/projets/rux-netmap/' not in pages
+    assert '/projets/rux-netmap/ /apps/rux-netmap/ 301' in (PUBLIC / '_redirects').read_text()
     print(f'OK: {len(pages)} HTML pages, {len(urls)} indexable URLs, {project_count} projects, {link_count} internal link/asset references.')
 
 

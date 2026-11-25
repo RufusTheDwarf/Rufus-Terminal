@@ -128,7 +128,8 @@
         "label": "SHA-256 du téléchargement",
         "asset": "RUX.exe.sha256"
       }
-    ]
+    ],
+    "section": "apps"
   },
   {
     "slug": "netrecon-lab",
@@ -269,10 +270,10 @@
   },
   {
     "slug": "rufus-terminal",
-    "name": "Rufus Terminal",
+    "name": "Terminal",
     "repo": "Rufus-Terminal",
     "category": "dev",
-    "status": "En évolution",
+    "status": "v0.5.0",
     "stack": [
       "HTML",
       "CSS",
@@ -281,7 +282,7 @@
       "Cloudflare Workers"
     ],
     "summary": "Mon portfolio technique : catalogue de projets, ressources, journal de développement et terminal interactif.",
-    "context": "Rufus Terminal est un espace personnel inspiré des interfaces en ligne de commande. Il rassemble les projets et les connaissances que je partage sur GitHub. La structure multipage de cette version sépare le contenu des projets, les modèles de pages et les ressources visuelles.",
+    "context": "Terminal est un espace personnel inspiré des interfaces en ligne de commande. Il rassemble les projets et les connaissances que je partage sur GitHub. La structure multipage de cette version sépare le contenu des projets, les modèles de pages et les ressources visuelles.",
     "details": [
       "Pages HTML statiques accessibles sans JavaScript.",
       "Terminal de navigation et filtres de catalogue côté navigateur.",

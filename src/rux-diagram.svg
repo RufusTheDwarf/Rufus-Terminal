@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 290" role="img" aria-label="Illustrative IPv4 address map">
+  <rect x="2" y="2" width="596" height="286" rx="9" fill="#233b30" stroke="#698b70"/>
+  <path d="M2 38H598" stroke="#698b70"/>
+  <g fill="#c4d9b3" font-family="monospace" font-size="11">
+    <text x="16" y="24">NETWORK / 192.168.42.0/26</text><text x="481" y="24">DEMO DATA</text>
+  </g>
+  <rect x="16" y="56" width="30" height="31" rx="3" fill="#789a73" stroke="#577964"/>
+  <text x="31" y="76" text-anchor="middle" fill="#14281d" font-family="monospace" font-size="12">01</text>
+  <rect x="52" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="67" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">02</text>
+  <rect x="88" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="103" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">03</text>
+  <rect x="124" y="56" width="30" height="31" rx="3" fill="#789a73" stroke="#577964"/>
+  <text x="139" y="76" text-anchor="middle" fill="#14281d" font-family="monospace" font-size="12">04</text>
+  <rect x="160" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="175" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">05</text>
+  <rect x="196" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="211" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">06</text>
+  <rect x="232" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="247" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">07</text>
+  <rect x="268" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="283" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">08</text>
+  <rect x="304" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="319" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">09</text>
+  <rect x="340" y="56" width="30" height="31" rx="3" fill="#789a73" stroke="#d1e1b7"/>
+  <text x="355" y="76" text-anchor="middle" fill="#14281d" font-family="monospace" font-size="12">10</text>
+  <rect x="376" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="391" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">11</text>
+  <rect x="412" y="56" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="427" y="76" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">12</text>
+  <rect x="16" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="31" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">13</text>
+  <rect x="52" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="67" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">14</text>
+  <rect x="88" y="96" width="30" height="31" rx="3" fill="#789a73" stroke="#577964"/>
+  <text x="103" y="116" text-anchor="middle" fill="#14281d" font-family="monospace" font-size="12">15</text>
+  <rect x="124" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="139" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">16</text>
+  <rect x="160" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="175" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">17</text>
+  <rect x="196" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="211" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">18</text>
+  <rect x="232" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="247" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">19</text>
+  <rect x="268" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="283" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">20</text>
+  <rect x="304" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="319" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">21</text>
+  <rect x="340" y="96" width="30" height="31" rx="3" fill="#789a73" stroke="#577964"/>
+  <text x="355" y="116" text-anchor="middle" fill="#14281d" font-family="monospace" font-size="12">22</text>
+  <rect x="376" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="391" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">23</text>
+  <rect x="412" y="96" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="427" y="116" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">24</text>
+  <rect x="16" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="31" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">25</text>
+  <rect x="52" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="67" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">26</text>
+  <rect x="88" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="103" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">27</text>
+  <rect x="124" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="139" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">28</text>
+  <rect x="160" y="136" width="30" height="31" rx="3" fill="#789a73" stroke="#577964"/>
+  <text x="175" y="156" text-anchor="middle" fill="#14281d" font-family="monospace" font-size="12">29</text>
+  <rect x="196" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="211" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">30</text>
+  <rect x="232" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="247" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">31</text>
+  <rect x="268" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="283" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">32</text>
+  <rect x="304" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="319" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">33</text>
+  <rect x="340" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="355" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">34</text>
+  <rect x="376" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="391" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">35</text>
+  <rect x="412" y="136" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="427" y="156" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">36</text>
+  <rect x="16" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="31" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">37</text>
+  <rect x="52" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="67" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">38</text>
+  <rect x="88" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="103" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">39</text>
+  <rect x="124" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="139" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">40</text>
+  <rect x="160" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="175" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">41</text>
+  <rect x="196" y="176" width="30" height="31" rx="3" fill="#789a73" stroke="#577964"/>
+  <text x="211" y="196" text-anchor="middle" fill="#14281d" font-family="monospace" font-size="12">42</text>
+  <rect x="232" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="247" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">43</text>
+  <rect x="268" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="283" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">44</text>
+  <rect x="304" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="319" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">45</text>
+  <rect x="340" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="355" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">46</text>
+  <rect x="376" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="391" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">47</text>
+  <rect x="412" y="176" width="30" height="31" rx="3" fill="#2b493a" stroke="#577964"/>
+  <text x="427" y="196" text-anchor="middle" fill="#b6cfb2" font-family="monospace" font-size="12">48</text>
+  <path d="M462 56v194" stroke="#698b70"/>
+  <g font-family="monospace" font-size="11" fill="#c4d9b3">
+    <text x="476" y="75">SELECTED</text><text x="476" y="97">192.168.42.10</text><text x="476" y="128">METHOD / ARP</text><text x="476" y="151">STATE / SEEN</text><text x="476" y="194">7 OBSERVED</text><text x="476" y="218">48 CELLS SHOWN</text>
+    <text x="16" y="259">● OBSERVED / □ NO OBSERVATION</text>
+  </g>
+</svg>

@@ -7,24 +7,24 @@
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Guides et ressources techniques | Rufus Terminal</title>
+  <title>Guides et ressources techniques | /&gt;Terminal</title>
   <meta name="description" content="Documentation pratique sur Git, SSH, l’hébergement de serveurs Minecraft et la conception de tycoons Roblox.">
-  <link rel="canonical" href="https://rufus-terminal-preview.rutsumello.workers.dev/guides/">
-  <meta property="og:url" content="https://rufus-terminal-preview.rutsumello.workers.dev/guides/">
+  <link rel="canonical" href="https://terminal.rutsumello.workers.dev/guides/">
+  <meta property="og:url" content="https://terminal.rutsumello.workers.dev/guides/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CH">
-  <meta property="og:site_name" content="Rufus Terminal">
-  <meta property="og:title" content="Guides et ressources techniques | Rufus Terminal">
+  <meta property="og:site_name" content="Terminal">
+  <meta property="og:title" content="Guides et ressources techniques | Terminal">
   <meta property="og:description" content="Documentation pratique sur Git, SSH, l’hébergement de serveurs Minecraft et la conception de tycoons Roblox.">
-  <meta property="og:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
+  <meta property="og:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Terminal : portfolio informatique de RufusTheDwarf">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Guides et ressources techniques | Rufus Terminal">
+  <meta name="twitter:title" content="Guides et ressources techniques | Terminal">
   <meta name="twitter:description" content="Documentation pratique sur Git, SSH, l’hébergement de serveurs Minecraft et la conception de tycoons Roblox.">
-  <meta name="twitter:image" content="https://rufus-terminal-preview.rutsumello.workers.dev/assets/social-card.png">
-  <meta name="twitter:image:alt" content="Identité visuelle Rufus Terminal">
+  <meta name="twitter:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
+  <meta name="twitter:image:alt" content="Identité visuelle Terminal">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -42,13 +42,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Accueil",
-          "item": "https://rufus-terminal-preview.rutsumello.workers.dev/"
+          "item": "https://terminal.rutsumello.workers.dev/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Guides et ressources techniques",
-          "item": "https://rufus-terminal-preview.rutsumello.workers.dev/guides/"
+          "item": "https://terminal.rutsumello.workers.dev/guides/"
         }
       ]
     }
@@ -58,15 +58,20 @@
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="ambient" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-map"></div>
+    <div class="ambient-light"></div>
+    <div class="ambient-grain"></div>
+  </div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
+      <a class="brand" href="/" aria-label="Terminal, accueil"><b>/&gt;</b>Terminal<span class="brand-cursor" aria-hidden="true">_</span></a>
       <nav aria-label="Navigation principale">
         <ul>
           <li><a href="/">Accueil</a></li>
           <li><a href="/a-propos/">À propos</a></li>
           <li><a href="/projets/">Projets</a></li>
+          <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/" aria-current="page">Guides</a></li>
           <li><a href="/devlog/">DevLog</a></li>
@@ -80,6 +85,7 @@
           <option value="dark">Sombre</option>
           <option value="light">Clair</option>
         </select>
+        <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false" hidden>Pause décor</button>
       </div>
     </div>
   </header>
@@ -152,7 +158,7 @@
   <footer class="footer">
     <div class="wrap">
       <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.4.1 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
     </div>
   </footer>
 </body>

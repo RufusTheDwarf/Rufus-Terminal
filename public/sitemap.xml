@@ -1,75 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/cloud-project-k3s/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/apps/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/docker-network-toolkit/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/cloud-project-k3s/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/openssh-security-lab/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/docker-network-toolkit/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/rux-netmap/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/openssh-security-lab/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/netrecon-lab/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/apps/rux-netmap/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/sql-server-project/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/netrecon-lab/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/skyconnect-db/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/sql-server-project/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/couteau-suisse/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/skyconnect-db/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/chococoa-web/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/couteau-suisse/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/rufus-terminal/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/chococoa-web/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/parfum-empire/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/rufus-terminal/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/code-quest/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/parfum-empire/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/flash-archive/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/code-quest/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/roblox-tycoon-blueprint/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/flash-archive/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/minecraft-server-template/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/roblox-tycoon-blueprint/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/minecraft-server/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/minecraft-server-template/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/git-signed-commits-windows/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/minecraft-server/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/projets/verified-by-default/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/git-signed-commits-windows/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/a-propos/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/projets/verified-by-default/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/jeux/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/a-propos/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/guides/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/jeux/</loc>
   </url>
   <url>
-    <loc>https://rufus-terminal-preview.rutsumello.workers.dev/devlog/</loc>
+    <loc>https://terminal.rutsumello.workers.dev/guides/</loc>
+  </url>
+  <url>
+    <loc>https://terminal.rutsumello.workers.dev/devlog/</loc>
   </url>
 </urlset>

@@ -56,7 +56,7 @@
       ["home", "/"], ["accueil", "/"], ["about", "/a-propos/"],
       ["apropos", "/a-propos/"], ["skills", "/#competences"],
       ["competences", "/#competences"], ["projects", "/projets/"],
-      ["projets", "/projets/"], ["games", "/jeux/"], ["jeux", "/jeux/"],
+      ["projets", "/projets/"], ["apps", "/apps/"], ["applications", "/apps/"], ["games", "/jeux/"], ["jeux", "/jeux/"],
       ["guides", "/guides/"], ["devlog", "/devlog/"],
       ["contact", "/#streams"], ["stream", "/#streams"], ["streams", "/#streams"]
     ]);
@@ -76,11 +76,11 @@
       }
       append(`guest:~$ ${raw}`, true);
       if (command === "help") {
-        append("help · whoami · ls · skills · projects · games · guides · devlog · contact · github · clear\nsearch <mot> · filter <all|infra|security|dev|games|guides>");
+        append("help · whoami · ls · skills · projects · apps · games · guides · devlog · contact · github · clear\nsearch <mot> · filter <all|infra|security|dev|games|guides>");
       } else if (command === "whoami") {
         append("RufusTheDwarf : étudiant en informatique et développeur indépendant.");
       } else if (command === "ls") {
-        append("a-propos/  projets/  jeux/  guides/  devlog/");
+        append("a-propos/  projets/  apps/  jeux/  guides/  devlog/");
       } else if (command === "github") {
         const link = document.createElement("a");
         link.href = "https://github.com/RufusTheDwarf";
@@ -121,6 +121,29 @@
     terminal.hidden = false;
   }
 
+  // Pause the decorative background without affecting navigation or the terminal.
+  const motionToggle = document.querySelector("#motion-toggle");
+  if (motionToggle) {
+    const root = document.documentElement;
+    let paused = false;
+    try {
+      paused = localStorage.getItem("terminal-motion") === "paused";
+    } catch (_) { /* Storage may be disabled. */ }
+    function updateMotion() {
+      root.toggleAttribute("data-motion-paused", paused);
+      motionToggle.setAttribute("aria-pressed", String(paused));
+      motionToggle.textContent = paused ? "Animer décor" : "Pause décor";
+    }
+    updateMotion();
+    motionToggle.hidden = false;
+    motionToggle.addEventListener("click", () => {
+      paused = !paused;
+      try { localStorage.setItem("terminal-motion", paused ? "paused" : "active"); }
+      catch (_) { /* Keep the current page preference. */ }
+      updateMotion();
+    });
+  }
+
   // The same preference applies to all pages on this origin.
   const themeSelect = document.querySelector("#theme-select");
   if (themeSelect) {
@@ -129,7 +152,7 @@
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     const syncThemeColor = () => {
       const light = root.dataset.theme === "light" || (!root.dataset.theme && systemTheme.matches);
-      if (themeMeta) themeMeta.content = light ? "#e6e6d4" : "#19241c";
+      if (themeMeta) themeMeta.content = light ? "#d9ddc7" : "#15231e";
     };
     themeSelect.value = root.dataset.theme || "auto";
     themeSelect.closest(".theme-control").hidden = false;

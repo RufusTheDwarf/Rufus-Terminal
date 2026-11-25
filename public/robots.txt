@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rufus-terminal-preview.rutsumello.workers.dev/sitemap.xml
+Sitemap: https://terminal.rutsumello.workers.dev/sitemap.xml

@@ -18,11 +18,13 @@ if urlparse(BASE).scheme != "https" or not urlparse(BASE).netloc or urlparse(BAS
 GITHUB = SITE["github"]
 VERSION = SITE["version"]
 BY_SLUG = {p["slug"]: p for p in PROJECTS}
+APPS = [p for p in PROJECTS if p.get("section") == "apps"]
+CATALOGUE = [p for p in PROJECTS if p.get("section") != "apps"]
 CATEGORIES = {
     "infra": "Infrastructure", "security": "Sécurité & réseau",
     "dev": "Développement", "games": "Jeux & préservation", "guides": "Guides"
 }
-NAV = [("/", "Accueil"), ("/a-propos/", "À propos"), ("/projets/", "Projets"),
+NAV = [("/", "Accueil"), ("/a-propos/", "À propos"), ("/projets/", "Projets"), ("/apps/", "Apps"),
        ("/jeux/", "Jeux"), ("/guides/", "Guides"), ("/devlog/", "DevLog")]
 URLS = []
 
@@ -32,7 +34,8 @@ def e(value):
 
 
 def href(p):
-    return f'/projets/{p["slug"]}/'
+    section = 'apps' if p.get('section') == 'apps' else 'projets'
+    return f'/{section}/{p["slug"]}/'
 
 
 def repo(p):
@@ -104,22 +107,22 @@ def layout(path, title, description, content, *, schema=None, index=True, nav_pa
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="{e(SITE['author'])}">
   <meta name="robots" content="{'index, follow, max-image-preview:large' if index else 'noindex, follow'}">
-  <title>{e(title)}</title>
+  <title>{e("/>Terminal" if path == "/" else title.replace(" | Rufus Terminal", " | />Terminal"))}</title>
   <meta name="description" content="{e(description)}">
 {canonical_meta}  <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CH">
-  <meta property="og:site_name" content="Rufus Terminal">
-  <meta property="og:title" content="{e(title)}">
+  <meta property="og:site_name" content="Terminal">
+  <meta property="og:title" content="{e(title.replace("Rufus Terminal", "Terminal"))}">
   <meta property="og:description" content="{e(description)}">
   <meta property="og:image" content="{e(BASE)}/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rufus Terminal : portfolio informatique sur fond de terminal vert et noir">
+  <meta property="og:image:alt" content="Terminal : portfolio informatique de RufusTheDwarf">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{e(title)}">
+  <meta name="twitter:title" content="{e(title.replace("Rufus Terminal", "Terminal"))}">
   <meta name="twitter:description" content="{e(description)}">
   <meta name="twitter:image" content="{e(BASE)}/assets/social-card.png">
-  <meta name="twitter:image:alt" content="Identité visuelle Rufus Terminal">
+  <meta name="twitter:image:alt" content="Identité visuelle Terminal">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -129,10 +132,14 @@ def layout(path, title, description, content, *, schema=None, index=True, nav_pa
 {structured}</head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <div class="ambient" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-map"></div>
+    <div class="ambient-light"></div>
+    <div class="ambient-grain"></div>
+  </div>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Rufus Terminal, accueil"><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i></span><b>&gt;_</b> Rufus Terminal</a>
+      <a class="brand" href="/" aria-label="Terminal, accueil"><b>/&gt;</b>Terminal<span class="brand-cursor" aria-hidden="true">_</span></a>
       <nav aria-label="Navigation principale">
         <ul>
 {nav}
@@ -146,6 +153,7 @@ def layout(path, title, description, content, *, schema=None, index=True, nav_pa
           <option value="dark">Sombre</option>
           <option value="light">Clair</option>
         </select>
+        <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false" hidden>Pause décor</button>
       </div>
     </div>
   </header>
@@ -205,7 +213,7 @@ def page_heading(items, kicker, title, description):
     return f'''    {crumbs(items)}
     <header class="page-heading">
       <p class="kicker">{e(kicker)}</p>
-      <h1>{e(title)}</h1>
+      <h1>{e(title.replace("Rufus Terminal", "Terminal"))}</h1>
       <p class="lead">{e(description)}</p>
     </header>'''
 
@@ -218,26 +226,59 @@ PERSON = {
 }
 
 
+def app_showcase(heading="h3"):
+    """Featured application, with download links from the curated catalogue."""
+    p = BY_SLUG['rux-netmap']
+    return f'''      <article class="app-showcase">
+        <div class="app-visual">
+          <div class="art-caption"><span>RUX / NETWORK INVENTORY</span><span>IPv4</span></div>
+          <img src="/assets/rux-diagram.svg" width="600" height="290" alt="Illustration schématique d’un inventaire IPv4, pas une capture de RUX" loading="lazy">
+          <p class="visual-note">Illustration / données fictives</p>
+        </div>
+        <div class="app-copy">
+          <p class="kicker">WINDOWS x64 / APPLICATION</p>
+          <{heading}><a href="{href(p)}">{e(p['name'])}</a></{heading}>
+          <p class="lead">{e(p['summary'])}</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Qt</span><span class="chip">SQLite</span><span class="chip">v1.1.0</span></div>
+{download_links(p)}          <a class="card-link" href="{href(p)}">Documentation et fiche technique ↗</a>
+        </div>
+      </article>'''
+
+
+def apps_page():
+    items = [('/', 'Accueil'), ('/apps/', 'Applications')]
+    body = page_heading(items, 'ls ./apps', 'Applications', 'Les outils que je développe et distribue, avec téléchargement, documentation et limites connues.')
+    body += '\n' + app_showcase('h2')
+    extra = [p for p in APPS if p['slug'] != 'rux-netmap']
+    if extra:
+        body += '\n' + grid(extra, 2)
+    emit('/apps/', 'Applications | Rufus Terminal', 'Applications de RufusTheDwarf : téléchargement de RUX NetMap, inventaire réseau IPv4 et documentation.', body, schema=[breadcrumb_schema(items)])
+
+
 def home():
     body = f'''    <section class="hero home-hero" id="accueil" aria-labelledby="hero-title">
-      <div>
-        <p class="kicker">System online // portfolio personnel</p>
-        <h1 id="hero-title">Rufus <span class="accent">Terminal<span class="cursor" aria-hidden="true">_</span></span></h1>
-        <p class="hero-subtitle">Build. Learn. Share. Improve.</p>
+      <div class="hero-copy">
+        <p class="kicker"><span class="online-dot" aria-hidden="true"></span> SYSTEM ONLINE <span class="kicker-divider">/</span> ESPACE PERSONNEL</p>
+        <h1 id="hero-title"><span class="hero-prompt">/&gt;</span>Terminal<span class="cursor" aria-hidden="true">_</span></h1>
+        <p class="hero-subtitle">RufusTheDwarf <span aria-hidden="true">/</span> Build. Learn. Share. Improve.</p>
         <p class="lead">Étudiant en informatique et développeur indépendant. J’explore les systèmes, les réseaux et la sécurité, je construis des applications et des jeux, et je partage ce que j’apprends.</p>
         <div class="actions">
           <a class="btn primary" href="/projets/">Explorer mes projets ↗</a>
-          <a class="btn" href="{GITHUB}">Mon GitHub ↗</a>
+          <a class="btn" href="/apps/">Applications ↗</a>
+          <a class="btn quiet" href="{GITHUB}">GitHub ↗</a>
         </div>
         <div class="facts">
-          <span><strong>{len(PROJECTS)}</strong> projets et ressources</span>
+          <span><strong>{len(CATALOGUE):02}</strong> projets</span>
+          <span><strong>{len(APPS):02}</strong> application</span>
           <span><strong>6</strong> domaines techniques</span>
           <span><strong>{VERSION}</strong> build</span>
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
+        <div class="art-caption"><span>FIELD STATION / 01</span><span>● SIGNAL OK</span></div>
         <img class="art-dark" src="/assets/forest-terminal.svg" alt="" width="560" height="330" fetchpriority="low">
         <img class="art-light" src="/assets/day-terminal.svg" alt="" width="560" height="330" fetchpriority="low">
+        <div class="art-caption art-bottom"><span>ENVIRONMENT / SAGE</span><span>MODE / LOCAL</span></div>
       </div>
       <div class="terminal" aria-label="Terminal interactif">
         <div class="term-head" aria-hidden="true">
@@ -245,7 +286,7 @@ def home():
           <span class="term-label">guest@rufus / portfolio</span>
         </div>
         <div class="term-body">
-          <p class="accent">RUFUS TERMINAL / v{VERSION}</p>
+          <p class="accent">TERMINAL / v{VERSION}</p>
           <p class="muted">Build. Learn. Share. Improve.</p>
           <p class="muted">Tape <strong class="accent">help</strong> pour voir les commandes.</p>
           <div id="terminal-output" class="term-output" role="log" aria-label="Résultats du terminal" aria-live="polite"></div>
@@ -258,12 +299,22 @@ def home():
         </div>
       </div>
     </section>
+    <section class="section app-section" id="applications">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">/ bin</p>
+          <h2>Applications</h2>
+        </div>
+        <a class="card-link" href="/apps/">Toutes les applications ↗</a>
+      </div>
+      {app_showcase()}
+    </section>
     <section class="section" id="projets">
       <p class="kicker">01 // ls projects</p>
       <h2>Projets sélectionnés</h2>
       <p class="intro">Une sélection de mes travaux techniques. Chaque fiche précise le contexte, les technologies, les apprentissages et les limites connues.</p>
-{grid([p for p in PROJECTS if p.get('featured')])}
-      <a class="btn primary" href="/projets/">Voir les {len(PROJECTS)} projets et ressources ↗</a>
+{grid([p for p in CATALOGUE if p.get('featured')])}
+      <a class="btn primary" href="/projets/">Voir les {len(CATALOGUE)} projets et ressources ↗</a>
     </section>
     <section class="section" id="apropos">
       <p class="kicker">02 // whoami</p>
@@ -318,8 +369,8 @@ def home():
       <p class="intro">Retrouve mes dépôts, ouvre une issue pour signaler un problème ou propose une amélioration. Les liens de streaming seront ajoutés lorsqu’ils seront disponibles.</p>
       <a class="btn" href="{GITHUB}">Profil GitHub ↗</a>
     </section>'''
-    emit('/', 'Rufus Terminal | Informatique, réseau et développement', 'Portfolio de RufusTheDwarf : Linux, Docker, K3s, cybersécurité, développement, jeux vidéo et guides techniques.', body,
-         schema=[{"@type": "WebSite", "@id": BASE + "/#website", "name": "Rufus Terminal", "url": BASE + "/", "inLanguage": "fr-CH", "publisher": {"@id": PERSON["@id"]}}, PERSON])
+    emit('/', 'Terminal | Informatique, réseau et développement', 'Portfolio de RufusTheDwarf : Linux, Docker, K3s, cybersécurité, développement, jeux vidéo et guides techniques.', body,
+         schema=[{"@type": "WebSite", "@id": BASE + "/#website", "name": "Terminal", "url": BASE + "/", "inLanguage": "fr-CH", "publisher": {"@id": PERSON["@id"]}}, PERSON])
 
 
 def catalogue():
@@ -335,16 +386,18 @@ def catalogue():
 {buttons}
       </div>
     </div>
-    <p class="result-count" id="result-count" role="status">{len(PROJECTS)} projets et ressources</p>
+    <p class="result-count" id="result-count" role="status">{len(CATALOGUE)} projets et ressources</p>
     <p id="empty" hidden>Aucun projet ne correspond à cette recherche.</p>
-{grid(PROJECTS, 2)}'''
+{grid(CATALOGUE, 2)}'''
     emit('/projets/', 'Projets informatiques | Rufus Terminal', 'Explore les projets de RufusTheDwarf : laboratoires Linux, Docker et K3s, sécurité, logiciels, bases de données et jeux.', body, schema=[breadcrumb_schema(items)])
 
 
 def project_pages():
     for p in PROJECTS:
         path = href(p)
-        items = [('/', 'Accueil'), ('/projets/', 'Projets'), (path, p['name'])]
+        parent = '/apps/' if p.get('section') == 'apps' else '/projets/'
+        parent_label = 'Applications' if parent == '/apps/' else 'Projets'
+        items = [('/', 'Accueil'), (parent, parent_label), (path, p['name'])]
         body = page_heading(items, CATEGORIES[p['category']] + ' // ' + p['status'], p['name'], p['summary'])
         bullets = '\n'.join(f'          <li>{e(text)}</li>' for text in p['details'])
         chips = '\n'.join(f'          <span class="chip">{e(t)}</span>' for t in p['stack'])
@@ -377,14 +430,14 @@ def project_pages():
           </dd>
           <dt>Source</dt><dd><a href="{e(repo(p))}">Dépôt GitHub ↗</a></dd>
         </dl>
-        <a class="btn" href="/projets/">Retour au catalogue</a>
+        <a class="btn" href="{parent}">Retour au catalogue</a>
       </aside>
     </article>
     <section class="related">
       <h2>Projets associés</h2>
 {grid([BY_SLUG[s] for s in p['related']])}
     </section>'''
-        emit(path, p['name'] + ' | Rufus Terminal', p['summary'], body, nav_path='/projets/', schema=[breadcrumb_schema(items), {"@type": "WebPage", "name": p['name'], "url": BASE + path, "description": p['summary'], "inLanguage": "fr-CH", "isPartOf": {"@id": BASE + "/#website"}}])
+        emit(path, p['name'] + ' | Terminal', p['summary'], body, nav_path=parent, schema=[breadcrumb_schema(items), {"@type": "WebPage", "name": p['name'], "url": BASE + path, "description": p['summary'], "inLanguage": "fr-CH", "isPartOf": {"@id": BASE + "/#website"}}])
 
 
 def collection(path, title, description, projects, extra=''):
@@ -420,8 +473,10 @@ def about():
 def devlog():
     path = '/devlog/'
     items = [('/', 'Accueil'), (path, 'DevLog')]
-    body = page_heading(items, 'git log --oneline', 'Journal de développement', 'Les décisions techniques et évolutions du portfolio Rufus Terminal, ainsi que les historiques de mes projets.') + f'''
+    body = page_heading(items, 'git log --oneline', 'Journal de développement', 'Les décisions techniques et évolutions du portfolio Terminal, ainsi que les historiques de mes projets.') + f'''
     <div class="prose">
+      <h2>v0.5.0 : Terminal / Workstation</h2>
+      <p>Nouvelle interface large, décor animé désactivable, surfaces vitrées, identité Terminal et espace Applications. RUX dispose de sa propre adresse et de liens de téléchargement.</p>
       <h2>v0.4.1 : Catalogue et qualité</h2>
       <p>Ajout de RUX NetMap et SkyConnect-DB, téléchargement de RUX depuis GitHub Releases,
         contrôle des dépôts publics et restauration des outils de qualité et de formatage.</p>
@@ -444,7 +499,7 @@ def devlog():
       <p>Les commits et issues sur <a href="{GITHUB}">GitHub</a> restent la référence pour suivre les changements réels dans chaque dépôt. Les pages du site sont des synthèses éditoriales. Un contrôle périodique signale les écarts avec les dépôts publics, sans publier automatiquement de contenu non relu.</p>
       <p><a href="{GITHUB}/Rufus-Terminal/commits/main/">Historique du portfolio ↗</a> · <a href="/projets/">Catalogue des projets</a></p>
     </div>'''
-    emit(path, 'Journal de développement | Rufus Terminal', 'Suivre les versions de Rufus Terminal, son architecture web et les évolutions de mes projets informatiques.', body, schema=[breadcrumb_schema(items)])
+    emit(path, 'Journal de développement | Rufus Terminal', 'Suivre les versions de Terminal, son architecture web et les évolutions de mes projets informatiques.', body, schema=[breadcrumb_schema(items)])
 
 
 def main():
@@ -455,10 +510,16 @@ def main():
     (PUBLIC / 'assets').mkdir(exist_ok=True)
     # Update generated pages in place. The checker detects obsolete project pages;
     # remove them explicitly when deleting an entry from the catalogue.
-    for name in ('style.css', 'site.js', 'theme.js', 'forest-terminal.svg', 'day-terminal.svg'):
+    for name in ('style.css', 'site.js', 'theme.js', 'forest-terminal.svg', 'day-terminal.svg', 'ambient-map.svg', 'rux-diagram.svg'):
         shutil.copyfile(ROOT / 'src' / name, PUBLIC / 'assets' / name)
     home()
     catalogue()
+    apps_page()
+    # Remove the obsolete generated project page after moving RUX to /apps/.
+    old_rux = PUBLIC / 'projets/rux-netmap/index.html'
+    if old_rux.exists():
+        old_rux.unlink()
+    write(PUBLIC / '_redirects', '/projets/rux-netmap/ /apps/rux-netmap/ 301\n/projets/rux-netmap /apps/rux-netmap/ 301\n/projets/rux-netmap/index.html /apps/rux-netmap/ 301')
     project_pages()
     about()
     collection('/jeux/', 'Jeux et game development', 'Création de jeux, RPG éducatifs, tycoons et préservation numérique : mes projets et expériences autour du jeu.', [p for p in PROJECTS if p['category'] == 'games'] + [BY_SLUG['roblox-tycoon-blueprint']])

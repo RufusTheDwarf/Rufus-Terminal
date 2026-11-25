@@ -11,6 +11,8 @@ from playwright.sync_api import sync_playwright
 PUBLIC = Path(__file__).resolve().parents[1] / 'public'
 PROJECTS = json.loads((PUBLIC.parent / "src/projects.json").read_text(encoding="utf-8"))
 CSS = (PUBLIC / 'assets/style.css').read_text(encoding='utf-8')
+MAP = base64.b64encode((PUBLIC / 'assets/ambient-map.svg').read_bytes()).decode('ascii')
+CSS = CSS.replace('./ambient-map.svg', f'data:image/svg+xml;base64,{MAP}')
 JS = (PUBLIC / 'assets/site.js').read_text(encoding='utf-8')
 THEME = (PUBLIC / 'assets/theme.js').read_text(encoding='utf-8')
 
@@ -20,7 +22,7 @@ def render(page, file, javascript=True):
     html = html.replace('<link rel="stylesheet" href="/assets/style.css">', f'<style>{CSS}</style>')
     html = html.replace('<script src="/assets/site.js" defer></script>', '')
     html = html.replace('<script src="/assets/theme.js"></script>', '')
-    for name in ('forest-terminal.svg', 'day-terminal.svg'):
+    for name in ('forest-terminal.svg', 'day-terminal.svg', 'rux-diagram.svg'):
         data = base64.b64encode((PUBLIC / 'assets' / name).read_bytes()).decode('ascii')
         html = html.replace(f'/assets/{name}', f'data:image/svg+xml;base64,{data}')
     if javascript:
@@ -55,9 +57,9 @@ def main():
         page = browser.new_page()
         page.on('pageerror', lambda error: errors.append(str(error)))
         render(page, PUBLIC / 'projets/index.html')
-        assert page.locator('.project:visible').count() == len(PROJECTS)
+        assert page.locator('.project:visible').count() == sum(p.get("section") != "apps" for p in PROJECTS)
         page.locator('[data-filter="security"]').click()
-        assert page.locator('.project:visible').count() == sum(p["category"] == "security" for p in PROJECTS)
+        assert page.locator('.project:visible').count() == sum(p["category"] == "security" and p.get("section") != "apps" for p in PROJECTS)
         page.locator('[data-filter="all"]').click()
         page.locator('#project-search').fill('parfum')
         assert page.locator('.project:visible').count() == 1
@@ -88,6 +90,16 @@ def main():
         assert page.locator('.art-dark').is_visible()
         page.select_option('#theme-select', 'auto')
         assert page.locator('html').get_attribute('data-theme') is None
+        page.locator('#motion-toggle').click()
+        assert page.locator('html').get_attribute('data-motion-paused') is not None
+        assert page.locator('#motion-toggle').get_attribute('aria-pressed') == 'true'
+        page.locator('#motion-toggle').click()
+        assert page.locator('html').get_attribute('data-motion-paused') is None
+        render(page, PUBLIC / 'apps/index.html')
+        assert page.locator('a[href$="/RUX.exe"]').count() == 1
+        assert page.locator('a[href="/apps/rux-netmap/"]').count() >= 1
+        render(page, PUBLIC / 'index.html')
+        assert page.title() == '/>Terminal'
         if args.screenshot:
             page.select_option('#theme-select', 'dark')
             page.locator('#theme-select').blur()
@@ -98,7 +110,7 @@ def main():
             page.screenshot(path=str(target.with_name(target.stem + '-light' + target.suffix)))
         nojs = browser.new_page(java_script_enabled=False)
         render(nojs, PUBLIC / 'projets/index.html', javascript=False)
-        assert nojs.locator('.project:visible').count() == len(PROJECTS)
+        assert nojs.locator('.project:visible').count() == sum(p.get("section") != "apps" for p in PROJECTS)
         assert not nojs.locator('#project-controls').is_visible()
         assert not errors, errors
         browser.close()

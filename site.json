@@ -1,7 +1,7 @@
 {
-  "name": "Rufus Terminal",
+  "name": "Terminal",
   "author": "RufusTheDwarf",
-  "version": "0.4.1",
-  "siteUrl": "https://rufus-terminal-preview.rutsumello.workers.dev",
+  "version": "0.5.0",
+  "siteUrl": "https://terminal.rutsumello.workers.dev",
   "github": "https://github.com/RufusTheDwarf"
 }
