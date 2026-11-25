@@ -8,21 +8,21 @@
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Terminal | Terminal</title>
-  <meta name="description" content="Mon portfolio technique : catalogue de projets, ressources, journal de développement et terminal interactif.">
+  <meta name="description" content="Mon espace personnel : projets, journal, jeux, applications et atelier de programmation dans le navigateur.">
   <link rel="canonical" href="https://terminal.rutsumello.workers.dev/projets/rufus-terminal/">
   <meta property="og:url" content="https://terminal.rutsumello.workers.dev/projets/rufus-terminal/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CH">
   <meta property="og:site_name" content="Terminal">
   <meta property="og:title" content="Terminal | Terminal">
-  <meta property="og:description" content="Mon portfolio technique : catalogue de projets, ressources, journal de développement et terminal interactif.">
+  <meta property="og:description" content="Mon espace personnel : projets, journal, jeux, applications et atelier de programmation dans le navigateur.">
   <meta property="og:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Terminal : portfolio informatique de RufusTheDwarf">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Terminal | Terminal">
-  <meta name="twitter:description" content="Mon portfolio technique : catalogue de projets, ressources, journal de développement et terminal interactif.">
+  <meta name="twitter:description" content="Mon espace personnel : projets, journal, jeux, applications et atelier de programmation dans le navigateur.">
   <meta name="twitter:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
   <meta name="twitter:image:alt" content="Identité visuelle Terminal">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,7 +63,7 @@
       "@type": "WebPage",
       "name": "Terminal",
       "url": "https://terminal.rutsumello.workers.dev/projets/rufus-terminal/",
-      "description": "Mon portfolio technique : catalogue de projets, ressources, journal de développement et terminal interactif.",
+      "description": "Mon espace personnel : projets, journal, jeux, applications et atelier de programmation dans le navigateur.",
       "inLanguage": "fr-CH",
       "isPartOf": {
         "@id": "https://terminal.rutsumello.workers.dev/#website"
@@ -72,11 +73,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -90,7 +90,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -108,21 +109,18 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <a href="/projets/">Projets</a> <span aria-hidden="true">/</span> <span aria-current="page">Terminal</span></nav>
     <header class="page-heading">
-      <p class="kicker">Développement // v0.5.0</p>
       <h1>Terminal</h1>
       <p class="lead">
-        Mon portfolio technique : catalogue de projets, ressources, journal de développement et
-        terminal interactif.
+        Mon espace personnel : projets, journal, jeux, applications et atelier de programmation dans
+        le navigateur.
       </p>
     </header>
     <article class="detail-layout">
       <div class="prose">
         <h2>Contexte et objectif</h2>
         <p>
-          Terminal est un espace personnel inspiré des interfaces en ligne de commande. Il rassemble
-          les projets et les connaissances que je partage sur GitHub. La structure multipage de
-          cette version sépare le contenu des projets, les modèles de pages et les ressources
-          visuelles.
+          Terminal rassemble mes projets, mes activités et mes découvertes. Le site propose un
+          journal personnel distinct du journal technique, ainsi qu’un atelier expérimental.
         </p>
         <h2>Contenu du projet</h2>
         <ul>
@@ -132,6 +130,10 @@
           <li>Publication statique avec Cloudflare Workers et génération reproductible des pages.</li>
           <li>Thèmes Retro Glass et Sage Day avec préférence locale.</li>
           <li>Contrôle périodique des écarts entre le catalogue et les dépôts publics GitHub.</li>
+          <li>
+            Atelier expérimental avec fichiers texte temporaires, éditeur et exécution JavaScript;
+            Python via Pyodide à vérifier en production.
+          </li>
         </ul>
         <h2>Ce que j’explore</h2>
         <p>
@@ -154,7 +156,7 @@
         <h2>Fiche technique</h2>
         <dl>
           <dt>Catégorie</dt><dd>Développement</dd>
-          <dt>État documenté</dt><dd>v0.5.0</dd>
+          <dt>État documenté</dt><dd>v0.7.0</dd>
           <dt>Technologies</dt>
           <dd class="chips">
           <span class="chip">HTML</span>
@@ -172,38 +174,46 @@
       <h2>Projets associés</h2>
     <div class="project-grid">
       <article class="project" data-category="dev">
+        <div class="project-name">
+          <h3><a href="/projets/chococoa-web/">Chococoa Web</a></h3>
+          <p class="project-category">Développement</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
+            interactions.
+          </p>
+          <p class="stack">HTML · CSS · JavaScript</p>
+        </div>
         <div class="project-meta">
-          <span>Développement</span>
           <span>Site multipage</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Source ↗</a>
         </div>
-        <h3><a href="/projets/chococoa-web/">Chococoa Web</a></h3>
-        <p>
-          Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
-          interactions.
-        </p>
-        <div class="stack">HTML · CSS · JavaScript</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Code et documentation ↗</a>
       </article>
-      <article class="project featured" data-category="security">
-        <div class="project-meta">
-          <span>Sécurité &amp; réseau</span>
-          <span>Workflow documenté</span>
+      <article class="project" data-category="security">
+        <div class="project-name">
+          <h3><a href="/projets/verified-by-default/">Verified by Default</a></h3>
+          <p class="project-category">Sécurité &amp; réseau</p>
         </div>
-        <h3><a href="/projets/verified-by-default/">Verified by Default</a></h3>
-        <p>
-          Politique de signature et de vérification des commits dans les workflows de développement
-          assistés par IA.
-        </p>
-        <div class="stack">Git · SSH · GPG · GitHub · IA</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/verified-by-default" aria-label="Dépôt GitHub : Verified by Default">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Politique de signature et de vérification des commits dans les workflows de
+            développement assistés par IA.
+          </p>
+          <p class="stack">Git · SSH · GPG · GitHub · IA</p>
+        </div>
+        <div class="project-meta">
+          <span>Workflow documenté</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/verified-by-default" aria-label="Dépôt GitHub : Verified by Default">Source ↗</a>
+        </div>
       </article>
     </div>
     </section>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

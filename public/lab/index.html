@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#19241c">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="RufusTheDwarf">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Atelier virtuel | Terminal</title>
+  <meta name="description" content="Bureau expérimental avec fichiers temporaires, éditeur de texte, JavaScript et Python dans le navigateur.">
+  <link rel="canonical" href="https://terminal.rutsumello.workers.dev/lab/">
+  <meta property="og:url" content="https://terminal.rutsumello.workers.dev/lab/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:site_name" content="Terminal">
+  <meta property="og:title" content="Atelier virtuel | Terminal">
+  <meta property="og:description" content="Bureau expérimental avec fichiers temporaires, éditeur de texte, JavaScript et Python dans le navigateur.">
+  <meta property="og:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Terminal : portfolio informatique de RufusTheDwarf">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atelier virtuel | Terminal">
+  <meta name="twitter:description" content="Bureau expérimental avec fichiers temporaires, éditeur de texte, JavaScript et Python dans le navigateur.">
+  <meta name="twitter:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
+  <meta name="twitter:image:alt" content="Identité visuelle Terminal">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/theme.js"></script>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/site.js" defer></script>
+  <link rel="stylesheet" href="/assets/lab.css">
+  <script src="/assets/lab.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://terminal.rutsumello.workers.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Atelier",
+          "item": "https://terminal.rutsumello.workers.dev/lab/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body class="inner-page">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-map"></div>
+    <div class="ambient-grain"></div>
+  </div>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Terminal, accueil"><b>/&gt;</b>Terminal<span class="brand-cursor" aria-hidden="true">_</span></a>
+      <nav aria-label="Navigation principale">
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/a-propos/">À propos</a></li>
+          <li><a href="/projets/">Projets</a></li>
+          <li><a href="/apps/">Apps</a></li>
+          <li><a href="/jeux/">Jeux</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/" aria-current="page">Atelier</a></li>
+          <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
+        </ul>
+      </nav>
+      <div class="theme-control" hidden>
+        <label for="theme-select">Thème</label>
+        <select id="theme-select" aria-label="Thème du site">
+          <option value="auto">Auto</option>
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+        <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false" hidden>Pause décor</button>
+      </div>
+    </div>
+  </header>
+  <main id="contenu" class="wrap">
+    <header class="page-heading lab-heading">
+      <p class="location-line">~/atelier</p>
+      <h1>Mon petit bureau virtuel</h1>
+      <p class="lead">
+        Un espace pour écrire, expérimenter et explorer. Les fichiers et programmes de cette session
+        disparaissent au rechargement ou à la fermeture de la page. Exporte ce que tu veux garder.
+      </p>
+    </header>
+    <noscript><p>Le bureau a besoin de JavaScript pour fonctionner.</p></noscript>
+    <section id="workspace" class="workspace" aria-label="Bureau virtuel" hidden>
+      <aside class="work-dock" aria-label="Applications du bureau">
+        <p class="dock-title">Applications</p>
+        <button type="button" data-app="shell" aria-pressed="true"><span aria-hidden="true">&gt;_</span> Terminal</button>
+        <button type="button" data-app="files" aria-pressed="false"><span aria-hidden="true">[ / ]</span> Fichiers</button>
+        <button type="button" data-app="notes" aria-pressed="false"><span aria-hidden="true">¶</span> Bloc-notes</button>
+        <button type="button" data-app="code" aria-pressed="false"><span aria-hidden="true">{ }</span> Éditeur</button>
+        <button type="button" data-app="browser" aria-pressed="false"><span aria-hidden="true">◎</span> Web</button>
+        <button type="button" data-app="trash" aria-pressed="false"><span aria-hidden="true">×</span> Corbeille</button>
+      </aside>
+      <div class="work-area">
+        <section class="work-window" data-window="shell">
+          <h2>Terminal <small>session temporaire</small></h2>
+          <div class="shell-screen" id="shell-output" role="log" aria-live="polite"></div>
+          <form id="shell-form" class="work-form">
+            <label id="shell-prompt" for="shell-command">guest:/$</label>
+            <input id="shell-command" autocomplete="off" spellcheck="false" maxlength="10000" placeholder="help">
+            <button>Exécuter</button>
+          </form>
+          <div class="work-actions"><button type="button" id="stop-run">Arrêter le calcul</button><button type="button" id="clear-shell">Effacer l’affichage</button></div>
+          <p class="work-caption">Shell virtuel, pas un noyau Linux. Python et JavaScript sont de vrais runtimes. Essaie <code>python print(2 + 2)</code>, <code>pip install humanize</code> ou <code>js console.log(2 + 2)</code>.</p>
+        </section>
+        <section class="work-window" data-window="files" hidden>
+          <h2>Gestionnaire de fichiers</h2>
+          <div class="work-actions"><button id="parent-dir" type="button">Dossier parent</button><button id="new-file" type="button">Nouveau fichier</button><button id="new-folder" type="button">Nouveau dossier</button><label class="work-button">Importer<input type="file" id="file-import" multiple></label><button id="export-all" type="button">Exporter session JSON</button></div>
+          <p class="work-path" id="file-path"></p><div id="file-list" class="file-list"></div>
+        </section>
+        <section class="work-window" data-window="notes" hidden>
+          <h2>Bloc-notes</h2>
+          <label for="note-path">Fichier</label><input id="note-path" value="/notes.txt" maxlength="240">
+          <label for="note-editor">Texte</label><textarea id="note-editor" rows="15" spellcheck="true"></textarea>
+          <div class="work-actions"><button id="save-note" type="button">Enregistrer</button><button id="download-note" type="button">Télécharger</button></div>
+        </section>
+        <section class="work-window" data-window="code" hidden>
+          <h2>Éditeur de code <small>Python / JavaScript / texte</small></h2>
+          <label for="code-path">Fichier</label><input id="code-path" value="/hello.py" maxlength="240">
+          <div class="editor-shell"><pre aria-hidden="true" id="line-numbers">1</pre><textarea id="code-editor" rows="15" spellcheck="false" aria-label="Code source" wrap="off"></textarea></div>
+          <div class="work-actions"><button id="save-code" type="button">Enregistrer</button><button id="run-code" type="button">Exécuter Python / JS</button><button id="download-code" type="button">Télécharger</button></div>
+          <p class="work-caption">
+            Éditeur léger, pas VS Code. Tab insère deux espaces. Échap puis Tab permet de quitter
+            l’éditeur au clavier. Ctrl+S enregistre.
+          </p>
+        </section>
+        <section class="work-window" data-window="browser" hidden>
+          <h2>Explorateur Web</h2>
+          <form id="web-form" class="work-form"><label for="web-query">Recherche ou URL</label><input id="web-query" maxlength="500" placeholder="Linux, https://example.org"><button>Ouvrir</button></form>
+          <form id="wiki-form" class="work-form"><label for="wiki-query">Wikipédia</label><input id="wiki-query" maxlength="150" placeholder="Système d’exploitation"><button>Rechercher</button></form>
+          <div id="web-results" aria-live="polite" class="web-results"></div>
+          <p class="work-caption">
+            Les recherches Web et les sites s’ouvrent dans un nouvel onglet réel. Wikipédia peut
+            afficher ses résultats ici. Les sites bloquant les iframes ne sont pas contournés.
+          </p>
+        </section>
+        <section class="work-window" data-window="trash" hidden>
+          <h2>Corbeille</h2><div id="trash-list" class="file-list"></div><button id="empty-trash" type="button">Vider la corbeille</button>
+        </section>
+        <div class="work-status"><span id="workspace-status" role="status">Session prête</span><button id="reset-session" type="button">Réinitialiser</button></div>
+      </div>
+    </section>
+    <section class="section lab-info">
+      <h2>Ce qui se passe dans le navigateur</h2>
+      <p>
+        Le bureau conserve les fichiers texte en mémoire. Python démarre à la demande via Pyodide
+        0.27.5 et peut installer des paquets compatibles avec WebAssembly via micropip. JavaScript
+        s’exécute dans un worker séparé. Aucun serveur d’exécution ni stockage des fichiers sur
+        Cloudflare. Les téléchargements de runtime, paquets et recherches externes nécessitent
+        Internet.
+      </p>
+      <p>Ce n’est pas un PC x86 complet : pas de processus Linux natifs, de gestionnaire apt, d’accès aux disques de l’ordinateur ou de réseau TCP brut. Le navigateur peut mettre en cache les ressources publiques indépendamment de la session. Pour tester un véritable OS émulé, <a href="https://copy.sh/v86/" target="_blank" rel="noopener noreferrer">v86</a> est une piste distincte.</p>
+    </section>
+
+  </main>
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -4,3 +4,7 @@
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'
+
+/lab/*
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'wasm-unsafe-eval'; worker-src data:; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src https://cdn.jsdelivr.net https://pypi.org https://files.pythonhosted.org https://fr.wikipedia.org; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'

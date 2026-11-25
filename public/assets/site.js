@@ -57,7 +57,7 @@
       ["apropos", "/a-propos/"], ["skills", "/#competences"],
       ["competences", "/#competences"], ["projects", "/projets/"],
       ["projets", "/projets/"], ["apps", "/apps/"], ["applications", "/apps/"], ["games", "/jeux/"], ["jeux", "/jeux/"],
-      ["guides", "/guides/"], ["devlog", "/devlog/"],
+      ["guides", "/guides/"], ["devlog", "/devlog/"], ["lab", "/lab/"], ["atelier", "/lab/"], ["journal", "/journal/"],
       ["contact", "/#streams"], ["stream", "/#streams"], ["streams", "/#streams"]
     ]);
     function append(value, isCommand = false) {
@@ -69,18 +69,22 @@
       output.scrollTop = output.scrollHeight;
     }
     function run(raw) {
-      const command = raw.toLowerCase();
+      const command = raw.toLowerCase().replace(/\s+/g, " ");
       if (command === "clear") {
         output.replaceChildren();
         return;
       }
       append(`guest:~$ ${raw}`, true);
       if (command === "help") {
-        append("help · whoami · ls · skills · projects · apps · games · guides · devlog · contact · github · clear\nsearch <mot> · filter <all|infra|security|dev|games|guides>");
-      } else if (command === "whoami") {
+        append("help · whoami · cat about.txt · pwd · ls · skills · projects · apps · games · guides · devlog · journal · atelier · contact · github · clear\nsearch <mot> · filter <all|infra|security|dev|games|guides>");
+      } else if (["whoami", "cat about.txt"].includes(command)) {
         append("RufusTheDwarf : étudiant en informatique et développeur indépendant.");
-      } else if (command === "ls") {
-        append("a-propos/  projets/  apps/  jeux/  guides/  devlog/");
+      } else if (["ls", "ls -l"].includes(command)) {
+        append("a-propos/  projets/  apps/  jeux/  guides/  devlog/  journal/  atelier/");
+      } else if (command === "pwd") {
+        append("/home/rufus/terminal");
+      } else if (command === "sudo") {
+        append("Pas besoin de root pour lire ce portfolio.");
       } else if (command === "github") {
         const link = document.createElement("a");
         link.href = "https://github.com/RufusTheDwarf";
@@ -99,7 +103,7 @@
       } else if (destinations.has(command)) {
         location.assign(destinations.get(command));
       } else {
-        append("Commande inconnue. Tape help.");
+        append(`Commande inconnue : ${raw}. Tape help pour les commandes disponibles.`);
       }
     }
     terminal.addEventListener("submit", event => {
@@ -135,7 +139,7 @@
       motionToggle.textContent = paused ? "Animer décor" : "Pause décor";
     }
     updateMotion();
-    motionToggle.hidden = false;
+    motionToggle.hidden = !document.body.classList.contains("home-page");
     motionToggle.addEventListener("click", () => {
       paused = !paused;
       try { localStorage.setItem("terminal-motion", paused ? "paused" : "active"); }
@@ -152,7 +156,7 @@
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     const syncThemeColor = () => {
       const light = root.dataset.theme === "light" || (!root.dataset.theme && systemTheme.matches);
-      if (themeMeta) themeMeta.content = light ? "#d9ddc7" : "#15231e";
+      if (themeMeta) themeMeta.content = light ? "#dedbc9" : "#171d18";
     };
     themeSelect.value = root.dataset.theme || "auto";
     themeSelect.closest(".theme-control").hidden = false;

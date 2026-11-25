@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -56,11 +57,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -74,7 +74,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/" aria-current="page">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -92,7 +93,6 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">DevLog</span></nav>
     <header class="page-heading">
-      <p class="kicker">git log --oneline</p>
       <h1>Journal de développement</h1>
       <p class="lead">
         Les décisions techniques et évolutions du portfolio Terminal, ainsi que les historiques de
@@ -100,6 +100,16 @@
       </p>
     </header>
     <div class="prose">
+      <h2>v0.7.0 : Espace personnel et atelier</h2>
+      <p>
+        Nouvelle ambiance de jour, accueil plus personnel et bureau expérimental avec fichiers
+        temporaires, éditeur, shell virtuel et exécution de code dans le navigateur.
+      </p>
+      <h2>v0.6.0 : Répertoire personnel</h2>
+      <p>
+        Catalogue en liste, accueil condensé, verre réservé au terminal, décor réduit à une seule
+        animation et textes plus directs. Le contenu et les adresses des projets restent les mêmes.
+      </p>
       <h2>v0.5.0 : Terminal / Workstation</h2>
       <p>
         Nouvelle interface large, décor animé désactivable, surfaces vitrées, identité Terminal et
@@ -144,8 +154,8 @@
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

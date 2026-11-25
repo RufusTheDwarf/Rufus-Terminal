@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -80,11 +81,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -98,7 +98,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -116,7 +117,6 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">À propos</span></nav>
     <header class="page-heading">
-      <p class="kicker">whoami</p>
       <h1>À propos de RufusTheDwarf</h1>
       <p class="lead">
         Étudiant en informatique et développeur indépendant, je m’intéresse aux fondations des
@@ -124,6 +124,13 @@
       </p>
     </header>
     <div class="prose">
+      <h2>Un espace qui évolue avec moi</h2>
+      <p>
+        Terminal est mon coin sur le web. J’y rassemble mes projets, mes centres d’intérêt et mes
+        découvertes. Je veux aussi pouvoir y partager des choses qui n’ont rien à voir avec le
+        développement.
+      </p>
+      <p>Le <a href="/journal/">journal</a>, les <a href="/jeux/">jeux</a> et l’<a href="/lab/">atelier</a> sont trois portes d’entrée pour explorer cet espace.</p>
       <h2>Comprendre ce qui se passe derrière l’interface</h2>
       <p>
         Je travaille sur des expériences pratiques autour de Linux, des réseaux, de la
@@ -160,8 +167,8 @@
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

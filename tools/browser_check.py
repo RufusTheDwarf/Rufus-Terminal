@@ -29,6 +29,13 @@ def render(page, file, javascript=True):
         html = html.replace('</head>', f'<script>{THEME}</script></head>')
     if javascript:
         html = html.replace('</body>', f'<script>{JS}</script></body>')
+    if file == PUBLIC / 'lab/index.html':
+        lab_css = (PUBLIC / 'assets/lab.css').read_text(encoding='utf-8')
+        lab_js = (PUBLIC / 'assets/lab.js').read_text(encoding='utf-8')
+        html = html.replace('<link rel="stylesheet" href="/assets/lab.css">', f'<style>{lab_css}</style>')
+        html = html.replace('<script src="/assets/lab.js" defer></script>', '')
+        if javascript:
+            html = html.replace('</body>', f'<script>{lab_js}</script></body>')
     page.set_content(html)
 
 

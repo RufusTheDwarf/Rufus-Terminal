@@ -1,4 +1,4 @@
-"""Generate the static Rufus Terminal website. Python standard library only."""
+"""Generate the static Terminal website. Python standard library only."""
 from html import escape
 import json
 from pathlib import Path
@@ -25,7 +25,7 @@ CATEGORIES = {
     "dev": "Développement", "games": "Jeux & préservation", "guides": "Guides"
 }
 NAV = [("/", "Accueil"), ("/a-propos/", "À propos"), ("/projets/", "Projets"), ("/apps/", "Apps"),
-       ("/jeux/", "Jeux"), ("/guides/", "Guides"), ("/devlog/", "DevLog")]
+       ("/jeux/", "Jeux"), ("/guides/", "Guides"), ("/journal/", "Journal"), ("/lab/", "Atelier")]
 URLS = []
 
 
@@ -89,6 +89,13 @@ def breadcrumb_schema(items):
     ]}
 
 
+def lab_assets(path):
+    if path != "/lab/":
+        return ""
+    return ('  <link rel="stylesheet" href="/assets/lab.css">\n'
+            '  <script src="/assets/lab.js" defer></script>')
+
+
 def layout(path, title, description, content, *, schema=None, index=True, nav_path=None):
     canonical = BASE + path
     active = nav_path if nav_path is not None else path
@@ -129,12 +136,12 @@ def layout(path, title, description, content, *, schema=None, index=True, nav_pa
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+{lab_assets(path)}
 {structured}</head>
-<body>
+<body class="{'home-page' if path == "/" else 'inner-page'}">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -162,8 +169,8 @@ def layout(path, title, description, content, *, schema=None, index=True, nav_pa
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v{e(VERSION)} · <a href="/devlog/">DevLog</a> · <a href="{e(GITHUB)}/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="{e(GITHUB)}/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v{e(VERSION)} · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="{e(GITHUB)}/Rufus-Terminal">Code source ↗</a> · <a href="{e(GITHUB)}/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>
@@ -193,26 +200,31 @@ def download_links(project):
 
 
 def card(p, level=3):
-    return f'''      <article class="project{' featured' if p.get('featured') else ''}" data-category="{e(p['category'])}">
-        <div class="project-meta">
-          <span>{e(CATEGORIES[p['category']])}</span>
-          <span>{e(p['status'])}</span>
+    """A directory entry, rather than a decorative project card."""
+    return f'''      <article class="project" data-category="{e(p['category'])}">
+        <div class="project-name">
+          <h{level}><a href="{href(p)}">{e(p['name'])}</a></h{level}>
+          <p class="project-category">{e(CATEGORIES[p['category']])}</p>
         </div>
-        <h{level}><a href="{href(p)}">{e(p['name'])}</a></h{level}>
-        <p>{e(p['summary'])}</p>
-        <div class="stack">{e(' · '.join(p['stack']))}</div>
-        <a class="card-link" href="{e(repo(p))}" aria-label="Dépôt GitHub : {e(p['name'])}">Code et documentation ↗</a>
-{download_links(p)}      </article>'''
+        <div class="project-description">
+          <p>{e(p['summary'])}</p>
+          <p class="stack">{e(' · '.join(p['stack']))}</p>
+        </div>
+        <div class="project-meta">
+          <span>{e(p['status'])}</span>
+          <a class="card-link" href="{e(repo(p))}" aria-label="Dépôt GitHub : {e(p['name'])}">Source ↗</a>
+{download_links(p)}        </div>
+      </article>'''
 
 
 def grid(projects, level=3):
-    return '    <div class="project-grid">\n' + '\n'.join(card(p, level) for p in projects) + '\n    </div>'
+    return ('    <div class="project-grid">\n' + '\n'.join(card(p, level) for p in projects)
+            + '\n    </div>')
 
 
 def page_heading(items, kicker, title, description):
     return f'''    {crumbs(items)}
     <header class="page-heading">
-      <p class="kicker">{e(kicker)}</p>
       <h1>{e(title.replace("Rufus Terminal", "Terminal"))}</h1>
       <p class="lead">{e(description)}</p>
     </header>'''
@@ -231,15 +243,15 @@ def app_showcase(heading="h3"):
     p = BY_SLUG['rux-netmap']
     return f'''      <article class="app-showcase">
         <div class="app-visual">
-          <div class="art-caption"><span>RUX / NETWORK INVENTORY</span><span>IPv4</span></div>
+          <div class="art-caption"><span>Inventaire réseau</span><span>IPv4</span></div>
           <img src="/assets/rux-diagram.svg" width="600" height="290" alt="Illustration schématique d’un inventaire IPv4, pas une capture de RUX" loading="lazy">
           <p class="visual-note">Illustration / données fictives</p>
         </div>
         <div class="app-copy">
-          <p class="kicker">WINDOWS x64 / APPLICATION</p>
+          <p class="kicker">Windows x64 · v1.1.0</p>
           <{heading}><a href="{href(p)}">{e(p['name'])}</a></{heading}>
           <p class="lead">{e(p['summary'])}</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Qt</span><span class="chip">SQLite</span><span class="chip">v1.1.0</span></div>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Qt</span><span class="chip">SQLite</span></div>
 {download_links(p)}          <a class="card-link" href="{href(p)}">Documentation et fiche technique ↗</a>
         </div>
       </article>'''
@@ -247,7 +259,7 @@ def app_showcase(heading="h3"):
 
 def apps_page():
     items = [('/', 'Accueil'), ('/apps/', 'Applications')]
-    body = page_heading(items, 'ls ./apps', 'Applications', 'Les outils que je développe et distribue, avec téléchargement, documentation et limites connues.')
+    body = page_heading(items, 'ls ./apps', 'Applications', 'Mes applications à télécharger. RUX est le premier outil disponible ici.')
     body += '\n' + app_showcase('h2')
     extra = [p for p in APPS if p['slug'] != 'rux-netmap']
     if extra:
@@ -258,27 +270,20 @@ def apps_page():
 def home():
     body = f'''    <section class="hero home-hero" id="accueil" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker"><span class="online-dot" aria-hidden="true"></span> SYSTEM ONLINE <span class="kicker-divider">/</span> ESPACE PERSONNEL</p>
+        <p class="location-line">~/rufus <span>· espace personnel</span></p>
         <h1 id="hero-title"><span class="hero-prompt">/&gt;</span>Terminal<span class="cursor" aria-hidden="true">_</span></h1>
-        <p class="hero-subtitle">RufusTheDwarf <span aria-hidden="true">/</span> Build. Learn. Share. Improve.</p>
-        <p class="lead">Étudiant en informatique et développeur indépendant. J’explore les systèmes, les réseaux et la sécurité, je construis des applications et des jeux, et je partage ce que j’apprends.</p>
+        <p class="hero-subtitle">RufusTheDwarf · Étudiant en informatique</p>
+        <p class="lead">Ici, je rassemble ce que je fais, ce qui m’intéresse et ce que j’apprends. Il y a de l’informatique, des jeux, des expériences et de la place pour tout le reste.</p>
         <div class="actions">
-          <a class="btn primary" href="/projets/">Explorer mes projets ↗</a>
-          <a class="btn" href="/apps/">Applications ↗</a>
+          <a class="btn primary" href="/a-propos/">Faire connaissance</a>
+          <a class="btn" href="/lab/">Ouvrir l’atelier ↗</a>
           <a class="btn quiet" href="{GITHUB}">GitHub ↗</a>
         </div>
-        <div class="facts">
-          <span><strong>{len(CATALOGUE):02}</strong> projets</span>
-          <span><strong>{len(APPS):02}</strong> application</span>
-          <span><strong>6</strong> domaines techniques</span>
-          <span><strong>{VERSION}</strong> build</span>
-        </div>
+        <p class="home-note">Un endroit à moi sur Internet, pas seulement un portfolio.</p>
       </div>
       <div class="hero-art" aria-hidden="true">
-        <div class="art-caption"><span>FIELD STATION / 01</span><span>● SIGNAL OK</span></div>
         <img class="art-dark" src="/assets/forest-terminal.svg" alt="" width="560" height="330" fetchpriority="low">
         <img class="art-light" src="/assets/day-terminal.svg" alt="" width="560" height="330" fetchpriority="low">
-        <div class="art-caption art-bottom"><span>ENVIRONMENT / SAGE</span><span>MODE / LOCAL</span></div>
       </div>
       <div class="terminal" aria-label="Terminal interactif">
         <div class="term-head" aria-hidden="true">
@@ -286,9 +291,9 @@ def home():
           <span class="term-label">guest@rufus / portfolio</span>
         </div>
         <div class="term-body">
-          <p class="accent">TERMINAL / v{VERSION}</p>
-          <p class="muted">Build. Learn. Share. Improve.</p>
-          <p class="muted">Tape <strong class="accent">help</strong> pour voir les commandes.</p>
+          <p class="accent">guest:~$ ls</p>
+          <p class="directory-links"><a href="/projets/">projets/</a> <a href="/apps/">apps/</a> <a href="/jeux/">jeux/</a> <a href="/guides/">guides/</a> <a href="/journal/">journal/</a> <a href="/devlog/">devlog/</a> <a href="/lab/">atelier/</a></p>
+          <p class="muted">Tape <strong class="accent">help</strong> ou <strong class="accent">whoami</strong>.</p>
           <div id="terminal-output" class="term-output" role="log" aria-label="Résultats du terminal" aria-live="polite"></div>
           <form class="command" id="terminal-form" autocomplete="off" hidden>
             <label for="terminal-input">guest:~$</label>
@@ -299,10 +304,23 @@ def home():
         </div>
       </div>
     </section>
+    <section class="section personal-index" aria-labelledby="personal-title">
+      <div class="personal-intro">
+        <p class="location-line">~/explorer</p>
+        <h2 id="personal-title">Au-delà du code.</h2>
+        <p>Ce site évolue avec moi. Les projets techniques y ont leur place, mais ils ne sont pas toute l’histoire.</p>
+        <a href="/a-propos/">À propos de moi ↗</a>
+      </div>
+      <div class="personal-links">
+        <a href="/journal/"><span>01</span><strong>Journal</strong><small>Notes, découvertes et activités</small><b>↗</b></a>
+        <a href="/jeux/"><span>02</span><strong>Jeux et univers</strong><small>Création et préservation</small><b>↗</b></a>
+        <a href="/lab/"><span>03</span><strong>Atelier</strong><small>Un bureau expérimental dans le navigateur</small><b>↗</b></a>
+        <a href="/projets/"><span>04</span><strong>Projets</strong><small>Ce que je construis et documente</small><b>↗</b></a>
+      </div>
+    </section>
     <section class="section app-section" id="applications">
       <div class="section-heading">
         <div>
-          <p class="kicker">/ bin</p>
           <h2>Applications</h2>
         </div>
         <a class="card-link" href="/apps/">Toutes les applications ↗</a>
@@ -310,73 +328,54 @@ def home():
       {app_showcase()}
     </section>
     <section class="section" id="projets">
-      <p class="kicker">01 // ls projects</p>
       <h2>Projets sélectionnés</h2>
-      <p class="intro">Une sélection de mes travaux techniques. Chaque fiche précise le contexte, les technologies, les apprentissages et les limites connues.</p>
+      <p class="intro">Un aperçu de mes labos, de mes outils et des projets sur lesquels je travaille.</p>
 {grid([p for p in CATALOGUE if p.get('featured')])}
       <a class="btn primary" href="/projets/">Voir les {len(CATALOGUE)} projets et ressources ↗</a>
     </section>
     <section class="section" id="apropos">
-      <p class="kicker">02 // whoami</p>
       <h2>À propos</h2>
       <div class="about-grid">
         <div class="intro">
-          <p>Je suis RufusTheDwarf. Je m’intéresse à ce qui se passe derrière une interface : comment les machines communiquent, comment les services sont déployés, comment les données sont structurées et comment les systèmes sont protégés.</p>
-          <p>Mes dépôts regroupent des laboratoires, des outils, des jeux et des ressources documentaires. Mon objectif est de comprendre la technologie, puis d’expliquer ce que j’ai appris et les limites de mes expériences.</p>
+          <p>Ce qui m’intéresse, c’est ce qui se passe derrière l’interface. Comment deux machines communiquent ? Pourquoi un service ne répond plus ? Comment déployer une application sans tout casser ?</p>
+          <p>Je publie mes expériences sur GitHub. Je préfère documenter une limite plutôt que présenter un projet comme terminé alors qu’il ne l’est pas.</p>
           <a href="/a-propos/">Découvrir mon profil et ma démarche ↗</a>
         </div>
         <div class="principles">
-          <p class="kicker">Ma philosophie</p>
-          <h3>Understand. Build. Learn. Share.</h3>
+          <h3>Pourquoi publier le code ?</h3>
           <p class="muted">Lire le code, expérimenter, documenter, améliorer. Respecter les licences et les auteurs.</p>
         </div>
       </div>
     </section>
     <section class="section" id="competences">
-      <p class="kicker">03 // ls skills</p>
       <h2>Domaines techniques</h2>
-      <p class="intro">Technologies que je pratique ou explore, sans prétendre toutes les maîtriser au même niveau.</p>
+      <p class="intro">Les technologies que j’utilise ou que je découvre dans mes projets.</p>
       <div class="skills">
-        <article class="skill"><h3>01 / Infrastructure &amp; DevOps</h3><p>Linux, Docker, Compose, K3s, Kubernetes, virtualisation et sauvegardes.</p></article>
-        <article class="skill"><h3>02 / Réseau &amp; sécurité</h3><p>TCP/IP, DNS, Nmap, iperf3, OpenSSH, pfSense, OPNsense et audit autorisé.</p></article>
-        <article class="skill"><h3>03 / Software development</h3><p>Python, C#, .NET, TypeScript, JavaScript, Bash, PowerShell, HTML et CSS.</p></article>
-        <article class="skill"><h3>04 / Bases de données</h3><p>SQL Server, MySQL, PostgreSQL, SQL relationnel, données synthétiques et tests.</p></article>
-        <article class="skill"><h3>05 / Game development</h3><p>RPG éducatifs, tycoons, économie de jeu, progression, UX et préservation Flash.</p></article>
-        <article class="skill"><h3>06 / Open source &amp; qualité</h3><p>Git, GitHub, documentation, automatisation, licences et signature des commits.</p></article>
+        <article class="skill"><h3>Infrastructure &amp; DevOps</h3><p>Linux, Docker, Compose, K3s, Kubernetes, virtualisation et sauvegardes.</p></article>
+        <article class="skill"><h3>Réseau &amp; sécurité</h3><p>TCP/IP, DNS, Nmap, iperf3, OpenSSH, pfSense, OPNsense et audit autorisé.</p></article>
+        <article class="skill"><h3>Développement logiciel</h3><p>Python, C#, .NET, TypeScript, JavaScript, Bash, PowerShell, HTML et CSS.</p></article>
+        <article class="skill"><h3>Bases de données</h3><p>SQL Server, MySQL, PostgreSQL, SQL relationnel, données synthétiques et tests.</p></article>
+        <article class="skill"><h3>Création de jeux</h3><p>RPG éducatifs, tycoons, économie de jeu, progression, UX et préservation Flash.</p></article>
+        <article class="skill"><h3>Open source &amp; qualité</h3><p>Git, GitHub, documentation, automatisation, licences et signature des commits.</p></article>
       </div>
     </section>
-    <section class="section" id="jeux">
-      <p class="kicker">04 // game development</p>
-      <h2>Création de jeux</h2>
-      <p class="intro">J’explore les mécaniques de progression, les boucles économiques, les interfaces de jeu et la préservation du patrimoine numérique.</p>
-      <a class="btn" href="/jeux/">Découvrir les jeux et archives ↗</a>
-    </section>
-    <section class="section" id="guides">
-      <p class="kicker">05 // cat knowledge</p>
-      <h2>Guides &amp; ressources</h2>
-      <p class="intro">Des guides pratiques pour comprendre les technologies : signature SSH des commits, hébergement Minecraft et conception de tycoons Roblox.</p>
-      <a class="btn" href="/guides/">Explorer les ressources ↗</a>
-    </section>
-    <section class="section" id="devlog">
-      <p class="kicker">06 // git log</p>
-      <h2>Journal de développement</h2>
-      <p class="intro">Retrouver les évolutions du portfolio, les décisions d’architecture et les liens vers les historiques des projets.</p>
-      <a class="btn" href="/devlog/">Lire le DevLog ↗</a>
-    </section>
-    <section class="section" id="streams">
-      <p class="kicker">07 // connect</p>
-      <h2>Communauté</h2>
-      <p class="intro">Retrouve mes dépôts, ouvre une issue pour signaler un problème ou propose une amélioration. Les liens de streaming seront ajoutés lorsqu’ils seront disponibles.</p>
-      <a class="btn" href="{GITHUB}">Profil GitHub ↗</a>
+    <section class="section reading-section" id="streams">
+      <h2>À explorer aussi</h2>
+      <div class="reading-links">
+        <article id="jeux"><h3><a href="/jeux/">Jeux et prototypes</a></h3><p>Parfum Empire, Code Quest et archives Flash.</p></article>
+        <article id="guides"><h3><a href="/guides/">Guides techniques</a></h3><p>Signer ses commits, héberger Minecraft, concevoir un tycoon.</p></article>
+        <article id="devlog"><h3><a href="/devlog/">Journal du site</a></h3><p>Les changements d’architecture et de design.</p></article>
+        <article><h3><a href="{GITHUB}">GitHub ↗</a></h3><p>Code, issues et contributions.</p></article>
+      </div>
     </section>'''
-    emit('/', 'Terminal | Informatique, réseau et développement', 'Portfolio de RufusTheDwarf : Linux, Docker, K3s, cybersécurité, développement, jeux vidéo et guides techniques.', body,
+    emit('/', 'Terminal | Espace personnel de Rufus', 'Espace personnel de RufusTheDwarf : projets, jeux, journal, applications et atelier expérimental dans le navigateur.', body,
          schema=[{"@type": "WebSite", "@id": BASE + "/#website", "name": "Terminal", "url": BASE + "/", "inLanguage": "fr-CH", "publisher": {"@id": PERSON["@id"]}}, PERSON])
 
 
 def catalogue():
     items = [('/', 'Accueil'), ('/projets/', 'Projets')]
     buttons = '\n'.join(f'          <button type="button" class="filter" data-filter="{k}" aria-pressed="{str(k == "all").lower()}">{e(v)}</button>' for k, v in {'all': 'Tous', **CATEGORIES}.items())
-    body = page_heading(items, 'ls -la ./projects', 'Projets informatiques', 'Catalogue de mes laboratoires, logiciels, jeux et ressources techniques. Les statuts décrivent les informations documentées dans les dépôts, pas une certification indépendante.') + f'''
+    body = page_heading(items, 'ls -la ./projects', 'Projets informatiques', 'Mes labos, logiciels, jeux et guides. Les statuts reflètent ce qui est documenté dans les dépôts.') + f'''
     <div class="controls" id="project-controls" hidden>
       <div class="search-group">
         <label for="project-search">Rechercher un projet ou une technologie</label>
@@ -387,7 +386,7 @@ def catalogue():
       </div>
     </div>
     <p class="result-count" id="result-count" role="status">{len(CATALOGUE)} projets et ressources</p>
-    <p id="empty" hidden>Aucun projet ne correspond à cette recherche.</p>
+    <p id="empty" hidden>Aucun résultat. Essaie un autre mot ou retire le filtre.</p>
 {grid(CATALOGUE, 2)}'''
     emit('/projets/', 'Projets informatiques | Rufus Terminal', 'Explore les projets de RufusTheDwarf : laboratoires Linux, Docker et K3s, sécurité, logiciels, bases de données et jeux.', body, schema=[breadcrumb_schema(items)])
 
@@ -451,6 +450,9 @@ def about():
     items = [('/', 'Accueil'), (path, 'À propos')]
     body = page_heading(items, 'whoami', 'À propos de RufusTheDwarf', 'Étudiant en informatique et développeur indépendant, je m’intéresse aux fondations des systèmes numériques.') + f'''
     <div class="prose">
+      <h2>Un espace qui évolue avec moi</h2>
+      <p>Terminal est mon coin sur le web. J’y rassemble mes projets, mes centres d’intérêt et mes découvertes. Je veux aussi pouvoir y partager des choses qui n’ont rien à voir avec le développement.</p>
+      <p>Le <a href="/journal/">journal</a>, les <a href="/jeux/">jeux</a> et l’<a href="/lab/">atelier</a> sont trois portes d’entrée pour explorer cet espace.</p>
       <h2>Comprendre ce qui se passe derrière l’interface</h2>
       <p>Je travaille sur des expériences pratiques autour de Linux, des réseaux, de la virtualisation, des bases de données, de la cybersécurité et du développement. Je m’intéresse notamment à la communication entre machines, aux permissions, au déploiement des services et à la façon dont les composants d’un système coopèrent.</p>
       <p>Je développe aussi des applications et des jeux pour explorer des problèmes concrets : gestion des états, validation des entrées, persistance, tests, interfaces et progression.</p>
@@ -475,6 +477,10 @@ def devlog():
     items = [('/', 'Accueil'), (path, 'DevLog')]
     body = page_heading(items, 'git log --oneline', 'Journal de développement', 'Les décisions techniques et évolutions du portfolio Terminal, ainsi que les historiques de mes projets.') + f'''
     <div class="prose">
+      <h2>v0.7.0 : Espace personnel et atelier</h2>
+      <p>Nouvelle ambiance de jour, accueil plus personnel et bureau expérimental avec fichiers temporaires, éditeur, shell virtuel et exécution de code dans le navigateur.</p>
+      <h2>v0.6.0 : Répertoire personnel</h2>
+      <p>Catalogue en liste, accueil condensé, verre réservé au terminal, décor réduit à une seule animation et textes plus directs. Le contenu et les adresses des projets restent les mêmes.</p>
       <h2>v0.5.0 : Terminal / Workstation</h2>
       <p>Nouvelle interface large, décor animé désactivable, surfaces vitrées, identité Terminal et espace Applications. RUX dispose de sa propre adresse et de liens de téléchargement.</p>
       <h2>v0.4.1 : Catalogue et qualité</h2>
@@ -502,6 +508,29 @@ def devlog():
     emit(path, 'Journal de développement | Rufus Terminal', 'Suivre les versions de Terminal, son architecture web et les évolutions de mes projets informatiques.', body, schema=[breadcrumb_schema(items)])
 
 
+def journal():
+    path = "/journal/"
+    items = [("/", "Accueil"), (path, "Journal")]
+    entries = json.loads((ROOT / "src/journal.json").read_text(encoding="utf-8"))
+    body = page_heading(items, "", "Journal", "Un espace pour mes notes, activités et découvertes, au-delà de l’informatique.")
+    for entry in entries:
+        paragraphs = "\n".join(f"      <p>{e(text)}</p>" for text in entry["paragraphs"])
+        body += f'''\n    <article class="prose journal-entry">
+      <p class="location-line">{e(entry['category'])}</p>
+      <h2>{e(entry['title'])}</h2>
+{paragraphs}
+    </article>'''
+    body += '\n    <p><a href="/devlog/">Historique technique des versions du site ↗</a></p>'
+    emit(path, "Journal personnel | Terminal", "Notes personnelles, activités et découvertes de RufusTheDwarf, avec un espace distinct du journal technique.", body, schema=[breadcrumb_schema(items)])
+
+
+def lab():
+    path = "/lab/"
+    items = [("/", "Accueil"), (path, "Atelier")]
+    body = (ROOT / "src/lab.html").read_text(encoding="utf-8")
+    emit(path, "Atelier virtuel | Terminal", "Bureau expérimental avec fichiers temporaires, éditeur de texte, JavaScript et Python dans le navigateur.", body, schema=[breadcrumb_schema(items)])
+
+
 def main():
     assert len(BY_SLUG) == len(PROJECTS), 'Duplicate slugs'
     for p in PROJECTS:
@@ -510,7 +539,7 @@ def main():
     (PUBLIC / 'assets').mkdir(exist_ok=True)
     # Update generated pages in place. The checker detects obsolete project pages;
     # remove them explicitly when deleting an entry from the catalogue.
-    for name in ('style.css', 'site.js', 'theme.js', 'forest-terminal.svg', 'day-terminal.svg', 'ambient-map.svg', 'rux-diagram.svg'):
+    for name in ('style.css', 'site.js', 'theme.js', 'forest-terminal.svg', 'day-terminal.svg', 'ambient-map.svg', 'rux-diagram.svg', 'lab.css', 'lab.js'):
         shutil.copyfile(ROOT / 'src' / name, PUBLIC / 'assets' / name)
     home()
     catalogue()
@@ -522,12 +551,14 @@ def main():
     write(PUBLIC / '_redirects', '/projets/rux-netmap/ /apps/rux-netmap/ 301\n/projets/rux-netmap /apps/rux-netmap/ 301\n/projets/rux-netmap/index.html /apps/rux-netmap/ 301')
     project_pages()
     about()
-    collection('/jeux/', 'Jeux et game development', 'Création de jeux, RPG éducatifs, tycoons et préservation numérique : mes projets et expériences autour du jeu.', [p for p in PROJECTS if p['category'] == 'games'] + [BY_SLUG['roblox-tycoon-blueprint']])
+    lab()
+    journal()
+    collection('/jeux/', 'Jeux et prototypes', 'Création de jeux, RPG éducatifs, tycoons et préservation numérique : mes projets et expériences autour du jeu.', [p for p in PROJECTS if p['category'] == 'games'] + [BY_SLUG['roblox-tycoon-blueprint']])
     collection('/guides/', 'Guides et ressources techniques', 'Documentation pratique sur Git, SSH, l’hébergement de serveurs Minecraft et la conception de tycoons Roblox.', [p for p in PROJECTS if p['category'] == 'guides'] + [BY_SLUG['verified-by-default']])
     devlog()
     write(PUBLIC / '404.html', layout('/404.html', 'Page introuvable | Rufus Terminal', 'Cette page n’existe pas ou a été déplacée.', '''    <header class="page-heading">
-      <p class="kicker">ERROR // 404</p>
-      <h1>Page introuvable_</h1>
+      <p class="location-line">404 · fichier introuvable</p>
+      <h1>Page introuvable</h1>
       <p class="lead">Cette adresse ne correspond pas à une page du portfolio.</p>
       <div class="actions"><a class="btn primary" href="/">Retour à l’accueil</a><a class="btn" href="/projets/">Explorer les projets</a></div>
     </header>''', index=False))

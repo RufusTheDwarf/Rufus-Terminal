@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,11 +73,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -90,7 +90,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -108,7 +109,6 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <a href="/projets/">Projets</a> <span aria-hidden="true">/</span> <span aria-current="page">Cloud Project K3s</span></nav>
     <header class="page-heading">
-      <p class="kicker">Infrastructure // En cours</p>
       <h1>Cloud Project K3s</h1>
       <p class="lead">
         Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des
@@ -167,52 +167,64 @@
     <section class="related">
       <h2>Projets associés</h2>
     <div class="project-grid">
-      <article class="project featured" data-category="infra">
+      <article class="project" data-category="infra">
+        <div class="project-name">
+          <h3><a href="/projets/docker-network-toolkit/">Docker Network Toolkit</a></h3>
+          <p class="project-category">Infrastructure</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les
+            services et mesurer les performances.
+          </p>
+          <p class="stack">Docker · Compose · Linux · Nmap · iperf3 · Nginx · Bash</p>
+        </div>
         <div class="project-meta">
-          <span>Infrastructure</span>
           <span>Laboratoire opérationnel</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Docker-Network-Toolkit" aria-label="Dépôt GitHub : Docker Network Toolkit">Source ↗</a>
         </div>
-        <h3><a href="/projets/docker-network-toolkit/">Docker Network Toolkit</a></h3>
-        <p>
-          Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les
-          services et mesurer les performances.
-        </p>
-        <div class="stack">Docker · Compose · Linux · Nmap · iperf3 · Nginx · Bash</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Docker-Network-Toolkit" aria-label="Dépôt GitHub : Docker Network Toolkit">Code et documentation ↗</a>
       </article>
-      <article class="project featured" data-category="dev">
-        <div class="project-meta">
-          <span>Développement</span>
-          <span>Projet pédagogique</span>
+      <article class="project" data-category="dev">
+        <div class="project-name">
+          <h3><a href="/projets/sql-server-project/">Mission SQL Cinéma</a></h3>
+          <p class="project-category">Développement</p>
         </div>
-        <h3><a href="/projets/sql-server-project/">Mission SQL Cinéma</a></h3>
-        <p>
-          Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures,
-          agrégations et analyses de données.
-        </p>
-        <div class="stack">SQL Server · Python · Flask · pyodbc · PowerShell</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/SQL_Server_project" aria-label="Dépôt GitHub : Mission SQL Cinéma">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures,
+            agrégations et analyses de données.
+          </p>
+          <p class="stack">SQL Server · Python · Flask · pyodbc · PowerShell</p>
+        </div>
+        <div class="project-meta">
+          <span>Projet pédagogique</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/SQL_Server_project" aria-label="Dépôt GitHub : Mission SQL Cinéma">Source ↗</a>
+        </div>
       </article>
       <article class="project" data-category="security">
-        <div class="project-meta">
-          <span>Sécurité &amp; réseau</span>
-          <span>Laboratoire documenté</span>
+        <div class="project-name">
+          <h3><a href="/projets/openssh-security-lab/">OpenSSH Security Lab</a></h3>
+          <p class="project-category">Sécurité &amp; réseau</p>
         </div>
-        <h3><a href="/projets/openssh-security-lab/">OpenSSH Security Lab</a></h3>
-        <p>
-          Administration distante de machines Linux avec authentification par clé et principe du
-          moindre privilège.
-        </p>
-        <div class="stack">OpenSSH · Ubuntu · pfSense · SSH</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/OpenSSH-Security-Lab" aria-label="Dépôt GitHub : OpenSSH Security Lab">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Administration distante de machines Linux avec authentification par clé et principe du
+            moindre privilège.
+          </p>
+          <p class="stack">OpenSSH · Ubuntu · pfSense · SSH</p>
+        </div>
+        <div class="project-meta">
+          <span>Laboratoire documenté</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/OpenSSH-Security-Lab" aria-label="Dépôt GitHub : OpenSSH Security Lab">Source ↗</a>
+        </div>
       </article>
     </div>
     </section>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

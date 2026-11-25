@@ -1,0 +1,232 @@
+/* Atelier: independent workspace styles, loaded only on /lab/. */
+.lab-heading {
+  margin-bottom: 1.5rem;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(145px, 12rem) minmax(0, 1fr);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  min-height: 35rem;
+  border-radius: 5px;
+  overflow: hidden;
+  font: .9rem/1.5 var(--mono);
+}
+.work-dock {
+  padding: 1.2rem .8rem;
+  background: var(--control);
+  border-right: 1px solid var(--line);
+}
+.dock-title {
+  color: var(--muted);
+  font-size: .75rem;
+  padding: .2rem .5rem;
+}
+.workspace button, .work-button {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  padding: .4rem .7rem;
+  border-radius: 3px;
+  font: inherit;
+  cursor: pointer;
+}
+.workspace button:hover, .work-button:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+.work-dock button {
+  width: 100%;
+  text-align: left;
+  margin-bottom: .35rem;
+  border-color: transparent;
+  background: transparent;
+}
+.work-dock button[aria-pressed="true"] {
+  color: var(--on-accent);
+  background: var(--green);
+  border-color: var(--green);
+}
+.work-dock button span {
+  display: inline-block;
+  width: 3ch;
+  margin-right: .35rem;
+}
+.work-area {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.work-window {
+  padding: clamp(.8rem, 2vw, 1.6rem);
+  flex: 1;
+  min-width: 0;
+}
+.work-window h2 {
+  font: 650 1.25rem/1.4 var(--mono);
+  margin-bottom: 1rem;
+}
+.work-window h2 small {
+  font-size: .74rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.workspace input:not([type=file]), .workspace textarea {
+  width: 100%;
+  min-width: 0;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: .65rem;
+  font: inherit;
+}
+.workspace textarea {
+  resize: vertical;
+  display: block;
+  min-height: 12rem;
+}
+.work-window > label {
+  display: block;
+  margin: .6rem 0 .25rem;
+  color: var(--muted);
+}
+.work-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin-block: .75rem;
+}
+.work-form input {
+  flex: 1 1 12rem;
+}
+.work-actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin: .8rem 0;
+}
+.work-button {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+.work-button input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.work-button:focus-within {
+  outline: 2px solid var(--green);
+}
+.shell-screen {
+  min-height: 17rem;
+  max-height: 28rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #202b22;
+  color: #dbe5cf;
+  border: 1px solid #687963;
+  padding: 1rem;
+  border-radius: 3px;
+}
+.shell-screen p {
+  margin: 0 0 .4rem;
+}
+.work-caption {
+  color: var(--muted);
+  font-size: .78rem;
+  margin: .8rem 0 0;
+}
+.work-status {
+  display: flex;
+  gap: .7rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: .65rem 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.work-path {
+  color: var(--green);
+  overflow-wrap: anywhere;
+}
+.file-list {
+  border-top: 1px solid var(--line);
+  margin-bottom: 1rem;
+}
+.file-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  align-items: center;
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.file-row span {
+  flex: 1 1 10rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.editor-shell {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  margin-top: .8rem;
+  background: var(--bg);
+}
+.editor-shell pre {
+  margin: 0;
+  padding: .65rem .5rem;
+  text-align: right;
+  overflow: hidden;
+  max-height: 25rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.editor-shell textarea {
+  border-radius: 0;
+  white-space: pre;
+  min-height: 25rem;
+  resize: vertical;
+  tab-size: 2;
+  line-height: 1.5;
+}
+.web-results a {
+  display: block;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--line-soft);
+  overflow-wrap: anywhere;
+}
+.lab-info {
+  max-width: 90ch;
+}
+@media (max-width: 760px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .work-dock {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: .6rem;
+  }
+  .dock-title {
+    width: 100%;
+    margin: 0;
+  }
+  .work-dock button {
+    width: auto;
+    margin: 0;
+  }
+  .work-window h2 small {
+    display: block;
+  }
+}

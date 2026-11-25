@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -56,11 +57,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -74,7 +74,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -92,11 +93,10 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Projets</span></nav>
     <header class="page-heading">
-      <p class="kicker">ls -la ./projects</p>
       <h1>Projets informatiques</h1>
       <p class="lead">
-        Catalogue de mes laboratoires, logiciels, jeux et ressources techniques. Les statuts
-        décrivent les informations documentées dans les dépôts, pas une certification indépendante.
+        Mes labos, logiciels, jeux et guides. Les statuts reflètent ce qui est documenté dans les
+        dépôts.
       </p>
     </header>
     <div class="controls" id="project-controls" hidden>
@@ -114,232 +114,300 @@
       </div>
     </div>
     <p class="result-count" id="result-count" role="status">17 projets et ressources</p>
-    <p id="empty" hidden>Aucun projet ne correspond à cette recherche.</p>
+    <p id="empty" hidden>Aucun résultat. Essaie un autre mot ou retire le filtre.</p>
     <div class="project-grid">
-      <article class="project featured" data-category="infra">
+      <article class="project" data-category="infra">
+        <div class="project-name">
+          <h2><a href="/projets/cloud-project-k3s/">Cloud Project K3s</a></h2>
+          <p class="project-category">Infrastructure</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion
+            des demandes d’assistance.
+          </p>
+          <p class="stack">K3s · Ubuntu Server · PostgreSQL · Kubernetes</p>
+        </div>
         <div class="project-meta">
-          <span>Infrastructure</span>
           <span>En cours</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Cloud-Project-K3s" aria-label="Dépôt GitHub : Cloud Project K3s">Source ↗</a>
         </div>
-        <h2><a href="/projets/cloud-project-k3s/">Cloud Project K3s</a></h2>
-        <p>
-          Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des
-          demandes d’assistance.
-        </p>
-        <div class="stack">K3s · Ubuntu Server · PostgreSQL · Kubernetes</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Cloud-Project-K3s" aria-label="Dépôt GitHub : Cloud Project K3s">Code et documentation ↗</a>
-      </article>
-      <article class="project featured" data-category="infra">
-        <div class="project-meta">
-          <span>Infrastructure</span>
-          <span>Laboratoire opérationnel</span>
-        </div>
-        <h2><a href="/projets/docker-network-toolkit/">Docker Network Toolkit</a></h2>
-        <p>
-          Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les
-          services et mesurer les performances.
-        </p>
-        <div class="stack">Docker · Compose · Linux · Nmap · iperf3 · Nginx · Bash</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Docker-Network-Toolkit" aria-label="Dépôt GitHub : Docker Network Toolkit">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="security">
-        <div class="project-meta">
-          <span>Sécurité &amp; réseau</span>
-          <span>Laboratoire documenté</span>
-        </div>
-        <h2><a href="/projets/openssh-security-lab/">OpenSSH Security Lab</a></h2>
-        <p>
-          Administration distante de machines Linux avec authentification par clé et principe du
-          moindre privilège.
-        </p>
-        <div class="stack">OpenSSH · Ubuntu · pfSense · SSH</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/OpenSSH-Security-Lab" aria-label="Dépôt GitHub : OpenSSH Security Lab">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="security">
-        <div class="project-meta">
-          <span>Sécurité &amp; réseau</span>
-          <span>En préparation</span>
-        </div>
-        <h2><a href="/projets/netrecon-lab/">NetRecon Lab</a></h2>
-        <p>
-          Préparation d’un projet d’intégration, d’audit et de sécurisation de réseaux fictifs dans
-          un cadre autorisé.
-        </p>
-        <div class="stack">Nmap · Proxmox VE · OPNsense · Linux</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/NetRecon-Lab" aria-label="Dépôt GitHub : NetRecon Lab">Code et documentation ↗</a>
-      </article>
-      <article class="project featured" data-category="dev">
-        <div class="project-meta">
-          <span>Développement</span>
-          <span>Projet pédagogique</span>
-        </div>
-        <h2><a href="/projets/sql-server-project/">Mission SQL Cinéma</a></h2>
-        <p>
-          Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures,
-          agrégations et analyses de données.
-        </p>
-        <div class="stack">SQL Server · Python · Flask · pyodbc · PowerShell</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/SQL_Server_project" aria-label="Dépôt GitHub : Mission SQL Cinéma">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="dev">
-        <div class="project-meta">
-          <span>Développement</span>
-          <span>En développement</span>
-        </div>
-        <h2><a href="/projets/skyconnect-db/">SkyConnect-DB</a></h2>
-        <p>
-          Conception et administration d’une base relationnelle pour un aéroport fictif, de la
-          modélisation à la sécurité et à l’optimisation SQL.
-        </p>
-        <div class="stack">MySQL · Docker Compose · phpMyAdmin · MERISE · SQL · InnoDB</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/SkyConnect-DB" aria-label="Dépôt GitHub : SkyConnect-DB">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="dev">
-        <div class="project-meta">
-          <span>Développement</span>
-          <span>Utilitaire console</span>
-        </div>
-        <h2><a href="/projets/couteau-suisse/">Couteau Suisse</a></h2>
-        <p>
-          Une boîte à outils console regroupant conversion Morse, conversions numériques et
-          stéganographie textuelle Unicode.
-        </p>
-        <div class="stack">C# · .NET 9 · Windows</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/CouteauSuisse" aria-label="Dépôt GitHub : Couteau Suisse">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="dev">
-        <div class="project-meta">
-          <span>Développement</span>
-          <span>Site multipage</span>
-        </div>
-        <h2><a href="/projets/chococoa-web/">Chococoa Web</a></h2>
-        <p>
-          Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
-          interactions.
-        </p>
-        <div class="stack">HTML · CSS · JavaScript</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="dev">
-        <div class="project-meta">
-          <span>Développement</span>
-          <span>v0.5.0</span>
-        </div>
-        <h2><a href="/projets/rufus-terminal/">Terminal</a></h2>
-        <p>
-          Mon portfolio technique : catalogue de projets, ressources, journal de développement et
-          terminal interactif.
-        </p>
-        <div class="stack">HTML · CSS · JavaScript · Python · Cloudflare Workers</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Rufus-Terminal" aria-label="Dépôt GitHub : Terminal">Code et documentation ↗</a>
-      </article>
-      <article class="project featured" data-category="games">
-        <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
-          <span>Jeu web en évolution</span>
-        </div>
-        <h2><a href="/projets/parfum-empire/">Parfum Empire</a></h2>
-        <p>
-          Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes
-          et progression.
-        </p>
-        <div class="stack">TypeScript · Vite · Vitest</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/parfum-empire" aria-label="Dépôt GitHub : Parfum Empire">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="games">
-        <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
-          <span>RPG éducatif</span>
-        </div>
-        <h2><a href="/projets/code-quest/">Code Quest</a></h2>
-        <p>
-          RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
-          de progression.
-        </p>
-        <div class="stack">Terminal · ASCII · Game design</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="games">
-        <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
-          <span>Préservation numérique</span>
-        </div>
-        <h2><a href="/projets/flash-archive/">Flash Archive</a></h2>
-        <p>Préservation de jeux Flash historiques et découverte de l’émulation avec Ruffle.</p>
-        <div class="stack">SWF · Ruffle · Archives</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Play-old-Flash-games" aria-label="Dépôt GitHub : Flash Archive">Code et documentation ↗</a>
-      </article>
-      <article class="project" data-category="guides">
-        <div class="project-meta">
-          <span>Guides</span>
-          <span>Documentation</span>
-        </div>
-        <h2><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h2>
-        <p>
-          Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents
-          et maintenables.
-        </p>
-        <div class="stack">Roblox · Game design · UX · Économie</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="infra">
+        <div class="project-name">
+          <h2><a href="/projets/docker-network-toolkit/">Docker Network Toolkit</a></h2>
+          <p class="project-category">Infrastructure</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les
+            services et mesurer les performances.
+          </p>
+          <p class="stack">Docker · Compose · Linux · Nmap · iperf3 · Nginx · Bash</p>
+        </div>
         <div class="project-meta">
-          <span>Infrastructure</span>
+          <span>Laboratoire opérationnel</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Docker-Network-Toolkit" aria-label="Dépôt GitHub : Docker Network Toolkit">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="security">
+        <div class="project-name">
+          <h2><a href="/projets/openssh-security-lab/">OpenSSH Security Lab</a></h2>
+          <p class="project-category">Sécurité &amp; réseau</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Administration distante de machines Linux avec authentification par clé et principe du
+            moindre privilège.
+          </p>
+          <p class="stack">OpenSSH · Ubuntu · pfSense · SSH</p>
+        </div>
+        <div class="project-meta">
+          <span>Laboratoire documenté</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/OpenSSH-Security-Lab" aria-label="Dépôt GitHub : OpenSSH Security Lab">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="security">
+        <div class="project-name">
+          <h2><a href="/projets/netrecon-lab/">NetRecon Lab</a></h2>
+          <p class="project-category">Sécurité &amp; réseau</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Préparation d’un projet d’intégration, d’audit et de sécurisation de réseaux fictifs
+            dans un cadre autorisé.
+          </p>
+          <p class="stack">Nmap · Proxmox VE · OPNsense · Linux</p>
+        </div>
+        <div class="project-meta">
+          <span>En préparation</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/NetRecon-Lab" aria-label="Dépôt GitHub : NetRecon Lab">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="dev">
+        <div class="project-name">
+          <h2><a href="/projets/sql-server-project/">Mission SQL Cinéma</a></h2>
+          <p class="project-category">Développement</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures,
+            agrégations et analyses de données.
+          </p>
+          <p class="stack">SQL Server · Python · Flask · pyodbc · PowerShell</p>
+        </div>
+        <div class="project-meta">
+          <span>Projet pédagogique</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/SQL_Server_project" aria-label="Dépôt GitHub : Mission SQL Cinéma">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="dev">
+        <div class="project-name">
+          <h2><a href="/projets/skyconnect-db/">SkyConnect-DB</a></h2>
+          <p class="project-category">Développement</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Conception et administration d’une base relationnelle pour un aéroport fictif, de la
+            modélisation à la sécurité et à l’optimisation SQL.
+          </p>
+          <p class="stack">MySQL · Docker Compose · phpMyAdmin · MERISE · SQL · InnoDB</p>
+        </div>
+        <div class="project-meta">
+          <span>En développement</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/SkyConnect-DB" aria-label="Dépôt GitHub : SkyConnect-DB">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="dev">
+        <div class="project-name">
+          <h2><a href="/projets/couteau-suisse/">Couteau Suisse</a></h2>
+          <p class="project-category">Développement</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Une boîte à outils console regroupant conversion Morse, conversions numériques et
+            stéganographie textuelle Unicode.
+          </p>
+          <p class="stack">C# · .NET 9 · Windows</p>
+        </div>
+        <div class="project-meta">
+          <span>Utilitaire console</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/CouteauSuisse" aria-label="Dépôt GitHub : Couteau Suisse">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="dev">
+        <div class="project-name">
+          <h2><a href="/projets/chococoa-web/">Chococoa Web</a></h2>
+          <p class="project-category">Développement</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
+            interactions.
+          </p>
+          <p class="stack">HTML · CSS · JavaScript</p>
+        </div>
+        <div class="project-meta">
+          <span>Site multipage</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="dev">
+        <div class="project-name">
+          <h2><a href="/projets/rufus-terminal/">Terminal</a></h2>
+          <p class="project-category">Développement</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Mon espace personnel : projets, journal, jeux, applications et atelier de programmation
+            dans le navigateur.
+          </p>
+          <p class="stack">HTML · CSS · JavaScript · Python · Cloudflare Workers</p>
+        </div>
+        <div class="project-meta">
+          <span>v0.7.0</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Rufus-Terminal" aria-label="Dépôt GitHub : Terminal">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="games">
+        <div class="project-name">
+          <h2><a href="/projets/parfum-empire/">Parfum Empire</a></h2>
+          <p class="project-category">Jeux &amp; préservation</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes
+            et progression.
+          </p>
+          <p class="stack">TypeScript · Vite · Vitest</p>
+        </div>
+        <div class="project-meta">
+          <span>Jeu web en évolution</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/parfum-empire" aria-label="Dépôt GitHub : Parfum Empire">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="games">
+        <div class="project-name">
+          <h2><a href="/projets/code-quest/">Code Quest</a></h2>
+          <p class="project-category">Jeux &amp; préservation</p>
+        </div>
+        <div class="project-description">
+          <p>
+            RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
+            de progression.
+          </p>
+          <p class="stack">Terminal · ASCII · Game design</p>
+        </div>
+        <div class="project-meta">
+          <span>RPG éducatif</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="games">
+        <div class="project-name">
+          <h2><a href="/projets/flash-archive/">Flash Archive</a></h2>
+          <p class="project-category">Jeux &amp; préservation</p>
+        </div>
+        <div class="project-description">
+          <p>Préservation de jeux Flash historiques et découverte de l’émulation avec Ruffle.</p>
+          <p class="stack">SWF · Ruffle · Archives</p>
+        </div>
+        <div class="project-meta">
+          <span>Préservation numérique</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Play-old-Flash-games" aria-label="Dépôt GitHub : Flash Archive">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="guides">
+        <div class="project-name">
+          <h2><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h2>
+          <p class="project-category">Guides</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox
+            cohérents et maintenables.
+          </p>
+          <p class="stack">Roblox · Game design · UX · Économie</p>
+        </div>
+        <div class="project-meta">
+          <span>Documentation</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Source ↗</a>
+        </div>
+      </article>
+      <article class="project" data-category="infra">
+        <div class="project-name">
+          <h2><a href="/projets/minecraft-server-template/">Minecraft Server Template</a></h2>
+          <p class="project-category">Infrastructure</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Modèle réutilisable pour installer un serveur Minecraft Java dans un environnement cloud
+            de développement.
+          </p>
+          <p class="stack">PaperMC · Java · Codespaces · Crafty Controller · Bash</p>
+        </div>
+        <div class="project-meta">
           <span>Modèle de dépôt</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/mc-server-template" aria-label="Dépôt GitHub : Minecraft Server Template">Source ↗</a>
         </div>
-        <h2><a href="/projets/minecraft-server-template/">Minecraft Server Template</a></h2>
-        <p>
-          Modèle réutilisable pour installer un serveur Minecraft Java dans un environnement cloud
-          de développement.
-        </p>
-        <div class="stack">PaperMC · Java · Codespaces · Crafty Controller · Bash</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/mc-server-template" aria-label="Dépôt GitHub : Minecraft Server Template">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="guides">
+        <div class="project-name">
+          <h2><a href="/projets/minecraft-server/">Minecraft Server</a></h2>
+          <p class="project-category">Guides</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans
+            Codespaces.
+          </p>
+          <p class="stack">Linux · Java · PaperMC · GitHub Codespaces</p>
+        </div>
         <div class="project-meta">
-          <span>Guides</span>
           <span>Guide multilingue</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Minecraft-Server" aria-label="Dépôt GitHub : Minecraft Server">Source ↗</a>
         </div>
-        <h2><a href="/projets/minecraft-server/">Minecraft Server</a></h2>
-        <p>
-          Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans
-          Codespaces.
-        </p>
-        <div class="stack">Linux · Java · PaperMC · GitHub Codespaces</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Minecraft-Server" aria-label="Dépôt GitHub : Minecraft Server">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="guides">
+        <div class="project-name">
+          <h2><a href="/projets/git-signed-commits-windows/">Git Signed Commits Windows</a></h2>
+          <p class="project-category">Guides</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures
+            Git et GitHub.
+          </p>
+          <p class="stack">Git · SSH · Ed25519 · Windows</p>
+        </div>
         <div class="project-meta">
-          <span>Guides</span>
           <span>Guide technique</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/git-signed-commits-windows" aria-label="Dépôt GitHub : Git Signed Commits Windows">Source ↗</a>
         </div>
-        <h2><a href="/projets/git-signed-commits-windows/">Git Signed Commits Windows</a></h2>
-        <p>
-          Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures
-          Git et GitHub.
-        </p>
-        <div class="stack">Git · SSH · Ed25519 · Windows</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/git-signed-commits-windows" aria-label="Dépôt GitHub : Git Signed Commits Windows">Code et documentation ↗</a>
       </article>
-      <article class="project featured" data-category="security">
-        <div class="project-meta">
-          <span>Sécurité &amp; réseau</span>
-          <span>Workflow documenté</span>
+      <article class="project" data-category="security">
+        <div class="project-name">
+          <h2><a href="/projets/verified-by-default/">Verified by Default</a></h2>
+          <p class="project-category">Sécurité &amp; réseau</p>
         </div>
-        <h2><a href="/projets/verified-by-default/">Verified by Default</a></h2>
-        <p>
-          Politique de signature et de vérification des commits dans les workflows de développement
-          assistés par IA.
-        </p>
-        <div class="stack">Git · SSH · GPG · GitHub · IA</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/verified-by-default" aria-label="Dépôt GitHub : Verified by Default">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Politique de signature et de vérification des commits dans les workflows de
+            développement assistés par IA.
+          </p>
+          <p class="stack">Git · SSH · GPG · GitHub · IA</p>
+        </div>
+        <div class="project-meta">
+          <span>Workflow documenté</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/verified-by-default" aria-label="Dépôt GitHub : Verified by Default">Source ↗</a>
+        </div>
       </article>
     </div>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

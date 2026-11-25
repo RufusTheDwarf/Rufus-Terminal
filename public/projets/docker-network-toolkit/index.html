@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,11 +73,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -90,7 +90,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -108,7 +109,6 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <a href="/projets/">Projets</a> <span aria-hidden="true">/</span> <span aria-current="page">Docker Network Toolkit</span></nav>
     <header class="page-heading">
-      <p class="kicker">Infrastructure // Laboratoire opérationnel</p>
       <h1>Docker Network Toolkit</h1>
       <p class="lead">
         Laboratoire réseau conteneurisé pour observer les communications, diagnostiquer les services
@@ -170,52 +170,64 @@
     <section class="related">
       <h2>Projets associés</h2>
     <div class="project-grid">
-      <article class="project featured" data-category="infra">
+      <article class="project" data-category="infra">
+        <div class="project-name">
+          <h3><a href="/projets/cloud-project-k3s/">Cloud Project K3s</a></h3>
+          <p class="project-category">Infrastructure</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion
+            des demandes d’assistance.
+          </p>
+          <p class="stack">K3s · Ubuntu Server · PostgreSQL · Kubernetes</p>
+        </div>
         <div class="project-meta">
-          <span>Infrastructure</span>
           <span>En cours</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Cloud-Project-K3s" aria-label="Dépôt GitHub : Cloud Project K3s">Source ↗</a>
         </div>
-        <h3><a href="/projets/cloud-project-k3s/">Cloud Project K3s</a></h3>
-        <p>
-          Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des
-          demandes d’assistance.
-        </p>
-        <div class="stack">K3s · Ubuntu Server · PostgreSQL · Kubernetes</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Cloud-Project-K3s" aria-label="Dépôt GitHub : Cloud Project K3s">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="security">
+        <div class="project-name">
+          <h3><a href="/projets/netrecon-lab/">NetRecon Lab</a></h3>
+          <p class="project-category">Sécurité &amp; réseau</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Préparation d’un projet d’intégration, d’audit et de sécurisation de réseaux fictifs
+            dans un cadre autorisé.
+          </p>
+          <p class="stack">Nmap · Proxmox VE · OPNsense · Linux</p>
+        </div>
         <div class="project-meta">
-          <span>Sécurité &amp; réseau</span>
           <span>En préparation</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/NetRecon-Lab" aria-label="Dépôt GitHub : NetRecon Lab">Source ↗</a>
         </div>
-        <h3><a href="/projets/netrecon-lab/">NetRecon Lab</a></h3>
-        <p>
-          Préparation d’un projet d’intégration, d’audit et de sécurisation de réseaux fictifs dans
-          un cadre autorisé.
-        </p>
-        <div class="stack">Nmap · Proxmox VE · OPNsense · Linux</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/NetRecon-Lab" aria-label="Dépôt GitHub : NetRecon Lab">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="security">
-        <div class="project-meta">
-          <span>Sécurité &amp; réseau</span>
-          <span>Laboratoire documenté</span>
+        <div class="project-name">
+          <h3><a href="/projets/openssh-security-lab/">OpenSSH Security Lab</a></h3>
+          <p class="project-category">Sécurité &amp; réseau</p>
         </div>
-        <h3><a href="/projets/openssh-security-lab/">OpenSSH Security Lab</a></h3>
-        <p>
-          Administration distante de machines Linux avec authentification par clé et principe du
-          moindre privilège.
-        </p>
-        <div class="stack">OpenSSH · Ubuntu · pfSense · SSH</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/OpenSSH-Security-Lab" aria-label="Dépôt GitHub : OpenSSH Security Lab">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Administration distante de machines Linux avec authentification par clé et principe du
+            moindre privilège.
+          </p>
+          <p class="stack">OpenSSH · Ubuntu · pfSense · SSH</p>
+        </div>
+        <div class="project-meta">
+          <span>Laboratoire documenté</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/OpenSSH-Security-Lab" aria-label="Dépôt GitHub : OpenSSH Security Lab">Source ↗</a>
+        </div>
       </article>
     </div>
     </section>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

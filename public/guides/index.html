@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -56,11 +57,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -74,7 +74,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/" aria-current="page">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -92,7 +93,6 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Guides et ressources techniques</span></nav>
     <header class="page-heading">
-      <p class="kicker">ls guides</p>
       <h1>Guides et ressources techniques</h1>
       <p class="lead">
         Documentation pratique sur Git, SSH, l’hébergement de serveurs Minecraft et la conception de
@@ -102,63 +102,79 @@
 
     <div class="project-grid">
       <article class="project" data-category="guides">
+        <div class="project-name">
+          <h2><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h2>
+          <p class="project-category">Guides</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox
+            cohérents et maintenables.
+          </p>
+          <p class="stack">Roblox · Game design · UX · Économie</p>
+        </div>
         <div class="project-meta">
-          <span>Guides</span>
           <span>Documentation</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Source ↗</a>
         </div>
-        <h2><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h2>
-        <p>
-          Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents
-          et maintenables.
-        </p>
-        <div class="stack">Roblox · Game design · UX · Économie</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="guides">
+        <div class="project-name">
+          <h2><a href="/projets/minecraft-server/">Minecraft Server</a></h2>
+          <p class="project-category">Guides</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans
+            Codespaces.
+          </p>
+          <p class="stack">Linux · Java · PaperMC · GitHub Codespaces</p>
+        </div>
         <div class="project-meta">
-          <span>Guides</span>
           <span>Guide multilingue</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Minecraft-Server" aria-label="Dépôt GitHub : Minecraft Server">Source ↗</a>
         </div>
-        <h2><a href="/projets/minecraft-server/">Minecraft Server</a></h2>
-        <p>
-          Guide pratique pour installer, administrer et sauvegarder un serveur Minecraft Java dans
-          Codespaces.
-        </p>
-        <div class="stack">Linux · Java · PaperMC · GitHub Codespaces</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Minecraft-Server" aria-label="Dépôt GitHub : Minecraft Server">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="guides">
+        <div class="project-name">
+          <h2><a href="/projets/git-signed-commits-windows/">Git Signed Commits Windows</a></h2>
+          <p class="project-category">Guides</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures
+            Git et GitHub.
+          </p>
+          <p class="stack">Git · SSH · Ed25519 · Windows</p>
+        </div>
         <div class="project-meta">
-          <span>Guides</span>
           <span>Guide technique</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/git-signed-commits-windows" aria-label="Dépôt GitHub : Git Signed Commits Windows">Source ↗</a>
         </div>
-        <h2><a href="/projets/git-signed-commits-windows/">Git Signed Commits Windows</a></h2>
-        <p>
-          Guide Windows pour créer une identité de signature SSH dédiée et vérifier les signatures
-          Git et GitHub.
-        </p>
-        <div class="stack">Git · SSH · Ed25519 · Windows</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/git-signed-commits-windows" aria-label="Dépôt GitHub : Git Signed Commits Windows">Code et documentation ↗</a>
       </article>
-      <article class="project featured" data-category="security">
-        <div class="project-meta">
-          <span>Sécurité &amp; réseau</span>
-          <span>Workflow documenté</span>
+      <article class="project" data-category="security">
+        <div class="project-name">
+          <h2><a href="/projets/verified-by-default/">Verified by Default</a></h2>
+          <p class="project-category">Sécurité &amp; réseau</p>
         </div>
-        <h2><a href="/projets/verified-by-default/">Verified by Default</a></h2>
-        <p>
-          Politique de signature et de vérification des commits dans les workflows de développement
-          assistés par IA.
-        </p>
-        <div class="stack">Git · SSH · GPG · GitHub · IA</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/verified-by-default" aria-label="Dépôt GitHub : Verified by Default">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Politique de signature et de vérification des commits dans les workflows de
+            développement assistés par IA.
+          </p>
+          <p class="stack">Git · SSH · GPG · GitHub · IA</p>
+        </div>
+        <div class="project-meta">
+          <span>Workflow documenté</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/verified-by-default" aria-label="Dépôt GitHub : Verified by Default">Source ↗</a>
+        </div>
       </article>
     </div>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

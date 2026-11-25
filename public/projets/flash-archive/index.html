@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,11 +73,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -90,7 +90,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -108,7 +109,6 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <a href="/projets/">Projets</a> <span aria-hidden="true">/</span> <span aria-current="page">Flash Archive</span></nav>
     <header class="page-heading">
-      <p class="kicker">Jeux &amp; préservation // Préservation numérique</p>
       <h1>Flash Archive</h1>
       <p class="lead">Préservation de jeux Flash historiques et découverte de l’émulation avec Ruffle.</p>
     </header>
@@ -164,38 +164,46 @@
       <h2>Projets associés</h2>
     <div class="project-grid">
       <article class="project" data-category="games">
+        <div class="project-name">
+          <h3><a href="/projets/code-quest/">Code Quest</a></h3>
+          <p class="project-category">Jeux &amp; préservation</p>
+        </div>
+        <div class="project-description">
+          <p>
+            RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
+            de progression.
+          </p>
+          <p class="stack">Terminal · ASCII · Game design</p>
+        </div>
         <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
           <span>RPG éducatif</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Source ↗</a>
         </div>
-        <h3><a href="/projets/code-quest/">Code Quest</a></h3>
-        <p>
-          RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
-          de progression.
-        </p>
-        <div class="stack">Terminal · ASCII · Game design</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Code et documentation ↗</a>
       </article>
-      <article class="project featured" data-category="games">
-        <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
-          <span>Jeu web en évolution</span>
+      <article class="project" data-category="games">
+        <div class="project-name">
+          <h3><a href="/projets/parfum-empire/">Parfum Empire</a></h3>
+          <p class="project-category">Jeux &amp; préservation</p>
         </div>
-        <h3><a href="/projets/parfum-empire/">Parfum Empire</a></h3>
-        <p>
-          Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes
-          et progression.
-        </p>
-        <div class="stack">TypeScript · Vite · Vitest</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/parfum-empire" aria-label="Dépôt GitHub : Parfum Empire">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes
+            et progression.
+          </p>
+          <p class="stack">TypeScript · Vite · Vitest</p>
+        </div>
+        <div class="project-meta">
+          <span>Jeu web en évolution</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/parfum-empire" aria-label="Dépôt GitHub : Parfum Empire">Source ↗</a>
+        </div>
       </article>
     </div>
     </section>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

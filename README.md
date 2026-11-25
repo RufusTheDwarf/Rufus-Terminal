@@ -10,7 +10,7 @@
 
 [**Explore the website**](https://terminal.rutsumello.workers.dev/) · [**Project catalogue**](https://terminal.rutsumello.workers.dev/projets/) · [**Developer profile**](https://github.com/RufusTheDwarf)
 
-<img src="https://img.shields.io/badge/Version-0.5.0-238636?style=flat&logoColor=white" alt="Version: 0.5.0"/>
+<img src="https://img.shields.io/badge/Version-0.7.0-238636?style=flat&logoColor=white" alt="Version: 0.7.0"/>
 <img src="https://img.shields.io/badge/Status-Active%20development-238636?style=flat&logoColor=white" alt="Status: Active development"/>
 <img src="https://img.shields.io/badge/License-MIT-2563eb?style=flat&logoColor=white" alt="License: MIT"/>
 <img src="https://img.shields.io/badge/Hosting-Cloudflare%20Workers-f38020?style=flat&logoColor=white&logo=cloudflare" alt="Hosting: Cloudflare Workers"/>
@@ -18,7 +18,7 @@
 <img src="https://img.shields.io/badge/CSS-Responsive-1572b6?style=flat&logoColor=white&logo=css" alt="CSS: Responsive"/>
 <img src="https://img.shields.io/badge/JavaScript-Vanilla-f7df1e?style=flat&logoColor=white&logo=javascript" alt="JavaScript: Vanilla"/>
 <img src="https://img.shields.io/badge/Python-SSG-3776ab?style=flat&logoColor=white&logo=python" alt="Python: SSG"/>
-<img src="https://img.shields.io/badge/Pages-25%20indexable-238636?style=flat&logoColor=white" alt="Pages: 25 indexable"/>
+<img src="https://img.shields.io/badge/Pages-27%20indexable-238636?style=flat&logoColor=white" alt="Pages: 27 indexable"/>
 <img src="https://img.shields.io/badge/Projects-18-238636?style=flat&logoColor=white" alt="Projects: 18"/>
 <img src="https://img.shields.io/badge/Runtime%20deps-0-238636?style=flat&logoColor=white" alt="Runtime deps: 0"/>
 <img src="https://img.shields.io/badge/Language-fr-CH-555555?style=flat&logoColor=white" alt="Language: fr-CH"/>
@@ -53,7 +53,7 @@ The website is written in French (`fr-CH`); the repository documentation is in E
 | Catalogue | Search, category filters and dedicated project pages |
 | Terminal | Simulated commands, navigation, session history and clear command |
 | Knowledge | Guides, game-development resources and development logs |
-| Design | Forest CRT Glass and Sage Day themes, wide layouts, layered glass, animated topographic backdrop and pause control |
+| Design | Forest CRT Glass and Sage Day themes, wide editorial layout, aligned project directory, glass reserved for the terminal and one optional homepage animation |
 | Delivery | Pre-generated HTML, shared local CSS/JS and Cloudflare static assets |
 | Discoverability | Per-page metadata, sitemap, canonical URLs and internal navigation |
 
@@ -87,7 +87,7 @@ The 18 entries below are a curated snapshot, not a live GitHub API feed. Status 
 | [Mission SQL Cinéma](https://terminal.rutsumello.workers.dev/projets/sql-server-project/) | Cinema-themed relational database exercises and Flask interface | Educational project | [Source](https://github.com/RufusTheDwarf/SQL_Server_project) |
 | [Couteau Suisse](https://terminal.rutsumello.workers.dev/projets/couteau-suisse/) | Windows console toolkit for Morse, base conversion and Unicode steganography | Console utility | [Source](https://github.com/RufusTheDwarf/CouteauSuisse) |
 | [Chococoa Web](https://terminal.rutsumello.workers.dev/projets/chococoa-web/) | French multi-page chocolate-themed website | Web project | [Source](https://github.com/RufusTheDwarf/chococoa-web) |
-| [Rufus Terminal](https://terminal.rutsumello.workers.dev/projets/rufus-terminal/) | Static developer portfolio and technical project catalogue | v0.5.0 | [Source](https://github.com/RufusTheDwarf/Rufus-Terminal) |
+| [Rufus Terminal](https://terminal.rutsumello.workers.dev/projets/rufus-terminal/) | Static developer portfolio and technical project catalogue | v0.7.0 | [Source](https://github.com/RufusTheDwarf/Rufus-Terminal) |
 | [Parfum Empire](https://terminal.rutsumello.workers.dev/projets/parfum-empire/) | 2D perfume tycoon with crafting, automation and progression | Evolving game | [Source](https://github.com/RufusTheDwarf/parfum-empire) |
 | [Code Quest](https://terminal.rutsumello.workers.dev/projets/code-quest/) | Educational terminal RPG with technical questions and progression | Game project | [Source](https://github.com/RufusTheDwarf/Code_Quest) |
 | [Flash Archive](https://terminal.rutsumello.workers.dev/projets/flash-archive/) | Flash preservation project using archived SWF files and Ruffle | Archive | [Source](https://github.com/RufusTheDwarf/Play-old-Flash-games) |
@@ -113,9 +113,11 @@ The 18 entries below are a curated snapshot, not a live GitHub API feed. Status 
 | [`/jeux/`](https://terminal.rutsumello.workers.dev/jeux/) | Game-development projects |
 | [`/guides/`](https://terminal.rutsumello.workers.dev/guides/) | Technical guides and documentation |
 | [`/devlog/`](https://terminal.rutsumello.workers.dev/devlog/) | Development notes |
+| [`/journal/`](https://terminal.rutsumello.workers.dev/journal/) | Personal notes and activities |
+| [`/lab/`](https://terminal.rutsumello.workers.dev/lab/) | Temporary browser workspace |
 | `404.html` | Custom error page (excluded from sitemap) |
 
-Seven main pages plus eighteen detail pages form the **25 indexable URLs**. The custom error document brings the total to **26 HTML files**.
+Nine main pages plus eighteen detail pages form the **27 indexable URLs**. The custom error document brings the total to **28 HTML files**.
 
 <a id="05--architecture"></a>
 <h2 align="center">Architecture // How the site is built</h2>
@@ -179,6 +181,8 @@ Rufus-Terminal/
 │   ├── jeux/index.html
 │   ├── guides/index.html
 │   ├── devlog/index.html
+│   ├── journal/index.html
+│   ├── lab/index.html
 │   ├── index.html
 │   ├── 404.html
 │   ├── robots.txt
@@ -189,6 +193,10 @@ Rufus-Terminal/
 │   └── _headers
 ├── src/
 │   ├── projects.json
+│   ├── journal.json
+│   ├── lab.html
+│   ├── lab.js
+│   ├── lab.css
 │   ├── style.css
 │   ├── site.js
 │   ├── theme.js
@@ -198,6 +206,7 @@ Rufus-Terminal/
 │   ├── build.py
 │   ├── check.py
 │   ├── browser_check.py
+│   ├── lab_check.py
 │   ├── sync_github.py
 │   └── test_sync_github.py
 ├── .editorconfig
@@ -213,7 +222,7 @@ Rufus-Terminal/
 └── README.md
 ```
 
-This tree shows the main files in v0.5.0. The source and published copies of CSS/JS must remain synchronized through the generator.
+This tree shows the main files in v0.7.0. The source and published copies of CSS/JS must remain synchronized through the generator.
 
 <a id="08--getting-started"></a>
 <h2 align="center">Getting started // Run the site locally</h2>
@@ -432,3 +441,19 @@ Thanks to the open-source communities behind Python, Git, Playwright, Chromium a
 <img src="https://capsule-render.vercel.app/api?type=waving&height=120&color=0:050A07,30:103021,65:008F4C,100:00FF88&section=footer" width="100%" alt="Footer"/>
 
 </div>
+
+
+<h2 align="center">Personal space // Journal and browser workspace</h2>
+
+Version 0.7.0 adds a personal journal at `/journal/` separate from the technical changelog. Edit `src/journal.json` to publish entries and run the generator. The daylight theme uses warm paper, olive ink and a dark CRT panel rather than a direct inversion of the night theme.
+
+The experimental `/lab/` desktop has a virtual shell, shared in-memory text files, folders, trash, notepad, lightweight code editor, JavaScript workers and an optional Python runtime. It is not a complete Linux OS or VS Code. Python uses Pyodide 0.27.5 and micropip for compatible packages. Web searches open actual websites in a new tab; Wikipedia search results can appear within the desktop. See [Workspace documentation](docs/WORKSPACE.md) for limits, security and test instructions.
+
+```powershell
+py tools/build.py
+py tools/check.py
+node --check public/assets/lab.js
+py tools/lab_check.py
+```
+
+The browser workspace is experimental. External runtime downloads, package installation and live HTTP security headers must be tested on the deployed site before describing them as verified.

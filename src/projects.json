@@ -273,7 +273,7 @@
     "name": "Terminal",
     "repo": "Rufus-Terminal",
     "category": "dev",
-    "status": "v0.5.0",
+    "status": "v0.7.0",
     "stack": [
       "HTML",
       "CSS",
@@ -281,15 +281,16 @@
       "Python",
       "Cloudflare Workers"
     ],
-    "summary": "Mon portfolio technique : catalogue de projets, ressources, journal de développement et terminal interactif.",
-    "context": "Terminal est un espace personnel inspiré des interfaces en ligne de commande. Il rassemble les projets et les connaissances que je partage sur GitHub. La structure multipage de cette version sépare le contenu des projets, les modèles de pages et les ressources visuelles.",
+    "summary": "Mon espace personnel : projets, journal, jeux, applications et atelier de programmation dans le navigateur.",
+    "context": "Terminal rassemble mes projets, mes activités et mes découvertes. Le site propose un journal personnel distinct du journal technique, ainsi qu’un atelier expérimental.",
     "details": [
       "Pages HTML statiques accessibles sans JavaScript.",
       "Terminal de navigation et filtres de catalogue côté navigateur.",
       "Métadonnées spécifiques à chaque page, sitemap et liens internes.",
       "Publication statique avec Cloudflare Workers et génération reproductible des pages.",
       "Thèmes Retro Glass et Sage Day avec préférence locale.",
-      "Contrôle périodique des écarts entre le catalogue et les dépôts publics GitHub."
+      "Contrôle périodique des écarts entre le catalogue et les dépôts publics GitHub.",
+      "Atelier expérimental avec fichiers texte temporaires, éditeur et exécution JavaScript; Python via Pyodide à vérifier en production."
     ],
     "learning": "Concilier une identité visuelle originale avec la maintenabilité, l’accessibilité, les performances et la découvrabilité du contenu.",
     "limits": "Le catalogue est éditorial. La détection automatique signale les nouveaux dépôts et les écarts. Les mises à jour publiques sont relues et signées avant publication.",

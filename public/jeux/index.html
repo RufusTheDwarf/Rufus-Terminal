@@ -7,21 +7,21 @@
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="RufusTheDwarf">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Jeux et game development | /&gt;Terminal</title>
+  <title>Jeux et prototypes | /&gt;Terminal</title>
   <meta name="description" content="Création de jeux, RPG éducatifs, tycoons et préservation numérique : mes projets et expériences autour du jeu.">
   <link rel="canonical" href="https://terminal.rutsumello.workers.dev/jeux/">
   <meta property="og:url" content="https://terminal.rutsumello.workers.dev/jeux/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CH">
   <meta property="og:site_name" content="Terminal">
-  <meta property="og:title" content="Jeux et game development | Terminal">
+  <meta property="og:title" content="Jeux et prototypes | Terminal">
   <meta property="og:description" content="Création de jeux, RPG éducatifs, tycoons et préservation numérique : mes projets et expériences autour du jeu.">
   <meta property="og:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Terminal : portfolio informatique de RufusTheDwarf">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jeux et game development | Terminal">
+  <meta name="twitter:title" content="Jeux et prototypes | Terminal">
   <meta name="twitter:description" content="Création de jeux, RPG éducatifs, tycoons et préservation numérique : mes projets et expériences autour du jeu.">
   <meta name="twitter:image" content="https://terminal.rutsumello.workers.dev/assets/social-card.png">
   <meta name="twitter:image:alt" content="Identité visuelle Terminal">
@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,7 +48,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Jeux et game development",
+          "name": "Jeux et prototypes",
           "item": "https://terminal.rutsumello.workers.dev/jeux/"
         }
       ]
@@ -56,11 +57,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -74,7 +74,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/" aria-current="page">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -90,10 +91,9 @@
     </div>
   </header>
   <main id="contenu" class="wrap">
-    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Jeux et game development</span></nav>
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Jeux et prototypes</span></nav>
     <header class="page-heading">
-      <p class="kicker">ls jeux</p>
-      <h1>Jeux et game development</h1>
+      <h1>Jeux et prototypes</h1>
       <p class="lead">
         Création de jeux, RPG éducatifs, tycoons et préservation numérique : mes projets et
         expériences autour du jeu.
@@ -101,61 +101,77 @@
     </header>
 
     <div class="project-grid">
-      <article class="project featured" data-category="games">
+      <article class="project" data-category="games">
+        <div class="project-name">
+          <h2><a href="/projets/parfum-empire/">Parfum Empire</a></h2>
+          <p class="project-category">Jeux &amp; préservation</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes
+            et progression.
+          </p>
+          <p class="stack">TypeScript · Vite · Vitest</p>
+        </div>
         <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
           <span>Jeu web en évolution</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/parfum-empire" aria-label="Dépôt GitHub : Parfum Empire">Source ↗</a>
         </div>
-        <h2><a href="/projets/parfum-empire/">Parfum Empire</a></h2>
-        <p>
-          Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes
-          et progression.
-        </p>
-        <div class="stack">TypeScript · Vite · Vitest</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/parfum-empire" aria-label="Dépôt GitHub : Parfum Empire">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="games">
+        <div class="project-name">
+          <h2><a href="/projets/code-quest/">Code Quest</a></h2>
+          <p class="project-category">Jeux &amp; préservation</p>
+        </div>
+        <div class="project-description">
+          <p>
+            RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
+            de progression.
+          </p>
+          <p class="stack">Terminal · ASCII · Game design</p>
+        </div>
         <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
           <span>RPG éducatif</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Source ↗</a>
         </div>
-        <h2><a href="/projets/code-quest/">Code Quest</a></h2>
-        <p>
-          RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
-          de progression.
-        </p>
-        <div class="stack">Terminal · ASCII · Game design</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="games">
-        <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
-          <span>Préservation numérique</span>
+        <div class="project-name">
+          <h2><a href="/projets/flash-archive/">Flash Archive</a></h2>
+          <p class="project-category">Jeux &amp; préservation</p>
         </div>
-        <h2><a href="/projets/flash-archive/">Flash Archive</a></h2>
-        <p>Préservation de jeux Flash historiques et découverte de l’émulation avec Ruffle.</p>
-        <div class="stack">SWF · Ruffle · Archives</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Play-old-Flash-games" aria-label="Dépôt GitHub : Flash Archive">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>Préservation de jeux Flash historiques et découverte de l’émulation avec Ruffle.</p>
+          <p class="stack">SWF · Ruffle · Archives</p>
+        </div>
+        <div class="project-meta">
+          <span>Préservation numérique</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Play-old-Flash-games" aria-label="Dépôt GitHub : Flash Archive">Source ↗</a>
+        </div>
       </article>
       <article class="project" data-category="guides">
-        <div class="project-meta">
-          <span>Guides</span>
-          <span>Documentation</span>
+        <div class="project-name">
+          <h2><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h2>
+          <p class="project-category">Guides</p>
         </div>
-        <h2><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h2>
-        <p>
-          Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents
-          et maintenables.
-        </p>
-        <div class="stack">Roblox · Game design · UX · Économie</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox
+            cohérents et maintenables.
+          </p>
+          <p class="stack">Roblox · Game design · UX · Économie</p>
+        </div>
+        <div class="project-meta">
+          <span>Documentation</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Source ↗</a>
+        </div>
       </article>
     </div>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

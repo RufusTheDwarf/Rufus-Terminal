@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,11 +73,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -90,7 +90,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -108,7 +109,6 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <a href="/projets/">Projets</a> <span aria-hidden="true">/</span> <span aria-current="page">Mission SQL Cinéma</span></nav>
     <header class="page-heading">
-      <p class="kicker">Développement // Projet pédagogique</p>
       <h1>Mission SQL Cinéma</h1>
       <p class="lead">
         Application pédagogique et modèle relationnel de cinéma pour pratiquer les jointures,
@@ -168,65 +168,81 @@
     <section class="related">
       <h2>Projets associés</h2>
     <div class="project-grid">
-      <article class="project featured" data-category="infra">
+      <article class="project" data-category="infra">
+        <div class="project-name">
+          <h3><a href="/projets/cloud-project-k3s/">Cloud Project K3s</a></h3>
+          <p class="project-category">Infrastructure</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion
+            des demandes d’assistance.
+          </p>
+          <p class="stack">K3s · Ubuntu Server · PostgreSQL · Kubernetes</p>
+        </div>
         <div class="project-meta">
-          <span>Infrastructure</span>
           <span>En cours</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Cloud-Project-K3s" aria-label="Dépôt GitHub : Cloud Project K3s">Source ↗</a>
         </div>
-        <h3><a href="/projets/cloud-project-k3s/">Cloud Project K3s</a></h3>
-        <p>
-          Conception d’un mini cloud privé à deux nœuds pour héberger une application de gestion des
-          demandes d’assistance.
-        </p>
-        <div class="stack">K3s · Ubuntu Server · PostgreSQL · Kubernetes</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Cloud-Project-K3s" aria-label="Dépôt GitHub : Cloud Project K3s">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="dev">
+        <div class="project-name">
+          <h3><a href="/projets/couteau-suisse/">Couteau Suisse</a></h3>
+          <p class="project-category">Développement</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Une boîte à outils console regroupant conversion Morse, conversions numériques et
+            stéganographie textuelle Unicode.
+          </p>
+          <p class="stack">C# · .NET 9 · Windows</p>
+        </div>
         <div class="project-meta">
-          <span>Développement</span>
           <span>Utilitaire console</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/CouteauSuisse" aria-label="Dépôt GitHub : Couteau Suisse">Source ↗</a>
         </div>
-        <h3><a href="/projets/couteau-suisse/">Couteau Suisse</a></h3>
-        <p>
-          Une boîte à outils console regroupant conversion Morse, conversions numériques et
-          stéganographie textuelle Unicode.
-        </p>
-        <div class="stack">C# · .NET 9 · Windows</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/CouteauSuisse" aria-label="Dépôt GitHub : Couteau Suisse">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="dev">
+        <div class="project-name">
+          <h3><a href="/projets/chococoa-web/">Chococoa Web</a></h3>
+          <p class="project-category">Développement</p>
+        </div>
+        <div class="project-description">
+          <p>
+            Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
+            interactions.
+          </p>
+          <p class="stack">HTML · CSS · JavaScript</p>
+        </div>
         <div class="project-meta">
-          <span>Développement</span>
           <span>Site multipage</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Source ↗</a>
         </div>
-        <h3><a href="/projets/chococoa-web/">Chococoa Web</a></h3>
-        <p>
-          Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
-          interactions.
-        </p>
-        <div class="stack">HTML · CSS · JavaScript</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Code et documentation ↗</a>
       </article>
       <article class="project" data-category="dev">
-        <div class="project-meta">
-          <span>Développement</span>
-          <span>En développement</span>
+        <div class="project-name">
+          <h3><a href="/projets/skyconnect-db/">SkyConnect-DB</a></h3>
+          <p class="project-category">Développement</p>
         </div>
-        <h3><a href="/projets/skyconnect-db/">SkyConnect-DB</a></h3>
-        <p>
-          Conception et administration d’une base relationnelle pour un aéroport fictif, de la
-          modélisation à la sécurité et à l’optimisation SQL.
-        </p>
-        <div class="stack">MySQL · Docker Compose · phpMyAdmin · MERISE · SQL · InnoDB</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/SkyConnect-DB" aria-label="Dépôt GitHub : SkyConnect-DB">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Conception et administration d’une base relationnelle pour un aéroport fictif, de la
+            modélisation à la sécurité et à l’optimisation SQL.
+          </p>
+          <p class="stack">MySQL · Docker Compose · phpMyAdmin · MERISE · SQL · InnoDB</p>
+        </div>
+        <div class="project-meta">
+          <span>En développement</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/SkyConnect-DB" aria-label="Dépôt GitHub : SkyConnect-DB">Source ↗</a>
+        </div>
       </article>
     </div>
     </section>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>

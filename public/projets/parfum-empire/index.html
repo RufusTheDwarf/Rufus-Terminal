@@ -31,6 +31,7 @@
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/site.js" defer></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,11 +73,10 @@
 }
   </script>
 </head>
-<body>
+<body class="inner-page">
   <a class="skip" href="#contenu">Aller au contenu</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-map"></div>
-    <div class="ambient-light"></div>
     <div class="ambient-grain"></div>
   </div>
   <header class="topbar">
@@ -90,7 +90,8 @@
           <li><a href="/apps/">Apps</a></li>
           <li><a href="/jeux/">Jeux</a></li>
           <li><a href="/guides/">Guides</a></li>
-          <li><a href="/devlog/">DevLog</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/lab/">Atelier</a></li>
           <li><a href="https://github.com/RufusTheDwarf">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -108,7 +109,6 @@
   <main id="contenu" class="wrap">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">/</span> <a href="/projets/">Projets</a> <span aria-hidden="true">/</span> <span aria-current="page">Parfum Empire</span></nav>
     <header class="page-heading">
-      <p class="kicker">Jeux &amp; préservation // Jeu web en évolution</p>
       <h1>Parfum Empire</h1>
       <p class="lead">
         Tycoon de parfumerie en 2D : récolte botanique, recettes, machines de production, ventes et
@@ -168,51 +168,63 @@
       <h2>Projets associés</h2>
     <div class="project-grid">
       <article class="project" data-category="guides">
-        <div class="project-meta">
-          <span>Guides</span>
-          <span>Documentation</span>
+        <div class="project-name">
+          <h3><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h3>
+          <p class="project-category">Guides</p>
         </div>
-        <h3><a href="/projets/roblox-tycoon-blueprint/">Roblox Tycoon Blueprint</a></h3>
-        <p>
-          Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox cohérents
-          et maintenables.
-        </p>
-        <div class="stack">Roblox · Game design · UX · Économie</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Base de connaissances pour concevoir, tester et faire évoluer des tycoons Roblox
+            cohérents et maintenables.
+          </p>
+          <p class="stack">Roblox · Game design · UX · Économie</p>
+        </div>
+        <div class="project-meta">
+          <span>Documentation</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Roblox-Tycoon-Blueprint" aria-label="Dépôt GitHub : Roblox Tycoon Blueprint">Source ↗</a>
+        </div>
       </article>
       <article class="project" data-category="games">
-        <div class="project-meta">
-          <span>Jeux &amp; préservation</span>
-          <span>RPG éducatif</span>
+        <div class="project-name">
+          <h3><a href="/projets/code-quest/">Code Quest</a></h3>
+          <p class="project-category">Jeux &amp; préservation</p>
         </div>
-        <h3><a href="/projets/code-quest/">Code Quest</a></h3>
-        <p>
-          RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
-          de progression.
-        </p>
-        <div class="stack">Terminal · ASCII · Game design</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            RPG en terminal où les connaissances informatiques deviennent une mécanique de combat et
+            de progression.
+          </p>
+          <p class="stack">Terminal · ASCII · Game design</p>
+        </div>
+        <div class="project-meta">
+          <span>RPG éducatif</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/Code_Quest" aria-label="Dépôt GitHub : Code Quest">Source ↗</a>
+        </div>
       </article>
       <article class="project" data-category="dev">
-        <div class="project-meta">
-          <span>Développement</span>
-          <span>Site multipage</span>
+        <div class="project-name">
+          <h3><a href="/projets/chococoa-web/">Chococoa Web</a></h3>
+          <p class="project-category">Développement</p>
         </div>
-        <h3><a href="/projets/chococoa-web/">Chococoa Web</a></h3>
-        <p>
-          Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
-          interactions.
-        </p>
-        <div class="stack">HTML · CSS · JavaScript</div>
-        <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Code et documentation ↗</a>
+        <div class="project-description">
+          <p>
+            Site francophone sur le chocolat avec pages de présentation, contenus éducatifs, quiz et
+            interactions.
+          </p>
+          <p class="stack">HTML · CSS · JavaScript</p>
+        </div>
+        <div class="project-meta">
+          <span>Site multipage</span>
+          <a class="card-link" href="https://github.com/RufusTheDwarf/chococoa-web" aria-label="Dépôt GitHub : Chococoa Web">Source ↗</a>
+        </div>
       </article>
     </div>
     </section>
   </main>
   <footer class="footer">
     <div class="wrap">
-      <p>© 2026 RufusTheDwarf · Build. Learn. Share. Improve.</p>
-      <p>v0.5.0 · <a href="/devlog/">DevLog</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a></p>
+      <p>© 2026 RufusTheDwarf · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/blob/main/LICENSE">Licence du code</a></p>
+      <p>v0.7.0 · <a href="/journal/">Journal</a> · <a href="/devlog/">Versions du site</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal">Code source ↗</a> · <a href="https://github.com/RufusTheDwarf/Rufus-Terminal/issues">Signaler un problème ↗</a></p>
     </div>
   </footer>
 </body>
